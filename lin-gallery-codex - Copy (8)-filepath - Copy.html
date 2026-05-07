@@ -2,29 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover minimum-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#000B1C" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#000B1C" media="(prefers-color-scheme: dark)" />
   <title>Heat, Work, and What Comes Next</title>
-  <meta name="description" content="An interactive photo story exploring the lives of sugar cane workers in Central America, documenting climate change, health impacts, and labor challenges in Guatemala and El Salvador." />
-  <meta name="keywords" content="photojournalism, sugar cane, climate change, labor, Central America, Guatemala, El Salvador, documentary photography, health, social impact" />
-  <meta name="author" content="Photographer/Journalist" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Heat, Work, and What Comes Next" />
-  <meta property="og:description" content="An interactive photo story exploring the lives of sugar cane workers in Central America, documenting climate change, health impacts, and labor challenges." />
-  <meta property="og:url" content="" />
-  <meta property="og:image" content="" />
-  <meta property="og:site_name" content="Heat, Work, and What Comes Next" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Heat, Work, and What Comes Next" />
-  <meta name="twitter:description" content="An interactive photo story exploring the lives of sugar cane workers in Central America." />
-  <meta name="twitter:image" content="" />
-  <link rel="canonical" href="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <style>
     :root {
       --bg: #22242a;
@@ -284,19 +268,10 @@ html {scrollbar-width: none;} /* Firefox */
 
     .hero-credit {
       margin: 10px 0 0;
-      color: #ffffff;
+      color: var(--muted);
       font-size: 0.8rem;
       line-height: 1.4;
       opacity: 0.9;
-    }
-
-    .hero-credit a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .hero-credit a:hover {
-      text-decoration: underline;
     }
 
     .chapter-list {
@@ -748,16 +723,6 @@ html {scrollbar-width: none;} /* Firefox */
       margin-bottom: 58px;
     }
 
-    .partner-logos a {
-      display: flex;
-      align-items: center;
-    }
-
-    .partner-logos a:not(:last-child) {
-      padding-right: 58px;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
     .partner-logos img {
       display: block;
       width: auto;
@@ -765,6 +730,11 @@ html {scrollbar-width: none;} /* Firefox */
       height: 45px;
       max-height: 45px;
       object-fit: contain;
+    }
+
+    .partner-logos img:not(:last-child) {
+      padding-right: 58px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     @media (max-width: 480px) {
@@ -933,18 +903,14 @@ html {scrollbar-width: none;} /* Firefox */
       right: 20px;
       width: 40px;
       height: 40px;
-      background: #000;
+      background: none;
       border: none;
-      color: #fff;
+      color: var(--text);
       font-size: 28px;
       cursor: pointer;
-      opacity: 0.8;
+      opacity: 0.6;
       transition: opacity 220ms ease;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
+      z-index: 1;
     }
 
     .action-modal-close:hover {
@@ -981,19 +947,15 @@ html {scrollbar-width: none;} /* Firefox */
       <div class="content-col">
         <header class="hero-copy">
           <div class="partner-logos">
-            <a href="https://laislanetwork.org" target="_blank" rel="noopener noreferrer" title="Visit La Isla Network">
-              <img src="https://laislanetwork.org/wp-content/uploads/2024/01/LaIslaNetwork_Logo_White.png" alt="La Isla Network" />
-            </a>
-            <a href="https://www.rockefellerfoundation.org/news/la-isla-network-launches-new-initiatives-to-protect-workers-from-extreme-heat-in-latin-america/" target="_blank" rel="noopener noreferrer" title="Visit Rockefeller Foundation">
-              <img src="https://laislanetwork.org/wp-content/uploads/2026/04/rockefellerfoundation.org-22.svg" alt="Rockefeller Foundation" />
-            </a>
+                        <img src="https://laislanetwork.org/wp-content/uploads/2024/01/LaIslaNetwork_Logo_White.png" alt="La Isla Network" />
+            <img src="https://laislanetwork.org/wp-content/uploads/2026/04/rockefellerfoundation.org-22.svg" alt="Rockefeller Foundation" />
           </div>
           <div class="eyebrow">Central America Photo Story</div>
           <h1 class="hero-title">Heat, Work, & Worker Protection in Central America
 </h1>
           <p class="hero-subtitle">A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation.
 </p>
-          <p class="hero-credit">Photographs by <a href="https://www.edkashi.com/heat-watch/0dn1rhxmy8zdzj7f3kh643smpxehi1" target="_blank" rel="noopener noreferrer">Ed Kashi / VII / Redux</a>.</p>
+          <p class="hero-credit">Photographs by Ed Kashi / VII / Redux.</p>
         </header>
 
         <nav class="chapter-list" aria-label="Photostory chapters">
@@ -1016,21 +978,11 @@ html {scrollbar-width: none;} /* Firefox */
       </div>
     </section>
 
-    <button class="thumbs-action-btn" id="thumbsActionBtn" type="button">View all the pictures</button>
+    <button class="thumbs-action-btn" id="thumbsActionBtn" type="button">More Info</button>
   </main>
 
   <div class="action-modal" id="actionModal" aria-hidden="true">
     <button class="action-modal-close" id="actionModalClose" type="button" aria-label="Close">×</button>
-    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-      <div class="swiper-wrapper" id="swiperMainWrapper">
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-    <div thumbsSlider="" class="swiper mySwiper" id="swiperThumbs">
-      <div class="swiper-wrapper" id="swiperThumbsWrapper">
-      </div>
-    </div>
   </div>
 
   <section class="overlay" id="overlay" aria-hidden="true">
@@ -1071,7 +1023,6 @@ html {scrollbar-width: none;} /* Firefox */
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script>
     gsap.registerPlugin(Flip, CustomEase);
     CustomEase.create('overlay-ease', '0.625, 0.05, 0, 1');
@@ -1653,7 +1604,6 @@ html {scrollbar-width: none;} /* Firefox */
               activeLabel = null;
               activeImage = null;
               isTransitioning = false;
-              resumeRailLoops();
             }
           });
 
@@ -1800,14 +1750,12 @@ html {scrollbar-width: none;} /* Firefox */
     actionModalClose.addEventListener('click', () => {
       actionModal.classList.remove('is-visible');
       actionModal.setAttribute('aria-hidden', 'true');
-      resumeRailLoops();
     });
 
     actionModal.addEventListener('click', (event) => {
       if (event.target === actionModal) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
-        resumeRailLoops();
       }
     });
 
@@ -1815,123 +1763,7 @@ html {scrollbar-width: none;} /* Firefox */
       if (event.key === 'Escape' && !actionModal.classList.contains('is-visible') === false) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
-        resumeRailLoops();
       }
-    });
-
-    const imageDescriptions = {
-      'HEA26002_00309.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_00574.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_01383.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
-      'HEA26002_01383S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
-      'HEA26002_02298.jpg': 'A food shop in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02596.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02691.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02985.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_03486.jpg': 'Irrigation workers for Pantaleón in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.',
-      'HEA26002_03904.jpg': 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.',
-      'HEA26002_04363.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
-      'HEA26002_04407.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
-      'HEA26002_04871.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04923.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04953.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05015S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05194S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05227S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05549.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05604.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05663.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05773.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05827.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05837.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05887S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05927S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_06009.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_06118.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06127.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06384.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06421.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06669.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06935.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06965.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07030.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07454.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07986.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_09430.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09676.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09687.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09687S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09808.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.',
-      'HEA26002_09812.jpg': 'View of road in San Salvador with McDonalds sign and volcano in the distance on March 7, 2026.',
-      'HEA26002_09886.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09908.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09937.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09942S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
-    };
-
-    const swiperMainWrapper = document.getElementById('swiperMainWrapper');
-    const swiperThumbsWrapper = document.getElementById('swiperThumbsWrapper');
-
-    localImageFiles.forEach((fileName) => {
-      const mainSlide = document.createElement('div');
-      mainSlide.className = 'swiper-slide';
-      const mainImg = document.createElement('img');
-      mainImg.src = `${localImageBase}/${fileName}`;
-      mainImg.alt = fileName;
-      mainSlide.appendChild(mainImg);
-
-      const caption = document.createElement('div');
-      caption.className = 'overlay-img-caption';
-      caption.textContent = imageDescriptions[fileName] || fileName;
-      mainSlide.appendChild(caption);
-
-      swiperMainWrapper.appendChild(mainSlide);
-
-      const thumbSlide = document.createElement('div');
-      thumbSlide.className = 'swiper-slide';
-      const thumbImg = document.createElement('img');
-      thumbImg.src = `${localImageBase}/${fileName}`;
-      thumbImg.alt = '';
-      thumbSlide.appendChild(thumbImg);
-      swiperThumbsWrapper.appendChild(thumbSlide);
-    });
-
-    var swiperThumbs = new Swiper('.mySwiper', {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      freeMode: true,
-      watchSlidesProgress: true,
-    });
-
-    var swiperMain = new Swiper('.mySwiper2', {
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      thumbs: {
-        swiper: swiperThumbs,
-      },
     });
   </script>
 </body>
