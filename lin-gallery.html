@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heat, Work, and What Comes Next</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #0f0e0c;
+      --light: #ede9e1;
+      --muted: rgba(237,233,225,0.45);
+      --accent: #c8a96e;
+      --gap: 2.5em;
+      --ease: cubic-bezier(0.625, 0.05, 0, 1);
+    }
+
+    @font-face {
+      font-family: 'Neue Montreal';
+      src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: 'Neue Montreal', 'Georgia', serif;
+      font-size: clamp(10px, 1vw, 14px);
+    }
+
+    /* ── HERO HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 2.4em var(--gap) 0;
+      pointer-events: none;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-size: 1.1em;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .site-header p.hero-sub {
+      margin: 0.55em 0 0;
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 44em;
+    }
+
+    /* ── SCENE ── */
+    .scene {
+      position: fixed;
+      inset: 0;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--gap);
+      padding-top: 10em;
+    }
+
+    /* LEFT: image stack */
+    .main-col--img {
+      flex: 0 0 auto;
+      width: 17em;
+      height: 24em;
+      position: relative;
+      margin-right: 4em;
+    }
+
+    .main-img__item {
+      position: absolute;
+      inset: 0;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.4em;
+      display: block;
+    }
+
+    /* RIGHT: title list */
+    .main-col--titles {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      padding-bottom: 0.1em;
+    }
+
+    .main-title__list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .main-title__item {
+      overflow: hidden;
+      height: 1.2em;
+      display: flex;
+      align-items: center;
+      font-size: 4.8em;
+      transition: opacity 0.2s ease;
+    }
+
+    .main-title__list:hover:has(.main-title__item:hover) .main-title__item:not(:hover) {
+      opacity: 0.38;
+    }
+
+    .btn-title {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--light);
+      font-family: inherit;
+      font-size: 1em;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .main-title {
+      margin: 0;
+      font-size: 1em;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      white-space: nowrap;
+      color: var(--light);
+      position: relative;
+    }
+
+    .main-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -0.3em;
+      width: 0.15em;
+      height: 0.15em;
+      border-radius: 100em;
+      background: var(--accent);
+      opacity: 0;
+      transform: translate(100%, -50%) scale(0);
+      transition: all 0.45s var(--ease);
+    }
+
+    .main-title__item:hover .main-title::after {
+      opacity: 1;
+      transform: translate(0%, -50%) scale(1);
+    }
+
+    /* ── OVERLAY ── */
+    .overlay-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-top: 9em;
+      padding-bottom: 6em;
+    }
+
+    .overlay-item {
+      display: none;
+      pointer-events: auto;
+      min-height: 100%;
+    }
+
+    /* Hero section of overlay */
+    .overlay-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4em;
+      margin-bottom: 6em;
+    }
+
+    .overlay-title__wrap {
+      width: 100%;
+      height: 8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .overlay-title__wrap .main-title {
+      position: absolute;
+      font-size: 8em;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .overlay-img__wrap {
+      width: 40em;
+      height: 58em;
+      flex-shrink: 0;
+    }
+
+    /* Body content grid */
+    .overlay-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3em;
+      padding: 0 var(--gap) 4em;
+      max-width: 120em;
+      margin: 0 auto;
+    }
+
+    .overlay-body--2col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .overlay-col-img-block {
+      height: 28em;
+    }
+
+    .overlay-col-img-block .image {
+      height: 100%;
+      border-radius: 0.4em;
+    }
+
+    .overlay-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5em;
+    }
+
+    .overlay-text-block p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-indent: 3em;
+      color: var(--light);
+      opacity: 0.88;
+    }
+
+    .overlay-text-block p + p {
+      margin-top: 1em;
+    }
+
+    /* ── NAV ── */
+    .overlay-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      z-index: 20;
+      display: none;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 2em var(--gap);
+      pointer-events: auto;
+      overflow: hidden;
+    }
+
+    .nav-item {
+      font-size: 1.1em;
+      line-height: 1.25;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--light);
+      font-family: inherit;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-close:hover { opacity: 0.6; }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Heat, Work, and What Comes Next</h1>
+  <p class="hero-sub">Inside El Salvador's sugarcane fields, workers are facing rising temperatures with experience, discipline, and increasingly, systems designed to make work safer and more sustainable.</p>
+</header>
+
+<div class="scene">
+  <div class="main">
+    <!-- Image stack -->
+    <div class="main-col--img">
+      <div class="main-img__item" id="img-0">
+        <img src="IMG/HEA26002_00240S.webp" alt="Landscape" class="image">
+      </div>
+      <div class="main-img__item" id="img-1">
+        <img src="IMG/HEA26002_01399S.webp" alt="The Work" class="image">
+      </div>
+      <div class="main-img__item" id="img-2">
+        <img src="IMG/HEA26002_01801S.webp" alt="The Body" class="image">
+      </div>
+      <div class="main-img__item" id="img-3">
+        <img src="IMG/HEA26002_04362S.webp" alt="Protection" class="image">
+      </div>
+      <div class="main-img__item" id="img-4">
+        <img src="IMG/HEA26002_04799S.webp" alt="What Comes Next" class="image">
+      </div>
+    </div>
+
+    <!-- Title list -->
+    <div class="main-col--titles">
+      <ul class="main-title__list">
+        <li class="main-title__item">
+          <button class="btn-title"><h2 class="main-title">The Landscape</h2></button>
+        </li>
+        <li class="main-title__item">
+          <button class="btn-title"><h2 class="main-title">The Work</h2></button>
+        </li>
+        <li class="main-title__item">
+          <button class="btn-title"><h2 class="main-title">The Body</h2></button>
+        </li>
+        <li class="main-title__item">
+          <button class="btn-title"><h2 class="main-title">Protection in Practice</h2></button>
+        </li>
+        <li class="main-title__item">
+          <button class="btn-title"><h2 class="main-title">Building What Comes Next</h2></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- OVERLAYS -->
+  <div class="overlay-wrap" id="overlayWrap">
+
+    <!-- 1. The Landscape -->
+    <div class="overlay-item">
+      <div class="overlay-hero">
+        <div data-overlay="text-target" class="overlay-title__wrap"></div>
+        <div data-overlay="img-target" class="overlay-img__wrap"></div>
+      </div>
+      <div class="overlay-body overlay-body--2col">
+        <div class="overlay-text-block" style="grid-column: 1 / -1; max-width: 72em; margin: 0 auto; width: 100%;">
+          <p>Work in El Salvador's sugarcane fields begins within an environment already shaped by heat. Long before the first task is carried out, temperature, terrain, and exposure define the conditions under which labor takes place.</p>
+          <p>These are open landscapes. Fields stretch across valleys and hills with limited natural shade, where sunlight, humidity, and air movement combine to create a persistent physical demand. Heat is not an occasional factor. It is a constant presence that shapes how work is organized and how the body responds over time.</p>
+          <p>Understanding this environment is essential. It sets the baseline for everything that follows, from the pace of the workday to the risks workers carry with them across each hour in the field.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. The Work -->
+    <div class="overlay-item">
+      <div class="overlay-hero">
+        <div data-overlay="text-target" class="overlay-title__wrap"></div>
+        <div data-overlay="img-target" class="overlay-img__wrap"></div>
+      </div>
+      <div class="overlay-body">
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_04871S.webp" alt="" class="image">
+        </div>
+        <div class="overlay-text-block">
+          <p>Sugarcane harvesting is physically demanding labor built on repetition, precision, and endurance. Workers move through dense fields, cutting, lifting, and clearing under conditions that require sustained effort across long periods of time.</p>
+          <p>Heat intensifies each of these demands. It increases fatigue, accelerates dehydration, and reduces the margin for recovery between tasks. What might be manageable in cooler conditions becomes cumulative strain under high temperatures.</p>
+          <p>The nature of this work means that risk does not come from a single moment. It builds gradually, shaped by the interaction between effort, time, and environment.</p>
+        </div>
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_07066S.webp" alt="" class="image">
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. The Body -->
+    <div class="overlay-item">
+      <div class="overlay-hero">
+        <div data-overlay="text-target" class="overlay-title__wrap"></div>
+        <div data-overlay="img-target" class="overlay-img__wrap"></div>
+      </div>
+      <div class="overlay-body overlay-body--2col">
+        <div class="overlay-text-block">
+          <p>The effects of heat are not abstract. They are carried directly by the body.</p>
+          <p>As the day progresses, workers experience increasing fatigue, fluid loss, and rising internal temperature. These changes are not always immediately visible, but they shape performance, decision-making, and physical capacity in real time.</p>
+          <p>The body signals when limits are being approached. Slower movement, reduced coordination, and the need for rest are part of a natural response to heat exposure. Ignoring these signals increases risk. Recognizing and responding to them is critical.</p>
+          <p>This is where knowledge becomes practical. Workers rely on experience to manage their effort, but individual awareness alone is not enough when environmental conditions continue to intensify.</p>
+        </div>
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_05811S.webp" alt="" class="image">
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Protection in Practice -->
+    <div class="overlay-item">
+      <div class="overlay-hero">
+        <div data-overlay="text-target" class="overlay-title__wrap"></div>
+        <div data-overlay="img-target" class="overlay-img__wrap"></div>
+      </div>
+      <div class="overlay-body">
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_06634S.webp" alt="" class="image">
+        </div>
+        <div class="overlay-text-block">
+          <p>Reducing heat-related risk does not require complex solutions. It depends on consistency.</p>
+          <p>Access to water, scheduled rest, and shaded recovery spaces form the foundation of effective protection. When these elements are structured into the workday, they reduce the cumulative strain that builds under heat exposure.</p>
+          <p>At Ingenio El Ángel, these practices are being strengthened through coordinated systems. Environmental monitoring, field supervision, and planned work-rest cycles help ensure that protection is not left to chance.</p>
+          <p>These are practical interventions, but their impact depends on how reliably they are applied. Protection works when it becomes part of how work is done, not an exception to it.</p>
+        </div>
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_09136S.webp" alt="" class="image">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Building What Comes Next -->
+    <div class="overlay-item">
+      <div class="overlay-hero">
+        <div data-overlay="text-target" class="overlay-title__wrap"></div>
+        <div data-overlay="img-target" class="overlay-img__wrap"></div>
+      </div>
+      <div class="overlay-body overlay-body--2col">
+        <div class="overlay-col-img-block">
+          <img src="IMG/HEA26002_08721S.webp" alt="" class="image">
+        </div>
+        <div class="overlay-text-block">
+          <p>As temperatures rise across Central America, the conditions shaping agricultural labor are changing. In El Salvador, the response is taking form through systems that combine field-based knowledge with structured implementation.</p>
+          <p>The goal is not only to reduce immediate risk, but to establish approaches that can be sustained and expanded over time. This includes strengthening workplace practices, improving monitoring, and creating models that can be shared across the sector.</p>
+          <p>Safer work supports more stable livelihoods. It allows workers to continue in their roles with reduced risk and greater predictability. It also strengthens the broader systems that depend on this labor.</p>
+          <p>Adapting to heat is no longer optional. The question is how effectively that adaptation can be built into everyday work.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /overlay-wrap -->
+
+  <!-- NAV -->
+  <div class="overlay-nav" id="overlayNav">
+    <button data-overlay="close" class="btn-close">
+      <p data-overlay="nav-item" class="nav-item">Back to list</p>
+    </button>
+    <p data-overlay="nav-item" class="nav-item">Scroll to explore</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+<script>
+gsap.registerPlugin(CustomEase, Flip);
+CustomEase.create("osmo-ease", "0.625, 0.05, 0, 1");
+gsap.defaults({ ease: "osmo-ease", duration: 0.725 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const listItems   = document.querySelectorAll(".main-title__item");
+  const imageItems  = document.querySelectorAll(".main-img__item");
+  const overlayItems = document.querySelectorAll(".overlay-item");
+  const overlayWrap = document.getElementById("overlayWrap");
+  const overlayNav  = document.getElementById("overlayNav");
+  const navItems    = document.querySelectorAll("[data-overlay='nav-item']");
+  const closeButton = document.querySelector("[data-overlay='close']");
+  const headings    = document.querySelectorAll(".main-title");
+
+  let activeListItem = null;
+
+  // Init: show first image
+  gsap.set(imageItems[0], { autoAlpha: 1 });
+
+  function openOverlay(index) {
+    listItems.forEach(item => item.classList.remove("active"));
+    activeListItem = listItems[index];
+    activeListItem.classList.add("active");
+
+    const title = activeListItem.querySelector(".main-title");
+    const titleState = Flip.getState(title, { props: "fontSize" });
+
+    const image = imageItems[index].querySelector(".image");
+    const imageState = Flip.getState(image);
+
+    const overlayItem = overlayItems[index];
+    const content = overlayItem.querySelector(".overlay-body");
+
+    // Reset scroll
+    overlayWrap.scrollTop = 0;
+
+    gsap.set(overlayItem, { display: "block", autoAlpha: 1 });
+    gsap.fromTo(content, { autoAlpha: 0 }, { autoAlpha: 1, delay: 0.55 });
+
+    const textTarget = overlayItem.querySelector("[data-overlay='text-target']");
+    const imgTarget  = overlayItem.querySelector("[data-overlay='img-target']");
+
+    textTarget.appendChild(title);
+    imgTarget.appendChild(image);
+
+    Flip.from(titleState);
+    Flip.from(imageState);
+
+    gsap.set(overlayNav, { display: "flex" });
+    gsap.fromTo(navItems, { yPercent: 120 }, { yPercent: 0, stagger: 0.1 });
+
+    gsap.set(imageItems, { autoAlpha: 0 });
+
+    listItems.forEach((listItem, i) => {
+      if (i !== index) {
+        const otherTitle = listItem.querySelector(".main-title");
+        gsap.to(otherTitle, { yPercent: 100, autoAlpha: 0, duration: 0.4, delay: Math.max(0, 0.15 - i * 0.04) });
+      }
+    });
+  }
+
+  function closeOverlay() {
+    if (!activeListItem) return;
+
+    const index = Array.from(listItems).indexOf(activeListItem);
+    const overlayItem = overlayItems[index];
+    const title = overlayItem.querySelector("[data-overlay='text-target'] .main-title");
+    const image = overlayItem.querySelector("[data-overlay='img-target'] .image");
+    const content = overlayItem.querySelector(".overlay-body");
+
+    const titleState = Flip.getState(title, { props: "fontSize" });
+    const imageState = Flip.getState(image);
+
+    gsap.to(navItems, { yPercent: 120, onComplete: () => { overlayNav.style.display = "none"; } });
+    gsap.to(content, { autoAlpha: 0, onComplete: () => { overlayItem.style.display = "none"; } });
+
+    activeListItem.querySelector(".btn-title").appendChild(title);
+    imageItems[index].appendChild(image);
+    gsap.set(imageItems[index], { autoAlpha: 1 });
+
+    Flip.from(titleState);
+    Flip.from(imageState);
+
+    activeListItem.classList.remove("active");
+    activeListItem = null;
+
+    gsap.to(headings, { yPercent: 0, autoAlpha: 1, delay: 0.3, stagger: 0.05 });
+  }
+
+  listItems.forEach((listItem, index) => {
+    listItem.addEventListener("click", () => openOverlay(index));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeOverlay();
+  });
+
+  closeButton.addEventListener("click", closeOverlay);
+
+  listItems.forEach((listItem, i) => {
+    listItem.addEventListener("mouseenter", () => {
+      gsap.set(imageItems, { autoAlpha: 0 });
+      gsap.set(imageItems[i], { autoAlpha: 1 });
+    });
+  });
+});
+</script>
+</body>
+</html>

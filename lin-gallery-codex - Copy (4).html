@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heat, Work, and What Comes Next</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --bg-soft: #111111;
+      --panel: rgba(255,255,255,0.03);
+      --text: #f2f2f2;
+      --muted: #9f9f9f;
+      --soft: #696969;
+      --line: rgba(255,255,255,0.08);
+      --thumb-gap: 16px;
+      --thumb-h: calc((100vh - 56px - (4 * var(--thumb-gap))) / 5);
+      --thumb-w: calc(var(--thumb-h) * 1.25);
+      --radius: 12px;
+      --container: 1440px;
+      --title-size: clamp(2rem, 4.8vw, 4.8rem);
+      --overlay-title-size: clamp(4.2rem, 10vw, 9rem);
+      --hero-size: clamp(2.6rem, 6vw, 5.6rem);
+      --body-size: clamp(1rem, 1.1vw, 1.15rem);
+      --leading: 1.65;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0px;
+      padding: 0px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, sans-serif;
+    }
+html {
+  scroll-behavior: initial;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+}
+body ::-webkit-scrollbar,
+body::-webkit-scrollbar {display: none;} /* Chrome, Safari, Opera */
+body {-ms-overflow-style: none;} /* IE & Edge */
+html {scrollbar-width: none;} /* Firefox */
+    body.overlay-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      padding: 28px 24px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: clamp(160px, var(--thumb-w), 300px) 1fr;
+      column-gap: clamp(28px, 5vw, 96px);
+      align-items: start;
+    }
+
+    .thumbs {
+      position: sticky;
+      top: 28px;
+      display: grid;
+      gap: var(--thumb-gap);
+      align-content: start;
+    }
+
+    .thumb {
+      position: relative;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: var(--thumb-h);
+      aspect-ratio: 5 / 4;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.12);
+      pointer-events: none;
+      transition: background 220ms ease;
+    }
+
+    .thumb.is-dim {
+      opacity: 0.28;
+    }
+
+    .thumb.is-active {
+      transform: translateX(6px);
+    }
+
+    .thumb.is-active::after {
+      background: rgba(0,0,0,0);
+    }
+
+    .content-col {
+      min-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: clamp(40px, 9vh, 120px);
+      padding-top: 8px;
+    }
+
+    .hero-copy {
+      max-width: 980px;
+      padding-right: 16px;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      margin: 0;
+      margin-left: auto;
+      font-size: var(--hero-size);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
+    }
+
+    .hero-subtitle {
+      margin: 22px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+      line-height: 1.5;
+    }
+
+    .chapter-list {
+      display: grid;
+      align-content: center;
+      gap: 6px;
+      padding-bottom: 8vh;
+        }
+
+    .chapter-trigger {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      color: var(--soft);
+      cursor: pointer;
+      transition: color 220ms ease, opacity 220ms ease, transform 220ms ease;
+      width: fit-content;
+      overflow: hidden;
+      min-height: calc(var(--title-size) * 0.95);
+    }
+
+    .chapter-label {
+      display: inline-flex;
+      align-items: baseline;
+      line-height: 0.95;
+      padding-bottom: 5px;
+      letter-spacing: -0.05em;
+      font-size: var(--title-size);
+      will-change: transform, opacity;
+    }
+
+    .chapter-label .dot {
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    .chapter-trigger.is-active,
+    .chapter-trigger:hover,
+    .chapter-trigger:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    .chapter-trigger.is-active .dot,
+    .chapter-trigger:hover .dot,
+    .chapter-trigger:focus-visible .dot {
+      opacity: 1;
+    }
+
+    .chapter-trigger.is-dim {
+      opacity: 0.35;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.06), transparent 34%),
+        linear-gradient(180deg, rgba(7,7,7,0.98), rgba(7,7,7,0.98));
+    }
+
+    .overlay.is-visible {
+      display: block;
+    }
+
+    .overlay-shell {
+      min-height: 100vh;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      position: relative;
+    }
+
+    .overlay-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 20px 18px;
+      background: linear-gradient(180deg, rgba(9,9,9,0.98), rgba(9,9,9,0.9), rgba(9,9,9,0));
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .overlay-nav-item {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.98rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      will-change: transform;
+    }
+
+    .overlay-nav-item.secondary {
+      color: var(--muted);
+    }
+
+    .overlay-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(20px, 3vw, 32px);
+      align-items: end;
+      padding-top: 28px;
+    }
+
+    .overlay-title-slot {
+      min-height: auto;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      overflow: visible;
+    }
+
+    .overlay-title-slot .chapter-label {
+      display: block;
+      width: 100%;
+      font-size: var(--overlay-title-size);
+      color: var(--text);
+      max-width: none;
+      text-wrap: balance;
+      line-height: 0.88;
+    }
+
+    .overlay-title-slot .chapter-label .dot {
+      opacity: 1;
+    }
+
+    .overlay-image-slot {
+      width: 100%;
+      max-width: none;
+      min-height: min(72vh, 860px);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .overlay-image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .overlay-body {
+      padding-top: 56px;
+    }
+
+    .overlay-copy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .overlay-kicker {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+
+    .chapter-copy {
+      max-width: 58ch;
+    }
+
+    .chapter-copy p {
+      margin: 0 0 18px;
+      color: #d2d2d2;
+      font-size: var(--body-size);
+      line-height: var(--leading);
+    }
+
+    .chapter-copy p.lead {
+      color: var(--text);
+      font-size: clamp(1.12rem, 1.5vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .lin_results_block {
+      margin: 32px 0 24px;
+      padding: 32px 0 32px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .lin_results_heading {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .lin_results_sub {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .lin_results_stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .lin_results_stat + .lin_results_stat {
+      border-left: 1px solid var(--line);
+    }
+    .lin_results_stat {
+      padding: 0 22px;
+    }
+    .lin_results_stat:first-child { padding-left: 0; }
+    .lin_results_stat:last-child  { padding-right: 0; }
+    .lin_results_num {
+      display: flex;
+      align-items: baseline;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .lin_results_pfx {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #6399AF;
+      letter-spacing: -0.03em;
+    }
+    .lin_results_val {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #6399AF;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .lin_results_sfx {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-left: 2px;
+      align-self: flex-end;
+      padding-bottom: 3px;
+    }
+    .lin_results_label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .supporting {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .support-card {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .support-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .support-card figcaption {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .overlay-footer-note {
+      margin-top: 48px;
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: clamp(24px, 4vw, 64px);
+      align-items: center;
+    }
+    .overlay-footer-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .overlay-footer-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .overlay-footer-cta h4 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .overlay-footer-cta .btn-donate {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      background: #6399AF;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .overlay-footer-cta .btn-donate:hover {
+      background: #7aadca;
+    }
+    @media (max-width: 640px) {
+      .overlay-footer-note {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+      }
+
+      .thumbs {
+        position: static;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-auto-flow: unset;
+        grid-auto-columns: unset;
+        overflow-x: visible;
+        padding-bottom: 8px;
+      }
+
+      .thumb {
+        height: auto;
+        aspect-ratio: 3 / 5;
+      }
+
+      .content-col {
+        min-height: auto;
+      }
+
+      .chapter-list {
+        padding-bottom: 0;
+      }
+
+      .overlay-copy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .overlay-image-slot {
+        min-height: unset;
+      }
+
+      .overlay-image-slot img {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page,
+      .overlay-shell {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+.chapter-label {
+        font-size: clamp(2rem, 10vw, 3.8rem);
+      }
+
+      .overlay-title-slot .chapter-label {
+        font-size: clamp(2.75rem, 10vw, 5rem);
+      }
+
+      .overlay-nav-item {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="gallery" aria-label="El Salvador photostory chapter gallery">
+      <aside class="thumbs" id="thumbs" aria-label="Chapter thumbnails">
+        <button class="thumb" type="button" data-chapter="landscape">
+          <img src="" alt="Wide sugarcane fields and mountains in El Salvador" />
+        </button>
+        <button class="thumb" type="button" data-chapter="work">
+          <img src="" alt="Worker cutting sugarcane in the field" />
+        </button>
+        <button class="thumb" type="button" data-chapter="body">
+          <img src="" alt="Close portrait of a worker in the field" />
+        </button>
+        <button class="thumb" type="button" data-chapter="protection">
+          <img src="" alt="Worker drinking water during the workday" />
+        </button>
+        <button class="thumb" type="button" data-chapter="future">
+          <img src="" alt="Wide closing landscape at sunset" />
+        </button>
+      </aside>
+
+      <div class="content-col">
+        <header class="hero-copy">
+          <div class="eyebrow">La Isla Network & Rockefeller Foundation | El Salvador Photo Story</div>
+          <h1 class="hero-title">Heat, Work, and What Comes Next</h1>
+          <p class="hero-subtitle">Inside El Salvador's sugarcane fields, workers are facing rising temperatures with experience, discipline, and increasingly, systems designed to make work safer and more sustainable.</p>
+        </header>
+
+        <nav class="chapter-list" aria-label="Photostory chapters">
+          <button class="chapter-trigger" type="button" data-chapter="landscape">
+            <span class="chapter-label">The Landscape<span class="dot">.</span></span>
+          </button>
+          <button class="chapter-trigger" type="button" data-chapter="work">
+            <span class="chapter-label">The Work<span class="dot">.</span></span>
+          </button>
+          <button class="chapter-trigger" type="button" data-chapter="body">
+            <span class="chapter-label">The Body<span class="dot">.</span></span>
+          </button>
+          <button class="chapter-trigger" type="button" data-chapter="protection">
+            <span class="chapter-label">Protection in Practice<span class="dot">.</span></span>
+          </button>
+          <button class="chapter-trigger" type="button" data-chapter="future">
+            <span class="chapter-label">Building What Comes Next<span class="dot">.</span></span>
+          </button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <section class="overlay" id="overlay" aria-hidden="true">
+    <div class="overlay-shell">
+      <div class="overlay-nav" id="overlayNav">
+        <button class="overlay-nav-item" id="overlayBack" type="button">Back to list</button>
+        <button class="overlay-nav-item secondary" id="overlayExplore" type="button">Scroll to explore</button>
+      </div>
+
+      <div class="overlay-hero">
+        <div class="overlay-title-slot" id="overlayTitleSlot"></div>
+        <div class="overlay-image-slot" id="overlayImageSlot"></div>
+      </div>
+
+      <div class="overlay-body" id="overlayBody">
+        <div class="overlay-copy-grid">
+          <article>
+            <div class="overlay-kicker">El Salvador Photostory</div>
+            <div class="chapter-copy" id="overlayCopy"></div>
+          </article>
+          <div class="supporting" id="overlaySupporting"></div>
+        </div>
+
+        <div class="overlay-footer-note">
+          <p>This chapter is part of a broader visual story on labor, heat exposure, and worker protection in El Salvador’s sugarcane sector. Photographs by Ed Kashi & Tom Laffay were developed in collaboration with La Isla Network and supported by the Rockefeller Foundation to document and advance practical solutions that protect workers and strengthen resilience under rising heat conditions.</p>
+          <div class="overlay-footer-cta">
+            <h4>Help scale worker protection</h4>
+            <a class="btn-donate" href="https://laislanetwork.org/donate" target="_blank" rel="noopener">
+              Donate to La Isla Network <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+  <script>
+    gsap.registerPlugin(Flip, CustomEase);
+    CustomEase.create('overlay-ease', '0.625, 0.05, 0, 1');
+    gsap.defaults({
+      ease: 'overlay-ease',
+      duration: 0.725
+    });
+
+    const chapterData = {
+      landscape: {
+        title: 'The Landscape',
+        heroImage: 'IMG/HEA26002_00240S.webp',
+        heroAlt: 'Wide sugarcane fields and mountains in El Salvador',
+        paragraphs: [
+          'Work in El Salvador\'s sugarcane fields begins within an environment already shaped by heat. Long before the first task is carried out, temperature, terrain, and exposure define the conditions under which labor takes place.',
+          'These are open landscapes. Fields stretch across valleys and hills with limited natural shade, where sunlight, humidity, and air movement combine to create a persistent physical demand. Heat is not an occasional factor. It is a constant presence that shapes how work is organized and how the body responds over time.',
+          'Understanding this environment is essential. It sets the baseline for everything that follows, from the pace of the workday to the risks workers carry with them across each hour in the field.'
+        ],
+        supports: [
+          { image: 'IMG/HEA26002_00556S.webp', alt: 'Green agricultural field beneath forested hills', text: 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.' },
+          { image: 'IMG/HEA26002_04362S.webp', alt: 'Burn line cutting across a sugarcane field', text: 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026.' },
+          { image: 'IMG/TPL_CKD_ELS_16003_3354.webp', alt: 'Sugarcane field burning beneath heavy smoke', text: 'Sugarcane fields are burnt by El Angel sugar mill engineers and workers the afternoon before a brigade of manuel sugarcane cutters will harvest the field. This is directly behind a field of mechanized sugarcane harvesting outside of San Luis Talpa, El Salvador.' }
+        ]
+      },
+      work: {
+        title: 'The Work',
+        heroImage: 'IMG/HEA26002_01399S.webp',
+        heroAlt: 'Worker walking across open terrain',
+        paragraphs: [
+          'Sugarcane harvesting is physically demanding labor built on repetition, precision, and endurance. Workers move through dense fields, cutting, lifting, and clearing under conditions that require sustained effort across long periods of time.',
+          'Heat intensifies each of these demands. It increases fatigue, accelerates dehydration, and reduces the margin for recovery between tasks. What might be manageable in cooler conditions becomes cumulative strain under high temperatures.',
+          'The nature of this work means that risk does not come from a single moment. It builds gradually, shaped by the interaction between effort, time, and environment. Each movement contributes to a larger physiological load, one that must be managed continuously to prevent harm.'
+        ],
+        supports: [
+          { image: 'IMG/HEA26002_04799S.webp', alt: 'Sugar cane workers cutting cane in the field', text: 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.' },
+          { image: 'IMG/HEA26002_04871S.webp', alt: 'Sugar cane workers cutting cane in the field', text: 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.' },
+          { image: 'IMG/HEA26002_04923S.webp', alt: 'Sugar cane workers cutting cane in the field', text: 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.' },
+          { image: 'IMG/HEA26002_03706S.webp', alt: 'Papaya harvest workers in the field', text: 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.' },
+          { image: 'IMG/HEA26002_03904S.webp', alt: 'Papaya harvest workers in the field', text: 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.' },
+          { image: 'IMG/HEA26002_09297S.webp', alt: 'Sugar cane workers participating in the PREP program', text: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.' },
+          { image: 'IMG/HEA26002_06989S.webp', alt: 'Sugar cane workers participating in the PREP program', text: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.' }
+        ]
+      },
+      body: {
+        title: 'The Body',
+        heroImage: 'IMG/HEA26002_05227S.webp',
+        heroAlt: 'Worker in the sugar cane field',
+        paragraphs: [
+          'The effects of heat are not abstract. They are carried directly by the body.',
+          'As the day progresses, workers experience increasing fatigue, fluid loss, and rising internal temperature. These changes are not always immediately visible, but they shape performance, decision-making, and physical capacity in real time.',
+          'The body signals when limits are being approached. Slower movement, reduced coordination, and the need for rest are part of a natural response to heat exposure. Ignoring these signals increases risk. Recognizing and responding to them is critical.',
+          'This is where knowledge becomes practical. Workers rely on experience to manage their effort, but individual awareness alone is not enough when environmental conditions continue to intensify.'
+        ],
+        supports: [
+          { image: 'IMG/HEA26002_05194S.webp', alt: 'Sugar cane workers cutting cane in the field', text: 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.' },
+          { image: 'IMG/HEA26002_03486S.webp', alt: 'Irrigation workers in the field', text: 'Irrigation workers for Pantaléon in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.' },
+          { image: 'IMG/HEA26002_07030S.webp', alt: 'Sugar cane workers participating in the PREP program', text: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.' },
+          { image: 'IMG/HEA26002_09183S.webp', alt: 'Sugar cane workers participating in the PREP program', text: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.' }
+        ]
+      },
+      protection: {
+        title: 'Protection in Practice',
+        heroImage: 'IMG/HEA26002_08382S.webp',
+        heroAlt: 'Worker drinking water during the workday',
+        paragraphs: [
+          'Reducing heat-related risk does not require complex solutions. It depends on consistency.',
+          'Access to water, scheduled rest, and shaded recovery spaces form the foundation of effective protection. When these elements are structured into the workday, they reduce the cumulative strain that builds under heat exposure.',
+          'At Ingenio El Angel, these practices are being strengthened through coordinated systems. Environmental monitoring, field supervision, and planned work-rest cycles help ensure that protection is not left to chance.',
+          'These are practical interventions, but their impact depends on how reliably they are applied. Protection works when it becomes part of how work is done, not an exception to it.'
+        ],
+        supports: [
+          { image: 'IMG/HEA26002_07986S.webp', alt: 'Workers gathered near trucks and field operations', text: 'Protection requires coordination, planning, and routines that can be sustained across the workforce.' },
+          { image: 'IMG/HEA26002_06882S.webp', alt: 'Workers and vehicles in organized field context', text: 'Systems matter because safety measures need to be applied consistently, not intermittently.' },
+          { image: 'IMG/HEA26002_08706S.webp', alt: 'Worker resting during field work', text: 'Rest is not a break from safe work. It is part of safe work.' },
+          { image: 'IMG/HEA26002_05477S.webp', alt: 'Worker seated outdoors during pause', text: 'Simple interventions become meaningful when they are embedded into everyday operations.' },
+          { image: 'IMG/HEA26002_06363S.webp', alt: 'Sugar cane work captain with cane cutters on a bus', text: 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.' }
+        ]
+      },
+      future: {
+        title: 'Building What Comes Next',
+        heroImage: 'IMG/HEA26002_08625S.webp',
+        heroAlt: 'Wide closing landscape at sunset',
+        paragraphs: [
+          'As temperatures rise across Central America, the conditions shaping agricultural labor are changing. In El Salvador, the response is taking form through systems that combine field-based knowledge with structured implementation.',
+          'The goal is not only to reduce immediate risk, but to establish approaches that can be sustained and expanded over time. This includes strengthening workplace practices, improving monitoring, and creating models that can be shared across the sector.',
+          'Safer work supports more stable livelihoods. It allows workers to continue in their roles with reduced risk and greater predictability. It also strengthens the broader systems that depend on this labor.',
+          'Adapting to heat is no longer optional. The question is how effectively that adaptation can be built into everyday work.'
+        ],
+        supports: [
+          { image: 'IMG/HEA26002_02596S.webp', alt: 'Former sugar cane worker with family at home', text: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.' },
+          { image: 'IMG/HEA26002_05811S.webp', alt: 'Domestic scene at a sugar cane worker\'s home', text: 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March 6, 2026.' },
+          { image: 'IMG/HEA26002_02173S.webp', alt: 'Workers harvesting papaya in hot lowlands', text: 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 1, 2026.' }
+        ]
+      }
+    };
+
+    Object.entries(chapterData).forEach(([chapterKey, chapter]) => {
+      const thumbImage = document.querySelector(`.thumb[data-chapter="${chapterKey}"] img`);
+      if (thumbImage) {
+        thumbImage.src = chapter.heroImage;
+      }
+    });
+
+    const overlay = document.getElementById('overlay');
+    const overlayNav = document.getElementById('overlayNav');
+    const overlayBack = document.getElementById('overlayBack');
+    const overlayExplore = document.getElementById('overlayExplore');
+    const overlayTitleSlot = document.getElementById('overlayTitleSlot');
+    const overlayImageSlot = document.getElementById('overlayImageSlot');
+    const overlayBody = document.getElementById('overlayBody');
+    const overlayCopy = document.getElementById('overlayCopy');
+    const overlaySupporting = document.getElementById('overlaySupporting');
+    const body = document.body;
+    const triggers = [...document.querySelectorAll('.chapter-trigger')];
+    const thumbs = [...document.querySelectorAll('.thumb')];
+    const labels = triggers.map((trigger) => trigger.querySelector('.chapter-label'));
+    const navItems = [...document.querySelectorAll('.overlay-nav-item')];
+    const chapterOrigins = new Map();
+
+    let activeChapter = null;
+    let activeLabel = null;
+    let activeImage = null;
+    let isTransitioning = false;
+
+    triggers.forEach((trigger) => {
+      const chapterKey = trigger.dataset.chapter;
+      chapterOrigins.set(chapterKey, {
+        labelHome: trigger,
+        imageHome: document.querySelector(`.thumb[data-chapter="${chapterKey}"]`)
+      });
+    });
+
+    function setHoverState(chapterKey) {
+      if (activeChapter || isTransitioning) return;
+
+      triggers.forEach((el) => {
+        const match = el.dataset.chapter === chapterKey;
+        el.classList.toggle('is-active', match);
+        el.classList.toggle('is-dim', chapterKey && !match);
+      });
+
+      thumbs.forEach((el) => {
+        const match = el.dataset.chapter === chapterKey;
+        el.classList.toggle('is-active', match);
+        el.classList.toggle('is-dim', chapterKey && !match);
+      });
+    }
+
+    function clearHoverState() {
+      if (activeChapter || isTransitioning) return;
+      resetInteractiveState();
+    }
+
+    function resetInteractiveState() {
+      triggers.forEach((el) => el.classList.remove('is-active', 'is-dim'));
+      thumbs.forEach((el) => el.classList.remove('is-active', 'is-dim'));
+    }
+
+    function renderOverlayCopy(chapterKey) {
+      const chapter = chapterData[chapterKey];
+
+      const statsBlock = chapterKey === 'future' ? `
+        <div class="lin_results_block">
+          <div class="lin_results_heading">Our Results</div>
+          <div class="lin_results_sub">Proven results. Real impact.</div>
+          <div class="lin_results_stats">
+            <div class="lin_results_stat" data-rval="94">
+              <div class="lin_results_num">
+                <span class="lin_results_val">0</span>
+                <span class="lin_results_sfx">%</span>
+              </div>
+              <div class="lin_results_label">Reduction in heat-related hospitalizations</div>
+            </div>
+            <div class="lin_results_stat" data-rval="20">
+              <div class="lin_results_num">
+                <span class="lin_results_pfx">+</span>
+                <span class="lin_results_val">0</span>
+                <span class="lin_results_sfx">%</span>
+              </div>
+              <div class="lin_results_label">Increase in worker productivity (up to)</div>
+            </div>
+            <div class="lin_results_stat" data-rval="60">
+              <div class="lin_results_num">
+                <span class="lin_results_val">0</span>
+                <span class="lin_results_sfx">%</span>
+              </div>
+              <div class="lin_results_label">Positive Return on Investment generated</div>
+            </div>
+          </div>
+        </div>` : '';
+
+      overlayCopy.innerHTML = chapter.paragraphs
+        .map((paragraph, index) => {
+          const p = `<p class="${index === 0 ? 'lead' : ''}">${paragraph}</p>`;
+          return (chapterKey === 'future' && index === 1) ? p + statsBlock : p;
+        })
+        .join('');
+
+      overlaySupporting.innerHTML = chapter.supports
+        .map((item) => `
+          <figure class="support-card">
+            <img src="${item.image}" alt="${item.alt}">
+            <figcaption>${item.text}</figcaption>
+          </figure>
+        `)
+        .join('');
+    }
+
+    function getOtherLabels() {
+      return labels.filter((label) => label !== activeLabel);
+    }
+
+    function getOtherThumbs(chapterKey) {
+      return thumbs.filter((thumb) => thumb.dataset.chapter !== chapterKey);
+    }
+
+    function openChapter(chapterKey) {
+      if (activeChapter || isTransitioning) return;
+
+      const chapter = chapterData[chapterKey];
+      const origin = chapterOrigins.get(chapterKey);
+      const label = origin.labelHome.querySelector('.chapter-label');
+      const image = origin.imageHome.querySelector('img');
+      if (!label || !image) return;
+
+      resetInteractiveState();
+
+      activeChapter = chapterKey;
+      activeLabel = label;
+      activeImage = image;
+      isTransitioning = true;
+
+      renderOverlayCopy(chapterKey);
+
+      const flipState = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
+      const otherLabels = getOtherLabels();
+      const otherThumbs = getOtherThumbs(chapterKey);
+      const bodyTargets = overlayBody.querySelectorAll('.chapter-copy p, .lin_results_block, .support-card');
+
+      overlay.classList.add('is-visible');
+      overlay.setAttribute('aria-hidden', 'false');
+      overlay.scrollTop = 0;
+      body.classList.add('overlay-open');
+
+      gsap.set(overlayNav, { display: 'flex' });
+      gsap.set(navItems, { yPercent: -110, autoAlpha: 0 });
+      gsap.set(overlayBody, { autoAlpha: 0, y: 18 });
+      gsap.set(bodyTargets, { autoAlpha: 0, y: 18 });
+
+      overlayTitleSlot.appendChild(activeLabel);
+      overlayImageSlot.appendChild(activeImage);
+      activeImage.alt = chapter.heroAlt;
+
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          isTransitioning = false;
+        }
+      });
+
+      timeline.add(Flip.from(flipState, { absolute: true, nested: true, duration: 0.725 }), 0);
+      timeline.to(otherLabels, { yPercent: 100, autoAlpha: 0, duration: 0.45, stagger: 0.05 }, 0.16);
+      timeline.to(otherThumbs, { autoAlpha: 0.12, duration: 0.45, stagger: 0.03 }, 0.16);
+      timeline.to(navItems, { yPercent: 0, autoAlpha: 1, stagger: 0.08, duration: 0.5 }, 0.24);
+      timeline.to(overlayBody, { autoAlpha: 1, y: 0, duration: 0.45 }, 0.42);
+      timeline.to(bodyTargets, { autoAlpha: 1, y: 0, stagger: 0.05, duration: 0.45 }, 0.5);
+
+      if (chapterKey === 'future') {
+        overlayCopy.querySelectorAll('.lin_results_stat').forEach((stat, i) => {
+          const valEl = stat.querySelector('.lin_results_val');
+          const target = parseInt(stat.dataset.rval, 10);
+          gsap.to({ n: 0 }, {
+            n: target,
+            duration: 1.4,
+            ease: 'power3.out',
+            delay: 0.9 + i * 0.22,
+            onUpdate: function() { valEl.textContent = Math.round(this.targets()[0].n); }
+          });
+        });
+      }
+    }
+
+    function closeChapter() {
+      if (!activeChapter || !activeLabel || !activeImage || isTransitioning) return;
+
+      isTransitioning = true;
+
+      const origin = chapterOrigins.get(activeChapter);
+      const state = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
+      const returningLabels = getOtherLabels();
+      const returningThumbs = getOtherThumbs(activeChapter);
+      const bodyTargets = overlayBody.querySelectorAll('.chapter-copy p, .lin_results_block, .support-card');
+
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          origin.labelHome.appendChild(activeLabel);
+          origin.imageHome.appendChild(activeImage);
+
+          gsap.to(overlay, { autoAlpha: 0, duration: 0.28, ease: 'power2.in' });
+
+          Flip.from(state, {
+            absolute: true,
+            nested: true,
+            duration: 0.78,
+            ease: 'overlay-ease',
+            onInterrupt: () => {
+              overlay.classList.remove('is-visible');
+              overlay.setAttribute('aria-hidden', 'true');
+              gsap.set(overlay, { clearProps: 'opacity,visibility' });
+              body.classList.remove('overlay-open');
+              gsap.set(overlayNav, { display: 'none' });
+              resetInteractiveState();
+              activeChapter = null;
+              activeLabel = null;
+              activeImage = null;
+              isTransitioning = false;
+            },
+            onComplete: () => {
+              overlay.classList.remove('is-visible');
+              overlay.setAttribute('aria-hidden', 'true');
+              gsap.set(overlay, { clearProps: 'opacity,visibility' });
+              body.classList.remove('overlay-open');
+
+              gsap.set(overlayNav, { display: 'none' });
+              gsap.set(returningLabels, { yPercent: 0, autoAlpha: 1 });
+              gsap.set(returningThumbs, { autoAlpha: 1 });
+              gsap.set([overlayBody, ...navItems, ...bodyTargets], { clearProps: 'all' });
+              resetInteractiveState();
+
+              activeChapter = null;
+              activeLabel = null;
+              activeImage = null;
+              isTransitioning = false;
+            }
+          });
+
+          gsap.to(returningLabels, {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 0.42,
+            stagger: 0.05,
+            ease: 'overlay-ease'
+          });
+
+          gsap.to(returningThumbs, {
+            autoAlpha: 1,
+            duration: 0.42,
+            stagger: 0.03,
+            ease: 'overlay-ease'
+          });
+        }
+      });
+
+      timeline.to(navItems, { yPercent: -110, autoAlpha: 0, stagger: 0.06, duration: 0.35 }, 0);
+      timeline.to(bodyTargets, { autoAlpha: 0, y: 16, stagger: 0.03, duration: 0.25 }, 0);
+      timeline.to(overlayBody, { autoAlpha: 0, y: 18, duration: 0.3 }, 0.08);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('mouseenter', () => setHoverState(trigger.dataset.chapter));
+      trigger.addEventListener('focus', () => setHoverState(trigger.dataset.chapter));
+      trigger.addEventListener('mouseleave', clearHoverState);
+      trigger.addEventListener('blur', clearHoverState);
+      trigger.addEventListener('click', () => openChapter(trigger.dataset.chapter));
+    });
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('mouseenter', () => setHoverState(thumb.dataset.chapter));
+      thumb.addEventListener('focus', () => setHoverState(thumb.dataset.chapter));
+      thumb.addEventListener('mouseleave', clearHoverState);
+      thumb.addEventListener('blur', clearHoverState);
+      thumb.addEventListener('click', () => openChapter(thumb.dataset.chapter));
+    });
+
+    overlayBack.addEventListener('click', closeChapter);
+    overlayExplore.addEventListener('click', () => {
+      overlayBody.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    overlay.addEventListener('click', (event) => {
+      if (!event.target.closest('.overlay-shell')) closeChapter();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeChapter();
+    });
+  </script>
+</body>
+</html>

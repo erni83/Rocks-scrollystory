@@ -1,0 +1,5 @@
+.agents/
+.claude/
+*.backup-*.html
+Thumbs.db
+.DS_Store

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIN Stats Vertical — Light</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+#lin_statsV * { box-sizing: border-box; margin: 0; padding: 0; }
+
+#lin_statsV {
+  --lin_blue-500:     #6399AF;
+  --lin_blue-600:     #4D7D93;
+  --lin_blue-400:     #85B0C3;
+  --lin_blue-100:     #E8F1F5;
+  --lin_navy-800:     #1A2330;
+  --lin_navy-700:     #2E3A4A;
+  --lin_grey-100:     #EEF1F3;
+  --lin_grey-200:     #C5D0D6;
+  --lin_grey-400:     #6B7D87;
+  --lin_grey-500:     #3D4E56;
+  --lin_text-primary: #1A2330;
+  --lin_text-muted:   #6B7D87;
+  --lin_divider:      rgba(26,35,48,0.10);
+  --lin_font:         'Inter', -apple-system, sans-serif;
+
+  font-family: var(--lin_font);
+  background:  linear-gradient(to bottom, var(--lin_blue-100) 0%, transparent 100%);
+  padding:     64px 48px;
+  width:       100%;
+  max-width:   420px;
+}
+
+/* ── HEADER ── */
+#lin_statsV .lin_header {
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+#lin_statsV .lin_eyebrow {
+  font-size:      0.6875rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--lin_blue-600);
+  margin-bottom:  14px;
+}
+
+#lin_statsV .lin_title {
+  font-size:      1.875rem;
+  font-weight:    700;
+  color:          var(--lin_text-primary);
+  line-height:    1.2;
+  letter-spacing: -0.02em;
+  margin-bottom:  14px;
+}
+
+#lin_statsV .lin_subtitle {
+  font-size:   0.9375rem;
+  font-weight: 400;
+  color:       var(--lin_text-muted);
+  line-height: 1.6;
+}
+
+/* ── STATS LIST ── */
+#lin_statsV .lin_stats {
+  display:        flex;
+  flex-direction: column;
+}
+
+#lin_statsV .lin_stat + .lin_stat {
+  border-top: 1px solid var(--lin_divider);
+}
+
+#lin_statsV .lin_stat {
+  display:     flex;
+  align-items: center;
+  gap:         28px;
+  padding:     28px 0;
+  opacity:     0;
+  transform:   translateY(14px);
+}
+
+/* ── NUMBER — fixed width, left-aligned ── */
+#lin_statsV .lin_stat-num {
+  display:         flex;
+  align-items:     baseline;
+  justify-content: flex-start;
+  flex-shrink:     0;
+  width:           130px;
+}
+
+/* gradient: blue-500 → navy-800 */
+#lin_statsV .lin_stat-pfx,
+#lin_statsV .lin_stat-val {
+  background:              linear-gradient(to right, var(--lin_blue-500) 0%, var(--lin_navy-800) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip:         text;
+}
+
+#lin_statsV .lin_stat-pfx {
+  font-size:      2rem;
+  font-weight:    700;
+  letter-spacing: -0.03em;
+}
+
+#lin_statsV .lin_stat-val {
+  font-size:      3rem;
+  font-weight:    700;
+  letter-spacing: -0.04em;
+  line-height:    1;
+}
+
+/* % in muted dark, no gradient */
+#lin_statsV .lin_stat-sfx {
+  font-size:               1.25rem;
+  font-weight:             400;
+  color:                   var(--lin_grey-400);
+  -webkit-text-fill-color: var(--lin_grey-400);
+  margin-left:             2px;
+  align-self:              flex-end;
+  padding-bottom:          4px;
+}
+
+/* ── LABEL ── */
+#lin_statsV .lin_stat-label {
+  font-size:   0.8125rem;
+  font-weight: 400;
+  color:       var(--lin_grey-500);
+  line-height: 1.5;
+  text-align:  left;
+}
+
+@media (max-width: 480px) {
+  #lin_statsV { padding: 48px 28px; max-width: 100%; }
+  #lin_statsV .lin_title { font-size: 1.5rem; }
+  #lin_statsV .lin_stat-val { font-size: 2.5rem; }
+  #lin_statsV .lin_stat-num { width: 110px; }
+}
+</style>
+</head>
+<body style="background:#EEF1F3;min-height:100vh;display:flex;align-items:center;justify-content:center;">
+
+<div id="lin_statsV">
+
+  <div class="lin_header">
+    <div class="lin_eyebrow">Proven Results</div>
+    <h2 class="lin_title">Support interventions backed by rigorous evidence</h2>
+    <p class="lin_subtitle">Years of field research and data-driven programs delivering measurable impact for workers worldwide.</p>
+  </div>
+
+  <div class="lin_stats">
+
+    <div class="lin_stat" data-val="94">
+      <div class="lin_stat-num">
+        <span class="lin_stat-val">0</span>
+        <span class="lin_stat-sfx">%</span>
+      </div>
+      <div class="lin_stat-label">Reduction in heat-related hospitalizations</div>
+    </div>
+
+    <div class="lin_stat" data-val="20">
+      <div class="lin_stat-num">
+        <span class="lin_stat-pfx">+</span>
+        <span class="lin_stat-val">0</span>
+        <span class="lin_stat-sfx">%</span>
+      </div>
+      <div class="lin_stat-label">Increase in worker productivity (up to)</div>
+    </div>
+
+    <div class="lin_stat" data-val="60">
+      <div class="lin_stat-num">
+        <span class="lin_stat-val">0</span>
+        <span class="lin_stat-sfx">%</span>
+      </div>
+      <div class="lin_stat-label">Positive Return on Investment generated</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const wrapper = document.querySelector('#lin_statsV');
+  if (!wrapper) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const header = wrapper.querySelector('.lin_header');
+  const cards  = wrapper.querySelectorAll('.lin_stat');
+  let fired    = false;
+
+  function animateAll() {
+    if (fired) return;
+    fired = true;
+
+    gsap.to(header, {
+      opacity: 1, y: 0,
+      duration: 0.6, ease: 'power2.out'
+    });
+
+    cards.forEach((card, i) => {
+      const valEl  = card.querySelector('.lin_stat-val');
+      const target = parseInt(card.dataset.val, 10);
+      const delay  = 0.2 + i * 0.22;
+
+      gsap.to(card, {
+        opacity: 1, y: 0,
+        duration: 0.5, ease: 'power2.out', delay
+      });
+
+      gsap.to({ n: 0 }, {
+        n: target,
+        duration: 1.4,
+        ease: 'power3.out',
+        delay: delay + 0.08,
+        onUpdate: function() {
+          valEl.textContent = Math.round(this.targets()[0].n);
+        }
+      });
+    });
+  }
+
+  ScrollTrigger.create({
+    trigger: wrapper,
+    start:   'top 82%',
+    onEnter: animateAll
+  });
+
+  gsap.delayedCall(0.25, () => {
+    if (wrapper.getBoundingClientRect().top < window.innerHeight * 0.9) animateAll();
+  });
+})();
+</script>
+</body>
+</html>
