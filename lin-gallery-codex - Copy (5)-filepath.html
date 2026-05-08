@@ -309,7 +309,7 @@ html {scrollbar-width: none;} /* Firefox */
       display: grid;
       height: 100%;
       min-height: 0;
-      align-content: space-evenly;
+      align-content: normal;
       gap: clamp(0.35rem, 1vh, 0.85rem);
       padding-bottom: clamp(20px, 7vh, 40px);
     }
@@ -959,7 +959,9 @@ html {scrollbar-width: none;} /* Firefox */
       max-height: 70vh;
       width: 100%;
       overflow: hidden;
-      touch-action: pan-y;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .action-modal .mySwiper2 .swiper-wrapper {
@@ -991,6 +993,9 @@ html {scrollbar-width: none;} /* Firefox */
       width: 100%;
       height: 20vh;
       max-height: 300px;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .action-modal .mySwiper .swiper-slide {
@@ -1225,56 +1230,52 @@ html {scrollbar-width: none;} /* Firefox */
     const chapterData = {
       'shupa-guatemala': {
         title: 'Shupá, Guatemala',
-        heroImage: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_00119S.webp',
-        heroAlt: 'Portrait of Gregorio Pérez García in Shupá, Guatemala',
+        heroAlt: 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
         paragraphs: [
           'Gregorio Pérez García is sixty years old.',
           'He has farmed the land around Shupá for most of his life. The mountains behind him are green. The soil is volcanic. The corridor that runs from southern Mexico through Guatemala, Honduras, and El Salvador is one of the most climate-punished agricultural regions in the Western Hemisphere. Temperatures have climbed steadily for two decades. Rainfall has grown erratic.',
         
         ],
         supports: [
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_00556S.webp', alt: 'Landscape of fields and mountains near Shupá, Guatemala', text: 'In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region\'s economy runs on human bodies doing hard physical work in rising heat.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_01494S.webp', alt: 'Dimas and Erica Monroy spreading coffee beans across drying racks in Camotán', text: 'In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region\'s economy runs on human bodies doing hard physical work in rising heat.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_04362S.webp', alt: 'Aerial view of a sugarcane field burning before harvest', text: 'Before the cutters enter a sugarcane field, it is burned. Fire strips the leaves and drives out snakes. Smoke fills the lowlands. The work begins.' }
+          { image: 'IMG/HEA26002_00525.jpg', alt: 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.', text: 'In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region\'s economy runs on human bodies doing hard physical work in rising heat.' },
+          { image: 'IMG/HEA26002_01494S.jpg', alt: 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.', text: 'In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region\'s economy runs on human bodies doing hard physical work in rising heat.' },
+          { image: 'IMG/HEA26002_04363.jpg', alt: 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026', text: 'Before the cutters enter a sugarcane field, it is burned. Fire strips the leaves and drives out snakes. Smoke fills the lowlands. The work begins.' }
         ]
       },
       '3000-swings-a-day': {
         title: '3,000 Swings a Day',
-        heroImage: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_04648S.webp',
-        heroAlt: 'Qʼeqchiʼ workers cutting sugarcane in burned fields outside Escuintla',
+        heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
         paragraphs: [
           'Qʼeqchiʼ men from Cobán — internal migrants who travel south each harvest season to cut cane for the Santa Ana Company — move through the burned fields outside Escuintla. A cane cutter swings a machete roughly 3,000 times per shift. By midmorning, air temperature can reach 100.4°F/38°C. But the heat a laboring body generates pushes core temperature higher still. A thermometer in shade reads one number. A sensor pressed against a cutter\'s skin reads another. The gap between the two is where risk lies: preventable heat-driven illness, injury, and death.'
         ],
         supports: [
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_06421S.webp', alt: 'Santos Cano and cutters boarding a bus before dawn in El Salvador', text: 'In El Salvador, work captain Santos Cano gathers his cutters in the dark and they board yellow buses for the ride to the fields outside Guazapa. Headlamps cut the road. By the time the sun is fully up, they are already working.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_06634S.webp', alt: 'Worker mid-swing in a yellow shirt in a burned sugarcane field', text: 'These men know their bodies are being pushed past safe limits. They understand the risks. But without adequate protections in place, even the most experienced worker cannot outwork extreme heat. The question is not whether the danger is real. The question is whether the protections will arrive in time.' }
+          { image: 'IMG/HEA26002_06421.jpg', alt: 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.', text: 'In El Salvador, work captain Santos Cano gathers his cutters in the dark and they board yellow buses for the ride to the fields outside Guazapa. Headlamps cut the road. By the time the sun is fully up, they are already working.' },
+          { image: 'IMG/HEA26002_06634S.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'These men know their bodies are being pushed past safe limits. They understand the risks. But without adequate protections in place, even the most experienced worker cannot outwork extreme heat. The question is not whether the danger is real. The question is whether the protections will arrive in time.' }
         ]
       },
       'edvin-julio-and-la-creatina': {
         title: 'Edvin, Julio, and "La Creatina"',
-        heroImage: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_02832S.webp',
-        heroAlt: 'Edvin looking directly at the camera in Parcelamiento El Cajón, Guatemala',
+        heroAlt: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
         paragraphs: [
           'In Parcelamiento El Cajón, in sector Agüero, Guatemala, Edvin and his family sit in plastic chairs and recline on motorcycles on a concrete porch.',
         
         ],
         supports: [
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_02455S.webp', alt: 'Edvin on a bicycle silhouetted against cane fields', text: 'Edvin Rafael Sarmiento is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since. Down the road, Julio Lopez, another former cutter, sits on his porch, too. The community calls the disease "La Creatina," after the creatinine test that measures kidney function. Julio knows his numbers.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_03025S.webp', alt: 'Julio Lopez sitting on his porch', text: 'Doctors call it CKDnT: chronic kidney disease of non-traditional origin. Unlike typical kidney disease, it strikes young, previously healthy men doing heavy labor in extreme heat. Repeated dehydration and heat stress cause acute kidney injury. Over months and years, those injuries become permanent, scarring the kidneys to the point of total dysfunction. There is no cure for chronic kidney disease, and the only treatments — dialysis and transplant — are rarely available in the communities where cane is cut, not to mention painful and costly.\n\nThe estimated global toll of chronic kidney disease from extreme heat exposure exceeds 26 million people, per the International Labour Organization (ILO). La Isla Network was founded to understand why this was happening and to stop it. Our organization\'s name honors a community in Nicaragua where so many men died of CKDnT that locals called it "La Isla de Viudas": the Island of Widows.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_03364S.webp', alt: 'Abandoned house seen through dead branches', text: 'Between the sugarcane fields, a house stands abandoned. The concrete walls are bare. Brush closes in, growing where a family used to live. When work destroys a primary earner\'s body, wages wane and families leave.' }
+          { image: 'IMG/HEA26002_02596.jpg', alt: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Edvin Rafael Sarmiento is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since. Down the road, Julio Lopez, another former cutter, sits on his porch, too. The community calls the disease "La Creatina," after the creatinine test that measures kidney function. Julio knows his numbers.' },
+          { image: 'IMG/HEA26002_03025S.jpg', alt: 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Doctors call it CKDnT: chronic kidney disease of non-traditional origin. Unlike typical kidney disease, it strikes young, previously healthy men doing heavy labor in extreme heat. Repeated dehydration and heat stress cause acute kidney injury. Over months and years, those injuries become permanent, scarring the kidneys to the point of total dysfunction. There is no cure for chronic kidney disease, and the only treatments — dialysis and transplant — are rarely available in the communities where cane is cut, not to mention painful and costly.\n\nThe estimated global toll of chronic kidney disease from extreme heat exposure exceeds 26 million people, per the International Labour Organization (ILO). La Isla Network was founded to understand why this was happening and to stop it. Our organization\'s name honors a community in Nicaragua where so many men died of CKDnT that locals called it "La Isla de Viudas": the Island of Widows.' },
+          { image: 'IMG/HEA26002_03364S.jpg', alt: 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Between the sugarcane fields, a house stands abandoned. The concrete walls are bare. Brush closes in, growing where a family used to live. When work destroys a primary earner\'s body, wages wane and families leave.' }
         ]
       },
       'cesar-was-twenty': {
         title: 'Cesar Was Twenty',
-        heroImage: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_09430S.webp',
-        heroAlt: 'Blanca Rosa seated and looking directly at the camera',
+        heroAlt: 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, chronic kidney disease of non-traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
         paragraphs: [
           'Blanca Rosa is thirty-five. Three months before this photograph was taken, her son, Cesar Omar Flores Fuentes, died of CKDnT. He was twenty years old.'
         ],
         supports: [
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_09808S.jpg', alt: 'Blanca Rosa and Eugenio Anaya Portillo standing together in a doorway', text: 'She sits on the porch of her home in El Cantón Colima, El Salvador. Her hands are folded in her lap. In the doorway, she stands with her husband, Eugenio Anaya Portillo, seventy-five. They hold each other.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_09870S.webp', alt: 'María Catalina Artiga standing in her yard', text: 'In Jocote, María Catalina Artiga is seventy-two. Her husband died of CKDnT less than a year ago. She stands in her yard, hands on her hips, looking directly into the camera.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_09957S.webp', alt: 'María Catalina holding a framed portrait of her husband', text: 'In another frame, she holds up a framed portrait of her husband, steady, at arm\'s length, so the camera can see his face.' }
+          { image: 'IMG/HEA26002_09808.jpg', alt: 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.', text: 'She sits on the porch of her home in El Cantón Colima, El Salvador. Her hands are folded in her lap. In the doorway, she stands with her husband, Eugenio Anaya Portillo, seventy-five. They hold each other.' },
+          { image: 'IMG/HEA26002_09886.jpg', alt: 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.', text: 'In Jocote, María Catalina Artiga is seventy-two. Her husband died of CKDnT less than a year ago. She stands in her yard, hands on her hips, looking directly into the camera.' },
+          { image: 'IMG/HEA26002_09957S.jpg', alt: 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.', text: 'In another frame, she holds up a framed portrait of her husband, steady, at arm\'s length, so the camera can see his face.' }
         ],
         postscript: [
           'Nobody should have to risk their life to earn a living. The protocols to prevent these deaths exist. The economics favor them. The science has been settled for years. What remains is the decision to act, by companies, by governments, by the institutions that set the terms under which people work.',
@@ -1283,15 +1284,14 @@ html {scrollbar-width: none;} /* Firefox */
       },
       'water-on-a-schedule': {
         title: 'Water on a Schedule',
-        heroImage: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_08706S.webp',
-        heroAlt: 'Worker resting under a shade tarp in Guazapa, El Salvador',
+        heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
         paragraphs: [
           'In Guazapa, El Salvador, La Isla Network\'s PREP program structures the workday around what the science demands: scheduled rest in shade, enforced hydration, real-time physiological monitoring. Workers hydrate on a schedule, because long before the time a person feels thirsty in extreme heat, kidney stress has already begun.'
         ],
         supports: [
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_06882S.webp', alt: 'Workers filling water coolers beside buses', text: 'A young cutter sits under a tarp canopy, head down, resting during the hottest hours. Nearby, two men fill orange water coolers from tank trucks parked beside the yellow buses. The infrastructure of protection is unglamorous: tarps, hoses, coolers, shade cloth. It costs very little. It changes everything.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_07167S.webp', alt: 'Wide shot of a worker in the field with mountains behind', text: 'This is not guesswork. In Nicaragua, at the Ingenio San Antonio sugar mill, these protocols reduced acute kidney injury by more than 94 percent. Productivity rose between 9 and 19 percent, even with the added breaks. The mill reached a 60 percent return on investment by year three. Protecting workers turned out to be the better business decision. The evidence has been clear for years.<br><br>With The Rockefeller Foundation, La Isla Network is expanding this model to thousands of workers and their family members in El Salvador, while a parallel study in Rio de Janeiro will measure heat strain among women working in the informal economy for the first time. La Isla Network\'s work is scaling because the solutions are proven: assess the risk, address the gaps, assist with implementation until the protections hold.' },
-          { image: 'https://laislanetwork.org/wp-content/uploads/2026/04/HEA26002_05533S.webp', alt: 'Ship silhouetted at sunset off Acajutla', text: 'At the port of Acajutla, on El Salvador\'s Pacific coast, cargo ships wait at anchor. The sugar that begins with a machete in a burned field ends here, loaded into holds, bound for international markets. La Isla Network\'s monitoring data is designed to make the human cost of production visible to the companies, governments, and institutions with the power to act.' }
+          { image: 'IMG/HEA26002_06882.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'A young cutter sits under a tarp canopy, head down, resting during the hottest hours. Nearby, two men fill orange water coolers from tank trucks parked beside the yellow buses. The infrastructure of protection is unglamorous: tarps, hoses, coolers, shade cloth. It costs very little. It changes everything.' },
+          { image: 'IMG/HEA26002_07167S.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'This is not guesswork. In Nicaragua, at the Ingenio San Antonio sugar mill, these protocols reduced acute kidney injury by more than 94 percent. Productivity rose between 9 and 19 percent, even with the added breaks. The mill reached a 60 percent return on investment by year three. Protecting workers turned out to be the better business decision. The evidence has been clear for years.<br><br>With The Rockefeller Foundation, La Isla Network is expanding this model to thousands of workers and their family members in El Salvador, while a parallel study in Rio de Janeiro will measure heat strain among women working in the informal economy for the first time. La Isla Network\'s work is scaling because the solutions are proven: assess the risk, address the gaps, assist with implementation until the protections hold.' },
+          { image: 'IMG/HEA26002_05663.jpg', alt: 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.', text: 'At the port of Acajutla, on El Salvador\'s Pacific coast, cargo ships wait at anchor. The sugar that begins with a machete in a burned field ends here, loaded into holds, bound for international markets. La Isla Network\'s monitoring data is designed to make the human cost of production visible to the companies, governments, and institutions with the power to act.' }
         ]
       }
     };
@@ -1993,6 +1993,13 @@ html {scrollbar-width: none;} /* Firefox */
       }
     });
 
+    const swiperElements = actionModal.querySelectorAll('.swiper, .swiper-wrapper, .swiper-slide, .swiper-button-next, .swiper-button-prev');
+    swiperElements.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.stopPropagation();
+      }, true);
+    });
+
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && !actionModal.classList.contains('is-visible') === false) {
         actionModal.classList.remove('is-visible');
@@ -2004,21 +2011,30 @@ html {scrollbar-width: none;} /* Firefox */
     });
 
     const imageDescriptions = {
+      'HEA26002_00119S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
       'HEA26002_00309.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
       'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
+      'HEA26002_00556S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
       'HEA26002_00574.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
       'HEA26002_01383.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
       'HEA26002_01383S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
+      'HEA26002_01494S.jpg': 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.',
       'HEA26002_02298.jpg': 'A food shop in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02455S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
       'HEA26002_02596.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
       'HEA26002_02691.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02832S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
       'HEA26002_02985.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_03025S.jpg': 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_03364S.jpg': 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
       'HEA26002_03486.jpg': 'Irrigation workers for Pantaleón in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.',
       'HEA26002_03904.jpg': 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.',
+      'HEA26002_04362S.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
       'HEA26002_04363.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
       'HEA26002_04407.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
       'HEA26002_04871.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_04923.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04648S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_04953.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
@@ -2026,6 +2042,7 @@ html {scrollbar-width: none;} /* Firefox */
       'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_05194S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
       'HEA26002_05227S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_05533S.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
       'HEA26002_05549.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
       'HEA26002_05604.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
       'HEA26002_05663.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
@@ -2039,14 +2056,18 @@ html {scrollbar-width: none;} /* Firefox */
       'HEA26002_06127.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06384.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06421.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06421S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06634S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06669.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06882S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06935.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06965.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_07030.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07167S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_07454.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
@@ -2055,9 +2076,11 @@ html {scrollbar-width: none;} /* Firefox */
       'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08706S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
       'HEA26002_09430.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09430S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
       'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
       'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
       'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
@@ -2066,10 +2089,12 @@ html {scrollbar-width: none;} /* Firefox */
       'HEA26002_09687S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
       'HEA26002_09808.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.',
       'HEA26002_09812.jpg': 'View of road in San Salvador with McDonalds sign and volcano in the distance on March 7, 2026.',
+      'HEA26002_09870S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
       'HEA26002_09886.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
       'HEA26002_09908.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
       'HEA26002_09937.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
       'HEA26002_09942S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09957S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
       'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
     };
 
