@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Preloader · La Isla Network</title>
+
+<!--
+  ============================================================
+  LA ISLA NETWORK — PRELOADER
+  ============================================================
+  Drop-in fullscreen preloader. Self-contained: CSS + SVG + JS.
+
+  HOW TO INTEGRATE
+  1. Paste the <style id="lin-preloader-style"> block into your
+     <head> (or your global stylesheet).
+  2. Paste the <div id="lin-preloader"> markup as the FIRST child
+     of <body>, before any page content.
+  3. Paste the <script id="lin-preloader-script"> at the end of
+     <body>, or anywhere after the markup.
+
+  Behaviour
+  - Stays full-screen while the page loads, with a soft bottom-to-top
+    wipe revealing the LIN mark in white on navy.
+  - On window.load (with a 1.6s minimum so the wipe lands cleanly),
+    the mark zooms in and the whole overlay fades out, revealing the
+    page beneath.
+  - Safety timeout at 6s prevents the overlay from ever hanging.
+
+  Customisation knobs (CSS variables on #lin-preloader)
+    --lin-pre-bg        background color           default #0f1822
+    --lin-pre-fg        logo color                 default #ffffff
+    --lin-pre-size      logo width                 default clamp(180px, 28vw, 360px)
+    --lin-pre-loop      one wipe cycle duration    default 5400ms
+    --lin-pre-fade      fade-out duration          default 800ms
+    --lin-pre-zoom      max zoom scale on exit     default 7
+  ============================================================
+-->
+
+<style id="lin-preloader-style">
+  /* prevent body scroll while overlay is up */
+  body.lin-preloading { overflow: hidden; }
+
+  #lin-preloader {
+    --lin-pre-bg:   #0f1822;
+    --lin-pre-fg:   #ffffff;
+    --lin-pre-size: clamp(180px, 28vw, 360px);
+    --lin-pre-loop: 5400ms;
+    --lin-pre-fade: 800ms;
+    --lin-pre-zoom: 7;
+
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--lin-pre-bg);
+    display: grid;
+    place-items: center;
+    transition:
+      opacity var(--lin-pre-fade) cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear var(--lin-pre-fade);
+  }
+
+  #lin-preloader .lin-pre-mark {
+    width: var(--lin-pre-size);
+    height: auto;
+    color: var(--lin-pre-fg);
+    transform-origin: 50% 50%;
+    will-change: transform, opacity, clip-path;
+    /* loop the bottom-to-top wipe while loading */
+    animation: lin-pre-wipe var(--lin-pre-loop) cubic-bezier(0.76, 0, 0.24, 1) infinite;
+    transition:
+      transform calc(var(--lin-pre-fade) + 200ms) cubic-bezier(0.6, 0, 0.2, 1),
+      opacity   var(--lin-pre-fade) ease 80ms;
+  }
+  #lin-preloader .lin-pre-mark > path { fill: currentColor; }
+
+  /* Bottom -> top wipe with a long hold at full reveal */
+  @keyframes lin-pre-wipe {
+    0%   { clip-path: inset(100% 0 0    0); }
+    35%  { clip-path: inset(0    0 0    0); }
+    72%  { clip-path: inset(0    0 0    0); }
+    100% { clip-path: inset(0    0 100% 0); }
+  }
+
+  /* Loaded state: snap fully visible, then zoom + fade out */
+  #lin-preloader.lin-pre-done .lin-pre-mark {
+    animation: none;
+    clip-path: inset(0 0 0 0);
+    transform: scale(var(--lin-pre-zoom));
+    opacity: 0;
+  }
+  #lin-preloader.lin-pre-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #lin-preloader .lin-pre-mark {
+      animation: none;
+      clip-path: inset(0 0 0 0);
+    }
+    #lin-preloader.lin-pre-done .lin-pre-mark {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body class="lin-preloading">
+
+  <!-- ============================== PRELOADER ============================== -->
+  <div id="lin-preloader" role="status" aria-label="Loading">
+    <svg class="lin-pre-mark" viewBox="0 0 232.9 142.7" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 73.5 68.7 125.1 92.7 107.3 139.9 142.7 232.9 73.5 Z M0 69.3 68.7 17.7 92.7 35.5 139.9 0 232.9 69.3 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== Your page content goes here ===== -->
+
+
+  <script id="lin-preloader-script">
+  (function () {
+    var pre  = document.getElementById('lin-preloader');
+    var body = document.body;
+    if (!pre) return;
+
+    // Minimum visible time so the wipe gets a chance to land.
+    var MIN_DISPLAY = 1600;
+    var start = performance.now();
+    var finished = false;
+
+    function finish() {
+      if (finished) return;
+      finished = true;
+      pre.classList.add('lin-pre-done');
+      body.classList.remove('lin-preloading');
+    }
+
+    function ready() {
+      var wait = Math.max(0, MIN_DISPLAY - (performance.now() - start));
+      setTimeout(finish, wait);
+    }
+
+    if (document.readyState === 'complete') ready();
+    else window.addEventListener('load', ready, { once: true });
+
+    // Safety net — never let the overlay hang forever.
+    setTimeout(finish, 6000);
+  })();
+  </script>
+</body>
+</html>
