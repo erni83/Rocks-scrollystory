@@ -56,6 +56,11 @@
       font-family: Inter, system-ui, sans-serif;
       overflow-x: hidden;
     }
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: clamp(60px, 15vh, 100px);
+      }
+    }
 html {
   scroll-behavior: initial;
 }
@@ -954,6 +959,7 @@ html {scrollbar-width: none;} /* Firefox */
       max-height: 70vh;
       width: 100%;
       overflow: hidden;
+      touch-action: pan-y;
     }
 
     .action-modal .mySwiper2 .swiper-wrapper {
@@ -975,6 +981,9 @@ html {scrollbar-width: none;} /* Firefox */
       height: 100%;
       object-fit: cover;
       display: block;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .action-modal .mySwiper {
@@ -1152,7 +1161,7 @@ html {scrollbar-width: none;} /* Firefox */
     <button class="thumbs-action-btn" id="thumbsActionBtn" type="button">View all the pictures</button>
   </main>
 
-  <div class="action-modal" id="actionModal" aria-hidden="true">
+  <div class="action-modal" id="actionModal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="actionModalTitle">
     <button class="action-modal-close" id="actionModalClose" type="button" aria-label="Close">×</button>
     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
       <div class="swiper-wrapper" id="swiperMainWrapper">
@@ -1166,7 +1175,7 @@ html {scrollbar-width: none;} /* Firefox */
     </div>
   </div>
 
-  <section class="overlay" id="overlay" aria-hidden="true">
+  <section class="overlay" id="overlay" aria-hidden="true" role="dialog" aria-modal="false">
     <div class="overlay-shell">
       <div class="overlay-nav" id="overlayNav">
         <button class="overlay-nav-item" id="overlayBack" type="button">Back to list</button>
@@ -1682,6 +1691,8 @@ html {scrollbar-width: none;} /* Firefox */
 
       overlay.classList.add('is-visible');
       overlay.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-labelledby', `chapter-${chapterKey}-title`);
       overlay.scrollTop = 0;
       body.classList.add('overlay-open');
 
@@ -1761,6 +1772,8 @@ html {scrollbar-width: none;} /* Firefox */
             onInterrupt: () => {
               overlay.classList.remove('is-visible');
               overlay.setAttribute('aria-hidden', 'true');
+              overlay.setAttribute('aria-modal', 'false');
+              overlay.removeAttribute('aria-labelledby');
               gsap.set(overlay, { clearProps: 'opacity,visibility' });
               body.classList.remove('overlay-open');
               gsap.set(overlayNav, { display: 'none' });
@@ -1773,6 +1786,8 @@ html {scrollbar-width: none;} /* Firefox */
             onComplete: () => {
               overlay.classList.remove('is-visible');
               overlay.setAttribute('aria-hidden', 'true');
+              overlay.setAttribute('aria-modal', 'false');
+              overlay.removeAttribute('aria-labelledby');
               gsap.set(overlay, { clearProps: 'opacity,visibility' });
               body.classList.remove('overlay-open');
 
@@ -1956,12 +1971,14 @@ html {scrollbar-width: none;} /* Firefox */
     thumbsActionBtn.addEventListener('click', () => {
       actionModal.classList.add('is-visible');
       actionModal.setAttribute('aria-hidden', 'false');
+      actionModal.setAttribute('aria-modal', 'true');
       body.classList.add('overlay-open');
     });
 
     actionModalClose.addEventListener('click', () => {
       actionModal.classList.remove('is-visible');
       actionModal.setAttribute('aria-hidden', 'true');
+      actionModal.setAttribute('aria-modal', 'false');
       body.classList.remove('overlay-open');
       resumeRailLoops();
     });
@@ -1970,6 +1987,7 @@ html {scrollbar-width: none;} /* Firefox */
       if (event.target === actionModal) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
+        actionModal.setAttribute('aria-modal', 'false');
         body.classList.remove('overlay-open');
         resumeRailLoops();
       }
@@ -1979,6 +1997,7 @@ html {scrollbar-width: none;} /* Firefox */
       if (event.key === 'Escape' && !actionModal.classList.contains('is-visible') === false) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
+        actionModal.setAttribute('aria-modal', 'false');
         body.classList.remove('overlay-open');
         resumeRailLoops();
       }
