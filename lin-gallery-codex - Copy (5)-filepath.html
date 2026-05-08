@@ -1984,20 +1984,17 @@ html {scrollbar-width: none;} /* Firefox */
     });
 
     actionModal.addEventListener('click', (event) => {
-      if (event.target === actionModal) {
+      const swiperContent = actionModal.querySelector('.mySwiper2');
+      const isClickInsideSwiper = swiperContent && swiperContent.contains(event.target);
+      const isThumbnailClick = event.target.closest('.mySwiper');
+
+      if (event.target === actionModal && !isClickInsideSwiper && !isThumbnailClick) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
         actionModal.setAttribute('aria-modal', 'false');
         body.classList.remove('overlay-open');
         resumeRailLoops();
       }
-    });
-
-    const swiperElements = actionModal.querySelectorAll('.swiper, .swiper-wrapper, .swiper-slide, .swiper-button-next, .swiper-button-prev');
-    swiperElements.forEach((el) => {
-      el.addEventListener('click', (event) => {
-        event.stopPropagation();
-      }, true);
     });
 
     window.addEventListener('keydown', (event) => {
