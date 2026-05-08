@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a1d21" />
+  <title>Heat, Work, and Worker Protection in Central America</title>
+  <meta name="description" content="A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+  <style>
+    #lin_photoStoryV2 {
+      --lin_bg: #1a1d21;
+      --lin_text: #ffffff;
+      --lin_muted: #d2d2d2;
+      --lin_soft: #6399af;
+      --lin_line: rgba(255, 255, 255, 0.12);
+      --lin_panel: rgba(255, 255, 255, 0.04);
+      --lin_radius: 12px;
+      --lin_text_width: 760px;
+      --lin_wide_width: 1320px;
+      --lin_body: clamp(1rem, 1.1vw, 1.15rem);
+      --lin_leading: 1.7;
+      background: var(--lin_bg);
+      color: var(--lin_text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #lin_photoStoryV2 * {
+      box-sizing: border-box;
+    }
+
+    #lin_photoStoryV2 img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    #lin_photoStoryV2 a {
+      color: inherit;
+    }
+
+    #lin_photoStoryV2 .lin_shell {
+      width: min(var(--lin_wide_width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    #lin_photoStoryV2 .lin_textShell {
+      width: min(var(--lin_text_width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    #lin_photoStoryV2 .lin_intro {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: clamp(24px, 4vw, 56px) 0 clamp(56px, 8vw, 96px);
+      position: relative;
+    }
+
+    #lin_photoStoryV2 .lin_partnerLogos {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 4vw, 58px);
+      margin-bottom: clamp(48px, 8vw, 120px);
+    }
+
+    #lin_photoStoryV2 .lin_partnerLogos a + a {
+      padding-left: clamp(24px, 4vw, 58px);
+      border-left: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    #lin_photoStoryV2 .lin_partnerLogos img {
+      width: auto;
+      max-width: 180px;
+      height: 45px;
+      max-height: 45px;
+      object-fit: contain;
+    }
+
+    #lin_photoStoryV2 .lin_eyebrow,
+    #lin_photoStoryV2 .lin_chapterKicker,
+    #lin_photoStoryV2 .lin_resultsHeading {
+      color: var(--lin_muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    #lin_photoStoryV2 .lin_eyebrow {
+      margin-bottom: 18px;
+    }
+
+    #lin_photoStoryV2 .lin_title {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 8.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    #lin_photoStoryV2 .lin_subtitle {
+      max-width: 58ch;
+      margin: 28px 0 0;
+      color: var(--lin_muted);
+      font-size: clamp(1.08rem, 1.6vw, 1.5rem);
+      line-height: 1.55;
+    }
+
+    #lin_photoStoryV2 .lin_credit {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    #lin_photoStoryV2 .lin_chapter {
+      padding: clamp(72px, 12vw, 156px) 0;
+      border-top: 1px solid var(--lin_line);
+    }
+
+    #lin_photoStoryV2 .lin_chapterHero {
+      width: min(var(--lin_wide_width), calc(100% - 32px));
+      margin: 0 auto clamp(36px, 6vw, 72px);
+    }
+
+    #lin_photoStoryV2 .lin_chapterHero img,
+    #lin_photoStoryV2 .lin_supportImage img {
+      border-radius: var(--lin_radius);
+      background: var(--lin_panel);
+      object-fit: cover;
+    }
+
+    #lin_photoStoryV2 .lin_chapterHero img {
+      aspect-ratio: 16 / 9;
+    }
+
+    #lin_photoStoryV2 .lin_chapterHeader {
+      margin-bottom: clamp(28px, 4vw, 48px);
+    }
+
+    #lin_photoStoryV2 .lin_chapterTitle {
+      margin: 10px 0 0;
+      color: var(--lin_soft);
+      font-size: clamp(2.5rem, 7vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    #lin_photoStoryV2 .lin_copy p {
+      margin: 0 0 20px;
+      color: var(--lin_muted);
+      font-size: var(--lin_body);
+      line-height: var(--lin_leading);
+    }
+
+    #lin_photoStoryV2 .lin_copy p.lin_lead {
+      color: var(--lin_text);
+      font-size: clamp(1.16rem, 1.6vw, 1.38rem);
+      line-height: 1.58;
+    }
+
+    #lin_photoStoryV2 .lin_supportGrid {
+      display: grid;
+      gap: clamp(40px, 6vw, 84px);
+      margin-top: clamp(44px, 7vw, 92px);
+    }
+
+    #lin_photoStoryV2 .lin_supportImage {
+      width: min(var(--lin_wide_width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    #lin_photoStoryV2 .lin_supportImage img {
+      aspect-ratio: 16 / 10;
+    }
+
+    #lin_photoStoryV2 .lin_caption {
+      width: min(var(--lin_text_width), 100%);
+      margin: 14px auto 0;
+      color: var(--lin_muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    #lin_photoStoryV2 .lin_resultsBlock {
+      margin: 36px 0 30px;
+      padding: 32px 0;
+      border-top: 1px solid var(--lin_line);
+      border-bottom: 1px solid var(--lin_line);
+    }
+
+    #lin_photoStoryV2 .lin_resultsSub {
+      margin: 5px 0 28px;
+      color: var(--lin_text);
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      font-weight: 700;
+    }
+
+    #lin_photoStoryV2 .lin_resultsStats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    #lin_photoStoryV2 .lin_resultsStat {
+      padding: 0 22px;
+    }
+
+    #lin_photoStoryV2 .lin_resultsStat:first-child {
+      padding-left: 0;
+    }
+
+    #lin_photoStoryV2 .lin_resultsStat + .lin_resultsStat {
+      border-left: 1px solid var(--lin_line);
+    }
+
+    #lin_photoStoryV2 .lin_resultsNum {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    #lin_photoStoryV2 .lin_resultsPfx,
+    #lin_photoStoryV2 .lin_resultsVal {
+      color: var(--lin_soft);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    #lin_photoStoryV2 .lin_resultsPfx {
+      font-size: 1.8rem;
+    }
+
+    #lin_photoStoryV2 .lin_resultsVal {
+      font-size: 2.8rem;
+    }
+
+    #lin_photoStoryV2 .lin_resultsSfx {
+      margin-left: 2px;
+      color: var(--lin_text);
+      font-size: 1.2rem;
+    }
+
+    #lin_photoStoryV2 .lin_resultsLabel {
+      color: var(--lin_muted);
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+
+    #lin_photoStoryV2 .lin_footerNote {
+      padding: clamp(56px, 8vw, 96px) 0;
+      border-top: 1px solid var(--lin_line);
+    }
+
+    #lin_photoStoryV2 .lin_footerGrid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    #lin_photoStoryV2 .lin_footerGrid p {
+      margin: 0;
+      color: var(--lin_muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    #lin_photoStoryV2 .lin_donateBlock {
+      display: grid;
+      gap: 14px;
+      justify-items: start;
+    }
+
+    #lin_photoStoryV2 .lin_donateBlock h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    #lin_photoStoryV2 .lin_btnDonate,
+    #lin_photoStoryV2 .lin_galleryBtn,
+    #lin_photoStoryV2 .lin_modalClose,
+    #lin_photoStoryV2 .lin_expandBtn,
+    #lin_photoStoryV2 .lin_fullClose {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    #lin_photoStoryV2 .lin_btnDonate {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      background: var(--lin_soft);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 180ms ease;
+    }
+
+    #lin_photoStoryV2 .lin_btnDonate:hover,
+    #lin_photoStoryV2 .lin_btnDonate:focus-visible {
+      background: #182631;
+      outline: none;
+    }
+
+    #lin_photoStoryV2 .lin_galleryBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 80;
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(26, 29, 33, 0.78);
+      color: var(--lin_text);
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    #lin_photoStoryV2 .lin_galleryBtn:hover,
+    #lin_photoStoryV2 .lin_galleryBtn:focus-visible {
+      background: rgba(99, 153, 175, 0.92);
+      outline: none;
+    }
+
+    #lin_photoStoryV2 .lin_modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      background: #000;
+    }
+
+    #lin_photoStoryV2 .lin_modal.is-visible {
+      display: flex;
+    }
+
+    #lin_photoStoryV2 .lin_modalClose {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 110;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    #lin_photoStoryV2 .lin_swiperMain {
+      flex: 1;
+      width: 100%;
+      max-height: 76vh;
+    }
+
+    #lin_photoStoryV2 .lin_swiperMain .swiper-slide {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    #lin_photoStoryV2 .lin_swiperMain img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    #lin_photoStoryV2 .lin_swiperCaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 14px 18px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    #lin_photoStoryV2 .lin_swiperThumbs {
+      width: 100%;
+      height: 18vh;
+      max-height: 190px;
+      padding: 10px 0;
+      background: #000;
+    }
+
+    #lin_photoStoryV2 .lin_swiperThumbs .swiper-slide {
+      opacity: 0.45;
+      cursor: pointer;
+    }
+
+    #lin_photoStoryV2 .lin_swiperThumbs .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+
+    #lin_photoStoryV2 .lin_swiperThumbs img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 760px) {
+      #lin_photoStoryV2 .lin_intro {
+        min-height: auto;
+        padding-top: 28px;
+      }
+
+      #lin_photoStoryV2 .lin_partnerLogos {
+        margin-bottom: 72px;
+      }
+
+      #lin_photoStoryV2 .lin_partnerLogos img {
+        max-width: 132px;
+        height: auto;
+        max-height: 36px;
+      }
+
+      #lin_photoStoryV2 .lin_title {
+        max-width: 11ch;
+      }
+
+      #lin_photoStoryV2 .lin_chapterHero img,
+      #lin_photoStoryV2 .lin_supportImage img {
+        aspect-ratio: 4 / 3;
+      }
+
+      #lin_photoStoryV2 .lin_resultsStats {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      #lin_photoStoryV2 .lin_resultsStat,
+      #lin_photoStoryV2 .lin_resultsStat:first-child {
+        padding: 0;
+      }
+
+      #lin_photoStoryV2 .lin_resultsStat + .lin_resultsStat {
+        border-left: 0;
+        border-top: 1px solid var(--lin_line);
+        padding-top: 22px;
+      }
+
+      #lin_photoStoryV2 .lin_footerGrid {
+        grid-template-columns: 1fr;
+      }
+
+      #lin_photoStoryV2 .lin_galleryBtn {
+        right: 14px;
+        bottom: 14px;
+        padding: 11px 16px;
+        font-size: 0.82rem;
+      }
+
+      #lin_photoStoryV2 .lin_swiperMain {
+        max-height: 72vh;
+      }
+
+      #lin_photoStoryV2 .lin_swiperCaption {
+        font-size: 0.78rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="lin_photoStoryV2">
+    <header class="lin_intro">
+      <div class="lin_shell">
+        <div class="lin_partnerLogos">
+          <a href="https://laislanetwork.org" target="_blank" rel="noopener noreferrer" aria-label="Visit La Isla Network">
+            <img src="https://laislanetwork.org/wp-content/uploads/2024/01/LaIslaNetwork_Logo_White.png" alt="La Isla Network" />
+          </a>
+          <a href="https://www.rockefellerfoundation.org/news/la-isla-network-launches-new-initiatives-to-protect-workers-from-extreme-heat-in-latin-america/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Rockefeller Foundation">
+            <img src="https://laislanetwork.org/wp-content/uploads/2026/04/rockefellerfoundation.org-22.svg" alt="The Rockefeller Foundation" />
+          </a>
+        </div>
+
+        <div class="lin_eyebrow">Central America Photo Story</div>
+        <h1 class="lin_title">Heat, Work, & Worker Protection in Central America</h1>
+        <p class="lin_subtitle">A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation.</p>
+        <p class="lin_credit">Photographs by <a href="https://www.edkashi.com/heat-watch/0dn1rhxmy8zdzj7f3kh643smpxehi1" target="_blank" rel="noopener noreferrer">Ed Kashi / VII / Redux</a>.</p>
+      </div>
+    </header>
+
+    <section class="lin_chapter" id="lin_chapter_shupa">
+      <figure class="lin_chapterHero">
+        <img src="IMG/HEA26002_04363.jpg" alt="Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026" loading="eager" decoding="async" />
+      </figure>
+
+      <div class="lin_textShell">
+        <header class="lin_chapterHeader">
+          <div class="lin_chapterKicker">Chapter I</div>
+          <h2 class="lin_chapterTitle">Shupá, Guatemala.</h2>
+        </header>
+
+        <div class="lin_copy">
+          <p class="lin_lead">Gregorio Pérez García is sixty years old.</p>
+          <p>He has farmed the land around Shupá for most of his life. The mountains behind him are green. The soil is volcanic. The corridor that runs from southern Mexico through Guatemala, Honduras, and El Salvador is one of the most climate-punished agricultural regions in the Western Hemisphere. Temperatures have climbed steadily for two decades. Rainfall has grown erratic.</p>
+        </div>
+      </div>
+
+      <div class="lin_supportGrid">
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_00525.jpg" alt="Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region's economy runs on human bodies doing hard physical work in rising heat.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_01494S.jpg" alt="Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region's economy runs on human bodies doing hard physical work in rising heat.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_04363.jpg" alt="Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026" loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">Before the cutters enter a sugarcane field, it is burned. Fire strips the leaves and drives out snakes. Smoke fills the lowlands. The work begins.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="lin_chapter" id="lin_chapter_swings">
+      <figure class="lin_chapterHero">
+        <img src="IMG/HEA26002_06965.jpg" alt="Sugar cane workers participating in La Isla Network's PREP program in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+      </figure>
+
+      <div class="lin_textShell">
+        <header class="lin_chapterHeader">
+          <div class="lin_chapterKicker">Chapter II</div>
+          <h2 class="lin_chapterTitle">3,000 Swings a Day.</h2>
+        </header>
+
+        <div class="lin_copy">
+          <p>Qʼeqchiʼ men from Cobán, internal migrants who travel south each harvest season to cut cane for the Santa Ana Company, move through the burned fields outside Escuintla. A cane cutter swings a machete roughly 3,000 times per shift. By midmorning, air temperature can reach 100.4°F/38°C. But the heat a laboring body generates pushes core temperature higher still. A thermometer in shade reads one number. A sensor pressed against a cutter's skin reads another. The gap between the two is where risk lies: preventable heat-driven illness, injury, and death.</p>
+        </div>
+      </div>
+
+      <div class="lin_supportGrid">
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_06421.jpg" alt="Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">In El Salvador, work captain Santos Cano gathers his cutters in the dark and they board yellow buses for the ride to the fields outside Guazapa. Headlamps cut the road. By the time the sun is fully up, they are already working.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_06634S.jpg" alt="Sugar cane workers participating in La Isla Network's PREP program in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">These men know their bodies are being pushed past safe limits. They understand the risks. But without adequate protections in place, even the most experienced worker cannot outwork extreme heat. The question is not whether the danger is real. The question is whether the protections will arrive in time.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="lin_chapter" id="lin_chapter_creatina">
+      <figure class="lin_chapterHero">
+        <img src="IMG/HEA26002_02596.jpg" alt="Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago." loading="lazy" decoding="async" />
+      </figure>
+
+      <div class="lin_textShell">
+        <header class="lin_chapterHeader">
+          <div class="lin_chapterKicker">Chapter III</div>
+          <h2 class="lin_chapterTitle">Edvin, Julio, and "La Creatina".</h2>
+        </header>
+
+        <div class="lin_copy">
+          <p>In Parcelamiento El Cajón, in sector Agüero, Guatemala, Edvin and his family sit in plastic chairs and recline on motorcycles on a concrete porch.</p>
+        </div>
+      </div>
+
+      <div class="lin_supportGrid">
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_02596.jpg" alt="Edvin Rafael Sarmiento at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">Edvin Rafael Sarmiento is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since. Down the road, Julio Lopez, another former cutter, sits on his porch, too. The community calls the disease "La Creatina," after the creatinine test that measures kidney function. Julio knows his numbers.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_03025S.jpg" alt="Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">Doctors call it CKDnT: chronic kidney disease of non-traditional origin. Unlike typical kidney disease, it strikes young, previously healthy men doing heavy labor in extreme heat. Repeated dehydration and heat stress cause acute kidney injury. Over months and years, those injuries become permanent, scarring the kidneys to the point of total dysfunction.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_03364S.jpg" alt="An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">Between the sugarcane fields, a house stands abandoned. The concrete walls are bare. Brush closes in, growing where a family used to live. When work destroys a primary earner's body, wages wane and families leave.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="lin_chapter" id="lin_chapter_cesar">
+      <figure class="lin_chapterHero">
+        <img src="IMG/HEA26002_09676.jpg" alt="Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT." loading="lazy" decoding="async" />
+      </figure>
+
+      <div class="lin_textShell">
+        <header class="lin_chapterHeader">
+          <div class="lin_chapterKicker">Chapter IV</div>
+          <h2 class="lin_chapterTitle">Cesar Was Twenty.</h2>
+        </header>
+
+        <div class="lin_copy">
+          <p class="lin_lead">Blanca Rosa is thirty-five. Three months before this photograph was taken, her son, Cesar Omar Flores Fuentes, died of CKDnT. He was twenty years old.</p>
+        </div>
+      </div>
+
+      <div class="lin_supportGrid">
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_09808.jpg" alt="Blanca Rosa with her husband Eugenio Anaya Portillo at her home in Canton Colima, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">She sits on the porch of her home in El Cantón Colima, El Salvador. Her hands are folded in her lap. In the doorway, she stands with her husband, Eugenio Anaya Portillo, seventy-five. They hold each other.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_09886.jpg" alt="Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">In Jocote, María Catalina Artiga is seventy-two. Her husband died of CKDnT less than a year ago. She stands in her yard, hands on her hips, looking directly into the camera.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_09957S.jpg" alt="Maria Catalina Artiga holding up a framed portrait of her husband." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">In another frame, she holds up a framed portrait of her husband, steady, at arm's length, so the camera can see his face.</figcaption>
+        </figure>
+      </div>
+
+      <div class="lin_textShell" style="margin-top: clamp(44px, 7vw, 92px);">
+        <div class="lin_copy">
+          <p>Nobody should have to risk their life to earn a living. The protocols to prevent these deaths exist. The economics favor them. The science has been settled for years. What remains is the decision to act, by companies, by governments, by the institutions that set the terms under which people work.</p>
+          <p>Maria Catalina's husband did not have to die. Cesar did not have to die. Every heat-related death is preventable. It is what La Isla Network's evidence shows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="lin_chapter" id="lin_chapter_water">
+      <figure class="lin_chapterHero">
+        <img src="IMG/HEA26002_08382S.jpg" alt="Sugar cane workers participating in La Isla Network's PREP program in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+      </figure>
+
+      <div class="lin_textShell">
+        <header class="lin_chapterHeader">
+          <div class="lin_chapterKicker">Chapter V</div>
+          <h2 class="lin_chapterTitle">Water on a Schedule.</h2>
+        </header>
+
+        <div class="lin_copy">
+          <p class="lin_lead">In Guazapa, El Salvador, La Isla Network's PREP program structures the workday around what the science demands: scheduled rest in shade, enforced hydration, real-time physiological monitoring.</p>
+          <p>Workers hydrate on a schedule, because long before the time a person feels thirsty in extreme heat, kidney stress has already begun.</p>
+
+          <div class="lin_resultsBlock" aria-label="Results from worker protection interventions">
+            <div class="lin_resultsHeading">Our Results</div>
+            <div class="lin_resultsSub">Proven results. Real impact.</div>
+            <div class="lin_resultsStats">
+              <div class="lin_resultsStat">
+                <div class="lin_resultsNum"><span class="lin_resultsVal">94</span><span class="lin_resultsSfx">%</span></div>
+                <div class="lin_resultsLabel">Reduction in heat-related hospitalizations</div>
+              </div>
+              <div class="lin_resultsStat">
+                <div class="lin_resultsNum"><span class="lin_resultsPfx">+</span><span class="lin_resultsVal">20</span><span class="lin_resultsSfx">%</span></div>
+                <div class="lin_resultsLabel">Increase in worker productivity, up to</div>
+              </div>
+              <div class="lin_resultsStat">
+                <div class="lin_resultsNum"><span class="lin_resultsVal">60</span><span class="lin_resultsSfx">%</span></div>
+                <div class="lin_resultsLabel">Positive Return on Investment generated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lin_supportGrid">
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_06882.jpg" alt="Sugar cane workers participating in La Isla Network's PREP program in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">A young cutter sits under a tarp canopy, head down, resting during the hottest hours. Nearby, two men fill orange water coolers from tank trucks parked beside the yellow buses. The infrastructure of protection is unglamorous: tarps, hoses, coolers, shade cloth. It costs very little. It changes everything.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_07167S.jpg" alt="Sugar cane workers participating in La Isla Network's PREP program in Guazapa, El Salvador on March 7, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">This is not guesswork. In Nicaragua, at the Ingenio San Antonio sugar mill, these protocols reduced acute kidney injury by more than 94 percent. Productivity rose between 9 and 19 percent, even with the added breaks. The mill reached a 60 percent return on investment by year three. Protecting workers turned out to be the better business decision.</figcaption>
+        </figure>
+
+        <figure class="lin_supportImage">
+          <img src="IMG/HEA26002_05663.jpg" alt="Views of the port of Acajutla, El Salvador, where much of the country's sugar production is shipped from, on March 5, 2026." loading="lazy" decoding="async" />
+          <figcaption class="lin_caption">At the port of Acajutla, on El Salvador's Pacific coast, cargo ships wait at anchor. The sugar that begins with a machete in a burned field ends here, loaded into holds, bound for international markets. La Isla Network's monitoring data is designed to make the human cost of production visible to the companies, governments, and institutions with the power to act.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer class="lin_footerNote">
+      <div class="lin_shell lin_footerGrid">
+        <p>This story is part of a broader visual record on labor, heat exposure, and worker protection in Central America’s sugarcane sector. Photographs by Ed Kashi and Tom Laffay were developed in collaboration with La Isla Network and supported by The Rockefeller Foundation to document and advance practical solutions that protect workers and strengthen resilience under rising heat conditions.</p>
+        <div class="lin_donateBlock">
+          <h4>Help scale worker protection</h4>
+          <a class="lin_btnDonate" href="https://laislanetwork.org/donate" target="_blank" rel="noopener">Donate to La Isla Network <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </footer>
+
+    <button class="lin_galleryBtn" id="linGalleryOpen" type="button" aria-haspopup="dialog">View all pictures</button>
+
+    <section class="lin_modal" id="linGalleryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo gallery">
+      <button class="lin_modalClose" id="linGalleryClose" type="button" aria-label="Close gallery">×</button>
+
+      <div class="swiper lin_swiperMain" id="linSwiperMain">
+        <div class="swiper-wrapper" id="linSwiperMainWrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+      <div class="swiper lin_swiperThumbs" id="linSwiperThumbs">
+        <div class="swiper-wrapper" id="linSwiperThumbsWrapper"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script>
+    (function () {
+      const wrapper = document.querySelector('#lin_photoStoryV2');
+      if (!wrapper) return;
+
+      const localImageBase = 'IMG';
+      const localImageFiles = [
+        'HEA26002_00309.jpg', 'HEA26002_00525.jpg', 'HEA26002_00574.jpg', 'HEA26002_01383.jpg',
+        'HEA26002_02298.jpg', 'HEA26002_02596.jpg', 'HEA26002_02691.jpg', 'HEA26002_02985.jpg', 'HEA26002_03486.jpg',
+        'HEA26002_03904.jpg', 'HEA26002_04363.jpg', 'HEA26002_04407.jpg', 'HEA26002_04871.jpg', 'HEA26002_04923.jpg',
+        'HEA26002_04930.jpg', 'HEA26002_04953.jpg', 'HEA26002_04954S.jpg', 'HEA26002_05015S.jpg', 'HEA26002_05194.jpg',
+        'HEA26002_05227S.jpg', 'HEA26002_05549.jpg', 'HEA26002_05604.jpg', 'HEA26002_05663.jpg',
+        'HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05837.jpg', 'HEA26002_05887S.jpg', 'HEA26002_05927S.jpg',
+        'HEA26002_06009.jpg', 'HEA26002_06118.jpg', 'HEA26002_06127.jpg', 'HEA26002_06384.jpg', 'HEA26002_06421.jpg',
+        'HEA26002_06447.jpg', 'HEA26002_06669.jpg', 'HEA26002_06718.jpg', 'HEA26002_06882.jpg', 'HEA26002_06935.jpg',
+        'HEA26002_06965.jpg', 'HEA26002_06972.jpg', 'HEA26002_07030.jpg', 'HEA26002_07454.jpg', 'HEA26002_07541.jpg',
+        'HEA26002_07815.jpg', 'HEA26002_07930.jpg', 'HEA26002_07986.jpg', 'HEA26002_08051.jpg', 'HEA26002_08382S.jpg',
+        'HEA26002_08612.jpg', 'HEA26002_08621S.jpg', 'HEA26002_09136.jpg', 'HEA26002_09430.jpg', 'HEA26002_09461.jpg',
+        'HEA26002_09466.jpg', 'HEA26002_09565.jpg', 'HEA26002_09676.jpg', 'HEA26002_09687.jpg', 'HEA26002_09687S.jpg',
+        'HEA26002_09808.jpg', 'HEA26002_09812.jpg', 'HEA26002_09886.jpg', 'HEA26002_09908.jpg', 'HEA26002_09937.jpg',
+        'HEA26002_09942S.jpg', 'HEA26002_09969S.jpg'
+      ];
+
+      const imageDescriptions = {
+        'HEA26002_00309.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026.',
+        'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026.',
+        'HEA26002_00574.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026.',
+        'HEA26002_01383.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. Working with Nicholas Gutierrez.',
+        'HEA26002_01494S.jpg': 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.',
+        'HEA26002_02298.jpg': 'A food shop in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_02596.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_02691.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_02985.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_03025S.jpg': 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_03364S.jpg': 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        'HEA26002_03486.jpg': 'Irrigation workers for Pantaleón in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.',
+        'HEA26002_03904.jpg': 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.',
+        'HEA26002_04363.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026.',
+        'HEA26002_04407.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026.',
+        'HEA26002_04871.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_04923.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_04953.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_05015S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_05227S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+        'HEA26002_05549.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country’s sugar production is shipped from, on March 5, 2026.',
+        'HEA26002_05604.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country’s sugar production is shipped from, on March 5, 2026.',
+        'HEA26002_05663.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country’s sugar production is shipped from, on March 5, 2026.',
+        'HEA26002_05773.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_05827.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_05837.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_05887S.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_05927S.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_06009.jpg': 'Domestic scene at a sugar cane worker’s home in Los Sitios, El Salvador on March 6, 2026.',
+        'HEA26002_06118.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06127.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06384.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06421.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06669.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06935.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06965.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07030.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07454.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_07986.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network’s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+        'HEA26002_09430.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09676.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09687.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09687S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        'HEA26002_09808.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.',
+        'HEA26002_09812.jpg': 'View of road in San Salvador with McDonalds sign and volcano in the distance on March 7, 2026.',
+        'HEA26002_09886.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+        'HEA26002_09908.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+        'HEA26002_09937.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+        'HEA26002_09942S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+        'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
+      };
+
+      const openButton = wrapper.querySelector('#linGalleryOpen');
+      const modal = wrapper.querySelector('#linGalleryModal');
+      const closeButton = wrapper.querySelector('#linGalleryClose');
+      const mainWrapper = wrapper.querySelector('#linSwiperMainWrapper');
+      const thumbsWrapper = wrapper.querySelector('#linSwiperThumbsWrapper');
+      let mainSwiper = null;
+      let thumbsSwiper = null;
+
+      function escapeText(value) {
+        return String(value).replace(/[&<>"]/g, function (character) {
+          return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;'
+          }[character];
+        });
+      }
+
+      function renderSlides() {
+        const mainSlides = [];
+        const thumbSlides = [];
+
+        localImageFiles.forEach(function (fileName) {
+          const src = localImageBase + '/' + fileName;
+          const caption = imageDescriptions[fileName] || fileName;
+          const safeCaption = escapeText(caption);
+
+          mainSlides.push(
+            '<div class="swiper-slide">' +
+              '<img src="' + src + '" alt="' + safeCaption + '" loading="lazy" decoding="async">' +
+              '<div class="lin_swiperCaption">' + safeCaption + '</div>' +
+            '</div>'
+          );
+
+          thumbSlides.push(
+            '<div class="swiper-slide">' +
+              '<img src="' + src + '" alt="" loading="lazy" decoding="async">' +
+            '</div>'
+          );
+        });
+
+        mainWrapper.innerHTML = mainSlides.join('');
+        thumbsWrapper.innerHTML = thumbSlides.join('');
+      }
+
+      function initSwiper() {
+        if (thumbsSwiper || mainSwiper || typeof Swiper === 'undefined') return;
+
+        thumbsSwiper = new Swiper(wrapper.querySelector('#linSwiperThumbs'), {
+          spaceBetween: 10,
+          slidesPerView: 3,
+          freeMode: true,
+          watchSlidesProgress: true,
+          breakpoints: {
+            768: { slidesPerView: 5 },
+            1100: { slidesPerView: 7 }
+          }
+        });
+
+        mainSwiper = new Swiper(wrapper.querySelector('#linSwiperMain'), {
+          spaceBetween: 10,
+          keyboard: {
+            enabled: true,
+            onlyInViewport: false
+          },
+          navigation: {
+            nextEl: wrapper.querySelector('.swiper-button-next'),
+            prevEl: wrapper.querySelector('.swiper-button-prev')
+          },
+          thumbs: {
+            swiper: thumbsSwiper
+          }
+        });
+      }
+
+      function openGallery() {
+        modal.classList.add('is-visible');
+        modal.setAttribute('aria-hidden', 'false');
+        document.documentElement.style.overflow = 'hidden';
+        initSwiper();
+        setTimeout(function () {
+          mainSwiper?.update();
+          thumbsSwiper?.update();
+          closeButton.focus();
+        }, 0);
+      }
+
+      function closeGallery() {
+        modal.classList.remove('is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.style.overflow = '';
+        openButton.focus();
+      }
+
+      renderSlides();
+
+      openButton.addEventListener('click', openGallery);
+      closeButton.addEventListener('click', closeGallery);
+
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) closeGallery();
+      });
+
+      window.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+          closeGallery();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
