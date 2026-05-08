@@ -830,12 +830,12 @@ html {scrollbar-width: none;} /* Firefox */
 
       .page,
       .overlay-shell {
-        padding-left: 16px;
-        padding-right: 0;
+        padding: 15px;
       }
 
       .thumb-rail {
         min-height: auto;
+        height: 100%;
         padding: 0;
         overflow-x: hidden; /* Changed from auto to allow infinite loop */
         overflow-y: hidden;
@@ -1871,11 +1871,13 @@ html {scrollbar-width: none;} /* Firefox */
     thumbsActionBtn.addEventListener('click', () => {
       actionModal.classList.add('is-visible');
       actionModal.setAttribute('aria-hidden', 'false');
+      body.classList.add('overlay-open');
     });
 
     actionModalClose.addEventListener('click', () => {
       actionModal.classList.remove('is-visible');
       actionModal.setAttribute('aria-hidden', 'true');
+      body.classList.remove('overlay-open');
       resumeRailLoops();
     });
 
@@ -1883,6 +1885,7 @@ html {scrollbar-width: none;} /* Firefox */
       if (event.target === actionModal) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
+        body.classList.remove('overlay-open');
         resumeRailLoops();
       }
     });
@@ -1891,6 +1894,7 @@ html {scrollbar-width: none;} /* Firefox */
       if (event.key === 'Escape' && !actionModal.classList.contains('is-visible') === false) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
+        body.classList.remove('overlay-open');
         resumeRailLoops();
       }
     });
