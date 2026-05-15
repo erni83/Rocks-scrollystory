@@ -970,14 +970,18 @@ html {scrollbar-width: none;} /* Firefox */
 
     .action-modal .mySwiper2 .swiper-slide {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100%;
+      justify-content: flex-start;
+      height: auto;
+      gap: 10px;
+      padding: 10px;
     }
 
     .action-modal .mySwiper2 img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: 100%;
       object-fit: contain;
       display: block;
       pointer-events: none;
