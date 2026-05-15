@@ -509,18 +509,18 @@ html {scrollbar-width: none;} /* Firefox */
     }
 
     .overlay-img-caption {
-      position: absolute;
-      bottom: 0;
       width: 100%;
       padding: 15px;
-      color: white;
+      color: var(--soft);
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       font-size: 0.95rem;
+      font-style: italic;
       line-height: 1.5;
       animation: captionFadeIn 0.5s ease-out 0.5s forwards;
       opacity: 0;
+      display: block;
     }
 
     .overlay-body {
