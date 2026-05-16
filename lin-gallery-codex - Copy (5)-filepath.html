@@ -57,35 +57,19 @@
       overflow-x: hidden;
     }
     @media (max-width: 768px) {
-      body {
-        padding-bottom: clamp(60px, 15vh, 100px);
-      }
-    }
-html {
-  scroll-behavior: initial;
-}
-
-html,
-body {
-  -webkit-font-smoothing: antialiased;
-}
-body ::-webkit-scrollbar,
-body::-webkit-scrollbar {display: none;} /* Chrome, Safari, Opera */
-body {-ms-overflow-style: none;} /* IE & Edge */
-html {scrollbar-width: none;} /* Firefox */
-    body.overlay-open {
-      overflow: hidden;
+      body { padding-bottom: clamp(60px, 15vh, 100px); }
     }
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+    html { scroll-behavior: initial; }
+    html, body { -webkit-font-smoothing: antialiased; }
+    body ::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    body { -ms-overflow-style: none; }
+    html { scrollbar-width: none; }
 
-    button {
-      font: inherit;
-    }
+    body.overlay-open { overflow: hidden; }
+
+    img { display: block; width: 100%; height: auto; }
+    button { font: inherit; }
 
     .page {
       min-height: 100vh;
@@ -121,8 +105,7 @@ html {scrollbar-width: none;} /* Firefox */
       contain: layout;
     }
 
-    .thumbs::before,
-    .thumbs::after {
+    .thumbs::before, .thumbs::after {
       content: "";
       position: absolute;
       left: -4%;
@@ -134,38 +117,21 @@ html {scrollbar-width: none;} /* Firefox */
 
     .thumbs::before {
       top: 0;
-      background: linear-gradient(180deg, #1a1d21 0%, rgba(26, 29, 33, 0.82) 28%, rgba(26, 29, 33, 0.28) 62%, rgba(26, 29, 33, 0) 100%);
+      background: linear-gradient(180deg, #1a1d21 0%, rgba(26,29,33,0.82) 28%, rgba(26,29,33,0.28) 62%, rgba(26,29,33,0) 100%);
     }
 
     .thumbs::after {
       bottom: 0;
-      background: linear-gradient(0deg, #1a1d21 0%, rgba(26, 29, 33, 0.82) 28%, rgba(26, 29, 33, 0.28) 62%, rgba(26, 29, 33, 0) 100%);
+      background: linear-gradient(0deg, #1a1d21 0%, rgba(26,29,33,0.82) 28%, rgba(26,29,33,0.28) 62%, rgba(26,29,33,0) 100%);
     }
 
     .thumb-rail {
       position: relative;
       min-height: 100%;
       padding: 6vw;
-      /* overflow: hidden; */
       border-radius: 0;
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.18) 6%,
-        #000 17%,
-        #000 83%,
-        rgba(0, 0, 0, 0.18) 94%,
-        transparent 100%
-      );
-      mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.18) 6%,
-        #000 17%,
-        #000 83%,
-        rgba(0, 0, 0, 0.18) 94%,
-        transparent 100%
-      );
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.18) 6%, #000 17%, #000 83%, rgba(0,0,0,0.18) 94%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.18) 6%, #000 17%, #000 83%, rgba(0,0,0,0.18) 94%, transparent 100%);
     }
 
     .thumb-rail-track {
@@ -184,12 +150,10 @@ html {scrollbar-width: none;} /* Firefox */
       aspect-ratio: 3 / 2;
       transform-origin: center center;
       transition: opacity 220ms ease, filter 220ms ease;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.22);
     }
 
-    .rail-card[data-chapter] {
-      cursor: pointer;
-    }
+    .rail-card[data-chapter] { cursor: pointer; }
 
     .rail-card::after {
       content: "";
@@ -200,25 +164,10 @@ html {scrollbar-width: none;} /* Firefox */
       transition: opacity 220ms ease;
     }
 
-    .rail-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .rail-card.is-dim {
-      opacity: 0.34;
-      filter: saturate(0.8);
-    }
-
-    .rail-card.is-active {
-      opacity: 1;
-    }
-
-    .rail-card.is-active::after {
-      opacity: 0;
-    }
+    .rail-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rail-card.is-dim { opacity: 0.34; filter: saturate(0.8); }
+    .rail-card.is-active { opacity: 1; }
+    .rail-card.is-active::after { opacity: 0; }
 
     .thumb-origin-sources {
       position: absolute;
@@ -241,12 +190,7 @@ html {scrollbar-width: none;} /* Firefox */
       aspect-ratio: 5 / 3;
     }
 
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: var(--radius);
-    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
 
     .content-col {
       min-height: calc(100vh - 56px);
@@ -258,11 +202,7 @@ html {scrollbar-width: none;} /* Firefox */
       container-type: inline-size;
     }
 
-    .hero-copy {
-      max-width: 980px;
-      padding-right: 16px;
-      text-align: left;
-    }
+    .hero-copy { max-width: 980px; padding-right: 16px; text-align: left; }
 
     .eyebrow {
       color: var(--muted);
@@ -288,22 +228,9 @@ html {scrollbar-width: none;} /* Firefox */
       line-height: 1.5;
     }
 
-    .hero-credit {
-      margin: 10px 0 0;
-      color: #ffffff;
-      font-size: 0.8rem;
-      line-height: 1.4;
-      opacity: 0.9;
-    }
-
-    .hero-credit a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .hero-credit a:hover {
-      text-decoration: underline;
-    }
+    .hero-credit { margin: 10px 0 0; color: #ffffff; font-size: 0.8rem; line-height: 1.4; opacity: 0.9; }
+    .hero-credit a { color: #ffffff; text-decoration: none; }
+    .hero-credit a:hover { text-decoration: underline; }
 
     .chapter-list {
       display: grid;
@@ -333,9 +260,7 @@ html {scrollbar-width: none;} /* Firefox */
       align-content: start;
     }
 
-    .chapter-trigger:last-child {
-      border-bottom: 1px solid var(--line);
-    }
+    .chapter-trigger:last-child { border-bottom: 1px solid var(--line); }
 
     .chapter-kicker {
       display: inline-block;
@@ -360,28 +285,12 @@ html {scrollbar-width: none;} /* Firefox */
       transition: color 220ms ease;
     }
 
-    .chapter-label .dot {
-      opacity: 0;
-      transition: opacity 220ms ease;
-    }
+    .chapter-label .dot { opacity: 0; transition: opacity 220ms ease; }
 
-    .chapter-trigger:is(.is-active, :hover, :focus-visible) {
-      color: #6399ae;
-      opacity: 1;
-      outline: none;
-    }
-
-    .chapter-trigger:is(.is-active, :hover, :focus-visible) :is(.chapter-kicker, .chapter-label) {
-      color: #6399ae;
-    }
-
-    .chapter-trigger:is(.is-active, :hover, :focus-visible) .dot {
-      opacity: 1;
-    }
-
-    .chapter-trigger.is-dim {
-      opacity: 0.5;
-    }
+    .chapter-trigger:is(.is-active, :hover, :focus-visible) { color: #6399ae; opacity: 1; outline: none; }
+    .chapter-trigger:is(.is-active, :hover, :focus-visible) :is(.chapter-kicker, .chapter-label) { color: #6399ae; }
+    .chapter-trigger:is(.is-active, :hover, :focus-visible) .dot { opacity: 1; }
+    .chapter-trigger.is-dim { opacity: 0.5; }
 
     .overlay {
       position: fixed;
@@ -392,12 +301,10 @@ html {scrollbar-width: none;} /* Firefox */
       -webkit-overflow-scrolling: touch;
       background:
         radial-gradient(circle at top right, rgba(255,255,255,0.06), transparent 34%),
-        linear-gradient(180deg, rgba(7, 7, 7, 0.98), rgba(7,7,7,0.98));
+        linear-gradient(180deg, rgba(7,7,7,0.98), rgba(7,7,7,0.98));
     }
 
-    .overlay.is-visible {
-      display: block;
-    }
+    .overlay.is-visible { display: block; }
 
     .overlay-shell {
       min-height: 100vh;
@@ -419,7 +326,7 @@ html {scrollbar-width: none;} /* Firefox */
       align-items: center;
       gap: 18px;
       padding: 15px 20px 15px;
-      background: linear-gradient(180deg, rgba(9, 9, 9, 0.375), rgba(9, 9, 9, 0.558), rgba(9,9,9,0));
+      background: linear-gradient(180deg, rgba(9,9,9,0.375), rgba(9,9,9,0.558), rgba(9,9,9,0));
       backdrop-filter: blur(20px);
       overflow: hidden;
     }
@@ -436,9 +343,7 @@ html {scrollbar-width: none;} /* Firefox */
       text-transform: uppercase;
     }
 
-    .overlay-nav-item.secondary {
-      color: var(--muted);
-    }
+    .overlay-nav-item.secondary { color: var(--muted); }
 
     .overlay-nav-logo {
       width: 60px;
@@ -475,14 +380,13 @@ html {scrollbar-width: none;} /* Firefox */
       line-height: 0.88;
     }
 
-    .overlay-title-slot .chapter-label .dot {
-      opacity: 1;
-    }
+    .overlay-title-slot .chapter-label .dot { opacity: 1; }
 
     .overlay-image-slot {
       position: relative;
       width: 100%;
       max-width: none;
+      min-height: min(62vh, 700px);
       border-radius: 12px;
       overflow: hidden;
       background: rgba(255,255,255,0.04);
@@ -490,59 +394,44 @@ html {scrollbar-width: none;} /* Firefox */
 
     .overlay-image-slot img {
       width: 100%;
-      height: auto;
-      max-height: 70vh;
+      height: 100%;
       object-fit: cover;
       border-radius: 12px;
       display: block;
     }
 
     @keyframes captionFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .overlay-img-caption {
       width: 100%;
       padding: 15px;
       color: var(--soft);
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(47, 47, 47, 0.2);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       font-size: 0.95rem;
       font-style: italic;
-      line-height: 1.5;
+      line-height: 1.3;
       animation: captionFadeIn 0.5s ease-out 0.5s forwards;
       opacity: 0;
       display: block;
     }
 
-    .overlay-body {
-      padding-top: 56px;
-    }
+    .overlay-body { padding-top: 56px; }
 
     .overlay-copy-grid {
-       display: flex;
-  flex-direction: column;
+      display: flex;
+      flex-direction: column;
       gap: clamp(28px, 5vw, 72px);
       align-items: start;
       justify-items: center;
     }
 
-    .overlay-copy-grid > :is(article, .supporting) {
-      width: 100%;
-    }
-
-    .overlay-copy-grid > article {
-      max-width: 58ch;
-      margin: 0 auto;
-    }
+    .overlay-copy-grid > :is(article, .supporting) { width: 100%; }
+    .overlay-copy-grid > article { max-width: 58ch; margin: 0 auto; }
 
     .overlay-kicker {
       color: var(--muted);
@@ -550,12 +439,9 @@ html {scrollbar-width: none;} /* Firefox */
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 18px;
-           }
-
-    .chapter-copy {
-      max-width: 58ch;
-      
     }
+
+    .chapter-copy { max-width: 58ch; }
 
     .chapter-copy p {
       margin: 0 0 18px;
@@ -564,11 +450,7 @@ html {scrollbar-width: none;} /* Firefox */
       line-height: var(--leading);
     }
 
-    .chapter-copy p.lead {
-      color: var(--text);
-      font-size: 0.98rem;
-      line-height: 1.55;
-    }
+    .chapter-copy p.lead { color: var(--text); font-size: 0.98rem; line-height: 1.55; }
 
     .lin_results_block {
       margin: 32px 0 24px;
@@ -576,64 +458,18 @@ html {scrollbar-width: none;} /* Firefox */
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
-    .lin_results_heading {
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .lin_results_sub {
-      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .lin_results_stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .lin_results_stat + .lin_results_stat {
-      border-left: 1px solid var(--line);
-    }
-    .lin_results_stat {
-      padding: 0 22px;
-    }
+    .lin_results_heading { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .lin_results_sub { font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 600; color: var(--text); margin-bottom: 28px; }
+    .lin_results_stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .lin_results_stat + .lin_results_stat { border-left: 1px solid var(--line); }
+    .lin_results_stat { padding: 0 22px; }
     .lin_results_stat:first-child { padding-left: 0; }
-    .lin_results_stat:last-child  { padding-right: 0; }
-    .lin_results_num {
-      display: flex;
-      align-items: baseline;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .lin_results_pfx {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #6399AF;
-      letter-spacing: -0.03em;
-    }
-    .lin_results_val {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #6399AF;
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-    .lin_results_sfx {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--text);
-      margin-left: 2px;
-      align-self: flex-end;
-      padding-bottom: 3px;
-    }
-    .lin_results_label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .lin_results_stat:last-child { padding-right: 0; }
+    .lin_results_num { display: flex; align-items: baseline; line-height: 1; margin-bottom: 8px; }
+    .lin_results_pfx { font-size: 1.8rem; font-weight: 700; color: #6399AF; letter-spacing: -0.03em; }
+    .lin_results_val { font-size: 2.8rem; font-weight: 700; color: #6399AF; letter-spacing: -0.04em; line-height: 1; }
+    .lin_results_sfx { font-size: 1.2rem; font-weight: 400; color: var(--text); margin-left: 2px; align-self: flex-end; padding-bottom: 3px; }
+    .lin_results_label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
 
     .supporting {
       display: grid;
@@ -651,10 +487,19 @@ html {scrollbar-width: none;} /* Firefox */
       margin-right: auto;
     }
 
+    /* ── SUPPORT CARD — now a real <figure> ── */
     .support-card {
       border-top: 1px solid var(--line);
       padding-top: 14px;
-      /* width: 100%; */
+      margin: 0;
+    }
+
+    .support-card .support-img-wrap {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 0;
     }
 
     .support-card img {
@@ -665,10 +510,23 @@ html {scrollbar-width: none;} /* Firefox */
       display: block;
     }
 
-    .support-card > div {
-      margin-bottom: 12px;
+    /* photo caption below image */
+    .support-card .photo-caption {
+      width: 100%;
+      padding: 15px;
+      color: var(--soft);
+      background: rgba(47, 47, 47, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 0.95rem;
+      font-style: italic;
+      line-height: 1.3;
+      animation: captionFadeIn 0.5s ease-out 0.5s forwards;
+      opacity: 0;
+      display: block;
     }
 
+    /* body text below the image */
     .support-card figcaption {
       margin: 0 auto;
       max-width: 58ch;
@@ -677,6 +535,9 @@ html {scrollbar-width: none;} /* Firefox */
       line-height: 1.5;
       padding: 20px 0;
     }
+
+    /* hide figcaption when empty */
+    .support-card figcaption:empty { display: none; }
 
     .overlay-footer-note {
       margin-top: 48px;
@@ -688,26 +549,10 @@ html {scrollbar-width: none;} /* Firefox */
       gap: clamp(24px, 4vw, 64px);
       align-items: center;
     }
-    .overlay-footer-note p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-    .overlay-footer-cta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-    .overlay-footer-cta h4 {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      white-space: nowrap;
-    }
+    .overlay-footer-note p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+
+    .overlay-footer-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; flex-shrink: 0; }
+    .overlay-footer-cta h4 { margin: 0; font-size: 1rem; font-weight: 700; color: var(--text); white-space: nowrap; }
     .overlay-footer-cta .btn-donate {
       display: inline-flex;
       align-items: center;
@@ -725,94 +570,31 @@ html {scrollbar-width: none;} /* Firefox */
       white-space: nowrap;
       transition: background 0.2s;
     }
-    .overlay-footer-cta .btn-donate:hover {
-      background: #182631;
-    }
+    .overlay-footer-cta .btn-donate:hover { background: #182631; }
+
     @media (max-width: 640px) {
-      .overlay-footer-note {
-        grid-template-columns: 1fr;
-        }
+      .overlay-footer-note { grid-template-columns: 1fr; }
     }
 
-    .partner-logos {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 3rem;
-      margin-bottom: 58px;
-    }
-
-    .partner-logos a {
-      display: flex;
-      align-items: center;
-    }
-
-    .partner-logos a:not(:last-child) {
-      padding-right: 58px;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .partner-logos img {
-      display: block;
-      width: auto;
-      max-width: 180px;
-      height: 45px;
-      max-height: 45px;
-      object-fit: contain;
-    }
+    .partner-logos { display: flex; flex-direction: row; align-items: center; gap: 3rem; margin-bottom: 58px; }
+    .partner-logos a { display: flex; align-items: center; }
+    .partner-logos a:not(:last-child) { padding-right: 58px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .partner-logos img { display: block; width: auto; max-width: 180px; height: 45px; max-height: 45px; object-fit: contain; }
 
     @media (max-width: 480px) {
-      .partner-logos {
-        gap: 1.5rem;
-      }
-
-      .partner-logos img {
-        max-width: calc((100vw - 32px - 58px - 1.5rem) / 2);
-        height: auto;
-        max-height: 36px;
-      }
-
-      .partner-logos img:not(:last-child) {
-        padding-right: 1.5rem;
-      }
+      .partner-logos { gap: 1.5rem; }
+      .partner-logos img { max-width: calc((100vw - 32px - 58px - 1.5rem) / 2); height: auto; max-height: 36px; }
+      .partner-logos img:not(:last-child) { padding-right: 1.5rem; }
     }
 
     @media (max-width: 980px) {
-      .gallery {
-        grid-template-columns: 1fr;
-        row-gap: 30px;
-      }
-
-      .thumbs {
-        position: static;
-        order: 0;
-        top: auto;
-        height: clamp(420px, 60vh, 760px);
-        min-height: auto;
-        padding: 0;
-      }
-
-      .content-col {
-        min-height: auto;
-        padding-right: 24px;
-      }
-
-      .chapter-list {
-        height: auto;
-        padding-bottom: 0;
-      }
-
-      .overlay-copy-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .overlay-image-slot {
-        min-height: unset;
-      }
-
-      .overlay-image-slot img {
-        height: auto;
-      }
+      .gallery { grid-template-columns: 1fr; row-gap: 30px; }
+      .thumbs { position: static; order: 0; top: auto; height: clamp(420px, 60vh, 760px); min-height: auto; padding: 0; }
+      .content-col { min-height: auto; padding-right: 24px; }
+      .chapter-list { height: auto; padding-bottom: 0; }
+      .overlay-copy-grid { grid-template-columns: 1fr; }
+      .overlay-image-slot { min-height: unset; }
+      .overlay-image-slot img { height: auto; }
     }
 
     @media (max-width: 680px) {
@@ -821,74 +603,26 @@ html {scrollbar-width: none;} /* Firefox */
         --thumb-h: clamp(100px, 30vh, 160px);
         --thumb-w: calc(var(--thumb-h) * 1.6667);
       }
-
-      .page,
-      .overlay-shell {
-        padding: 15px;
-      }
-
+      .page, .overlay-shell { padding: 15px; }
       .thumb-rail {
-        min-height: auto;
-        height: 100%;
-        padding: 0;
-        overflow-x: hidden; /* Changed from auto to allow infinite loop */
-        overflow-y: hidden;
+        min-height: auto; height: 100%; padding: 0;
+        overflow-x: hidden; overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
-        -webkit-mask-image: none;
-        mask-image: none;
+        -webkit-mask-image: none; mask-image: none;
       }
-
-      .thumb-rail-track {
-        flex-direction: row;
-        gap: var(--thumb-gap);
-        will-change: auto;
-      }
-
-      .thumbs {
-        height: auto;
-        min-height: auto;
-        max-height: 35vh;
-        padding: 0;
-        overflow: hidden;
-      }
-
-      .thumbs::before,
-      .thumbs::after {
-        display: none;
-      }
-
-      .rail-card {
-        border-radius: 10px;
-        /* Ensure cards don't use 3D perspective which can collapse them on mobile */
-        transform: none !important;
-        flex-shrink: 0;
-        width: var(--thumb-w);
-        height: var(--thumb-h);
-      }
-
-      .chapter-label {
-        font-size: clamp(1.4rem, 7vw, 2.66rem);
-      }
-
-      .overlay-title-slot .chapter-label {
-        font-size: clamp(1.93rem, 7vw, 3.5rem);
-      }
-
-      .overlay-nav-item {
-        font-size: 0.75rem;
-      }
-
-      .overlay-nav-logo {
-        width: 40px;
-        max-width: 40px;
-        min-width: 28px;
-      }
+      .thumb-rail-track { flex-direction: row; gap: var(--thumb-gap); will-change: auto; }
+      .thumbs { height: auto; min-height: auto; max-height: 35vh; padding: 0; overflow: hidden; }
+      .thumbs::before, .thumbs::after { display: none; }
+      .rail-card { border-radius: 10px; transform: none !important; flex-shrink: 0; width: var(--thumb-w); height: var(--thumb-h); }
+      .chapter-label { font-size: clamp(1.4rem, 7vw, 2.66rem); }
+      .overlay-title-slot .chapter-label { font-size: clamp(1.93rem, 7vw, 3.5rem); }
+      .overlay-nav-item { font-size: 0.75rem; }
+      .overlay-nav-logo { width: 40px; max-width: 40px; min-width: 28px; }
     }
 
     .thumbs-action-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 20px; right: 20px;
       z-index: 999;
       padding: 12px 24px;
       background: rgba(255,255,255,0.08);
@@ -900,11 +634,7 @@ html {scrollbar-width: none;} /* Firefox */
       cursor: pointer;
       transition: all 220ms ease;
     }
-
-    .thumbs-action-btn:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.16);
-    }
+    .thumbs-action-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.16); }
 
     .action-modal {
       position: fixed;
@@ -914,19 +644,19 @@ html {scrollbar-width: none;} /* Firefox */
       opacity: 0;
       visibility: hidden;
       transition: opacity 220ms ease, visibility 220ms ease;
+      display: flex;
+      flex-direction: column;
+      padding: 60px 20px 20px 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .action-modal.is-visible {
-      opacity: 1;
-      visibility: visible;
-    }
+    .action-modal.is-visible { opacity: 1; visibility: visible; }
 
     .action-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
+      position: fixed;
+      top: 20px; right: 20px;
+      width: 40px; height: 40px;
       background: #000;
       border: none;
       color: #fff;
@@ -940,48 +670,30 @@ html {scrollbar-width: none;} /* Firefox */
       justify-content: center;
       border-radius: 4px;
     }
-
-    .action-modal-close:hover {
-      opacity: 1;
-    }
-
-    .action-modal {
-      display: flex;
-      flex-direction: column;
-      /* padding: 20px; */
-    }
+    .action-modal-close:hover { opacity: 1; }
 
     .action-modal .mySwiper2 {
-      flex: 1;
-      max-height: 70vh;
       width: 100%;
+      max-width: 100%;
       overflow: hidden;
       touch-action: manipulation;
       -webkit-user-select: none;
       user-select: none;
+      flex-shrink: 0;
     }
-
-    .action-modal .mySwiper2 .swiper-wrapper {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
+    .action-modal .mySwiper2 .swiper-wrapper { display: flex; width: 100%; }
     .action-modal .mySwiper2 .swiper-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      height: auto;
-      gap: 10px;
-      padding: 10px;
+      min-height: auto;
+      width: 100%;
     }
-
-    .action-modal .mySwiper2 img {
+    .action-modal .mySwiper2 .swiper-slide img {
       width: 100%;
       height: auto;
-      max-height: 100%;
+      max-height: 60vh;
       object-fit: contain;
       display: block;
       pointer-events: none;
@@ -989,13 +701,33 @@ html {scrollbar-width: none;} /* Firefox */
       user-select: none;
     }
 
+    /* caption inside swiper slides */
+    .action-modal .swiper-slide-caption {
+      width: 100%;
+      padding: 15px;
+      color: var(--soft);
+      background: rgba(47, 47, 47, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 0.95rem;
+      font-style: italic;
+      line-height: 1.3;
+      animation: captionFadeIn 0.5s ease-out 0.5s forwards;
+      opacity: 0;
+      display: block;
+      pointer-events: none;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      margin-top: 15px;
+    }
+
     .swiper-expand-btn {
       position: absolute;
-      top: 16px;
-      left: 16px;
+      top: 16px; left: 16px;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
       padding: 8px 16px;
       border-radius: 6px;
@@ -1004,21 +736,13 @@ html {scrollbar-width: none;} /* Firefox */
       transition: background 200ms ease;
       font-family: Inter, system-ui, sans-serif;
     }
-
-    .swiper-expand-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .swiper-expand-btn:active {
-      background: rgba(255, 255, 255, 0.4);
-    }
+    .swiper-expand-btn:hover { background: rgba(255,255,255,0.3); }
+    .swiper-expand-btn:active { background: rgba(255,255,255,0.4); }
 
     .swiper-fullscreen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 9999;
       background: #000;
       display: flex;
@@ -1026,24 +750,16 @@ html {scrollbar-width: none;} /* Firefox */
       justify-content: center;
       padding: 20px;
     }
-
-    .swiper-fullscreen img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+    .swiper-fullscreen img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 
     .swiper-fullscreen-close {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 20px; right: 20px;
       z-index: 10000;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 6px;
       font-size: 28px;
       cursor: pointer;
@@ -1053,54 +769,29 @@ html {scrollbar-width: none;} /* Firefox */
       justify-content: center;
       font-weight: 300;
     }
-
-    .swiper-fullscreen-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+    .swiper-fullscreen-close:hover { background: rgba(255,255,255,0.3); }
 
     .action-modal .mySwiper {
-      margin-top: 10px;
+      margin-top: 20px;
       width: 100%;
-      height: 20vh;
-      max-height: 300px;
+      height: auto;
+      max-height: 200px;
       touch-action: manipulation;
       -webkit-user-select: none;
       user-select: none;
+      flex-shrink: 0;
     }
-
-    .action-modal .mySwiper .swiper-slide {
-      height: auto;
-      aspect-ratio: 16 / 9;
-    }
-
-    .action-modal .mySwiper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .action-modal .mySwiper .swiper-slide { height: auto; aspect-ratio: 4 / 3; }
+    .action-modal .mySwiper img { width: 100%; height: 100%; object-fit: cover; }
 
     @media (max-height: 600px) {
-      .action-modal .mySwiper2 {
-        max-height: 50vh;
-      }
-
-      .action-modal .mySwiper {
-        max-height: 80px;
-      }
+      .action-modal .mySwiper2 { max-height: 50vh; }
+      .action-modal .mySwiper { max-height: 80px; }
     }
-
     @media (max-height: 400px) {
-      .action-modal {
-        padding: 10px;
-      }
-
-      .action-modal .mySwiper2 {
-        max-height: 40vh;
-      }
-
-      .action-modal .mySwiper {
-        max-height: 60px;
-      }
+      .action-modal { padding: 10px; }
+      .action-modal .mySwiper2 { max-height: 40vh; }
+      .action-modal .mySwiper { max-height: 60px; }
     }
 
     body.lin-preloading { overflow: hidden; }
@@ -1118,7 +809,7 @@ html {scrollbar-width: none;} /* Firefox */
       background: var(--lin-pre-bg);
       display: grid;
       place-items: center;
-      transition: opacity var(--lin-pre-fade) cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear var(--lin-pre-fade);
+      transition: opacity var(--lin-pre-fade) cubic-bezier(0.16,1,0.3,1), visibility 0s linear var(--lin-pre-fade);
     }
 
     #lin-preloader .lin-pre-mark {
@@ -1127,8 +818,8 @@ html {scrollbar-width: none;} /* Firefox */
       color: var(--lin-pre-fg);
       transform-origin: 50% 50%;
       will-change: transform, opacity, clip-path;
-      animation: lin-pre-wipe var(--lin-pre-loop) cubic-bezier(0.76, 0, 0.24, 1) infinite;
-      transition: transform calc(var(--lin-pre-fade) + 200ms) cubic-bezier(0.6, 0, 0.2, 1), opacity var(--lin-pre-fade) ease 80ms;
+      animation: lin-pre-wipe var(--lin-pre-loop) cubic-bezier(0.76,0,0.24,1) infinite;
+      transition: transform calc(var(--lin-pre-fade) + 200ms) cubic-bezier(0.6,0,0.2,1), opacity var(--lin-pre-fade) ease 80ms;
     }
 
     #lin-preloader .lin-pre-mark > path { fill: currentColor; }
@@ -1154,13 +845,8 @@ html {scrollbar-width: none;} /* Firefox */
     }
 
     @media (prefers-reduced-motion: reduce) {
-      #lin-preloader .lin-pre-mark {
-        animation: none;
-        clip-path: inset(0 0 0 0);
-      }
-      #lin-preloader.lin-pre-done .lin-pre-mark {
-        transform: none;
-      }
+      #lin-preloader .lin-pre-mark { animation: none; clip-path: inset(0 0 0 0); }
+      #lin-preloader.lin-pre-done .lin-pre-mark { transform: none; }
     }
   </style>
 </head>
@@ -1170,6 +856,7 @@ html {scrollbar-width: none;} /* Firefox */
       <path d="M0 73.5 68.7 125.1 92.7 107.3 139.9 142.7 232.9 73.5 Z M0 69.3 68.7 17.7 92.7 35.5 139.9 0 232.9 69.3 Z"></path>
     </svg>
   </div>
+
   <main class="page">
     <section class="gallery" aria-label="El Salvador photostory chapter gallery">
       <aside class="thumbs" id="thumbs" aria-label="Looping chapter image carousel">
@@ -1206,10 +893,8 @@ html {scrollbar-width: none;} /* Firefox */
             </a>
           </div>
           <div class="eyebrow">Central America Photo Story</div>
-          <h1 class="hero-title">Heat, Work, & Worker Protection in Central America
-</h1>
-          <p class="hero-subtitle">A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation.
-</p>
+          <h1 class="hero-title">Heat, Work, & Worker Protection in Central America</h1>
+          <p class="hero-subtitle">A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation.</p>
           <p class="hero-credit">Photographs by <a href="https://www.edkashi.com/heat-watch/0dn1rhxmy8zdzj7f3kh643smpxehi1" target="_blank" rel="noopener noreferrer">Ed Kashi / VII / Redux</a>.</p>
         </header>
 
@@ -1236,18 +921,194 @@ html {scrollbar-width: none;} /* Firefox */
     <button class="thumbs-action-btn" id="thumbsActionBtn" type="button">View all the pictures</button>
   </main>
 
+  <!-- ═══════════════════════════════════════════════════════
+       CHAPTER FIGURE TEMPLATES — single source of truth.
+       To move an image: cut/paste the <figure> to another chapter block.
+       To edit a caption: edit the <figcaption> or .photo-caption text.
+       data-chapter must match the chapter-trigger data-chapter value.
+       ═══════════════════════════════════════════════════════ -->
+  <template id="chapter-figures">
+
+    <!-- ── CHAPTER 1: Shupá, Guatemala ── -->
+    <figure class="support-card" data-chapter="shupa-guatemala">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_00309.jpg"
+             alt="Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupá, Guatemala on February 28, 2026. This area is the heart of the dry corridor.</div>
+      </div>
+      <figcaption></figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="shupa-guatemala">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_00574.jpg"
+             alt="Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupá, Guatemala on February 28, 2026. This area is the heart of the dry corridor.</div>
+      </div>
+      <figcaption></figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="shupa-guatemala">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_01383.jpg"
+             alt="Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupá, Guatemala on February 28, 2026. Working with Nicholas Gutierrez.</div>
+      </div>
+      <figcaption></figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="shupa-guatemala">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_01494S.jpg"
+             alt="Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Dimas and Erica Monroy, small coffee producers, working in Camotán, Guatemala on February 28, 2026.</div>
+      </div>
+      <figcaption>In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region's economy runs on human bodies doing hard physical work in rising heat.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="shupa-guatemala">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_04363.jpg"
+             alt="Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026"
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Views of a sugar cane field burning near Escuintla, Guatemala on March 4, 2026.</div>
+      </div>
+      <figcaption>Before the cutters enter a sugarcane field, it is burned. Fire strips the leaves and drives out snakes. Smoke fills the lowlands. The work begins.</figcaption>
+    </figure>
+
+    <!-- ── CHAPTER 2: 3,000 Swings a Day ── -->
+    <figure class="support-card" data-chapter="3000-swings-a-day">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_06421.jpg"
+             alt="Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.</div>
+      </div>
+      <figcaption>In El Salvador, work captain Santos Cano gathers his cutters in the dark and they board yellow buses for the ride to the fields outside Guazapa. Headlamps cut the road. By the time the sun is fully up, they are already working.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="3000-swings-a-day">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_06634S.jpg"
+             alt="Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.</div>
+      </div>
+      <figcaption>These men know their bodies are being pushed past safe limits. They understand the risks. But without adequate protections in place, even the most experienced worker cannot outwork extreme heat. The question is not whether the danger is real. The question is whether the protections will arrive in time.</figcaption>
+    </figure>
+
+    <!-- ── CHAPTER 3: Edvin, Julio, and "La Creatina" ── -->
+    <!-- <figure class="support-card" data-chapter="edvin-julio-and-la-creatina">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_02596.jpg"
+             alt="Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, at his home with family in Parcelamiento El Cajón, sector Agüero, Guatemala on March 2, 2026.</div>
+      </div>
+      <figcaption>Edvin Rafael Sarmiento is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since. Down the road, Julio Lopez, another former cutter, sits on his porch, too. The community calls the disease "La Creatina," after the creatinine test that measures kidney function. Julio knows his numbers.</figcaption>
+    </figure> -->
+
+    <figure class="support-card" data-chapter="edvin-julio-and-la-creatina">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_03025S.jpg"
+             alt="Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, &quot;La Creatina&quot;, in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parcelamiento El Cajón, sector Agüero, Guatemala on March 2, 2026.</div>
+      </div>
+      <figcaption>Doctors call it CKDnT: chronic kidney disease of non-traditional origin. Unlike typical kidney disease, it strikes young, previously healthy men doing heavy labor in extreme heat. Repeated dehydration and heat stress cause acute kidney injury. Over months and years, those injuries become permanent, scarring the kidneys to the point of total dysfunction. There is no cure for chronic kidney disease, and the only treatments — dialysis and transplant — are rarely available in the communities where cane is cut, not to mention painful and costly.
+
+The estimated global toll of chronic kidney disease from extreme heat exposure exceeds 26 million people, per the International Labour Organization (ILO). La Isla Network was founded to understand why this was happening and to stop it. Our organization's name honors a community in Nicaragua where so many men died of CKDnT that locals called it "La Isla de Viudas": the Island of Widows.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="edvin-julio-and-la-creatina">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_03364S.jpg"
+             alt="An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">An abandoned home amongst the sugar cane fields in Parcelamiento El Cajón, sector Agüero, Guatemala on March 2, 2026.</div>
+      </div>
+      <figcaption>Between the sugarcane fields, a house stands abandoned. The concrete walls are bare. Brush closes in, growing where a family used to live. When work destroys a primary earner's body, wages wane and families leave.</figcaption>
+    </figure>
+
+    <!-- ── CHAPTER 4: Cesar Was Twenty ── -->
+    <!-- <figure class="support-card" data-chapter="cesar-was-twenty">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_09808.jpg"
+             alt="Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, chronic kidney disease of non-traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Blanca Rosa, 35, with her husband Eugenio Anaya Portillo, 75, at their home in Cantón Colima, El Salvador on March 7, 2026. Her son Cesar Omar Flores Fuentes, 20, died of CKDnT three months prior.</div>
+      </div>
+      <figcaption>She sits on the porch of her home in El Cantón Colima, El Salvador. Her hands are folded in her lap. In the doorway, she stands with her husband, Eugenio Anaya Portillo, seventy-five. They hold each other.</figcaption>
+    </figure> -->
+
+    <figure class="support-card" data-chapter="cesar-was-twenty">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_09886.jpg"
+             alt="Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.</div>
+      </div>
+      <figcaption>In Jocote, María Catalina Artiga is seventy-two. Her husband died of CKDnT less than a year ago. She stands in her yard, hands on her hips, looking directly into the camera.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="cesar-was-twenty">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_09957S.jpg"
+             alt="Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.</div>
+      </div>
+      <figcaption>In another frame, she holds up a framed portrait of her husband, steady, at arm's length, so the camera can see his face.</figcaption>
+    </figure>
+
+    <!-- ── CHAPTER 5: Water on a Schedule ── -->
+    <figure class="support-card" data-chapter="water-on-a-schedule">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_06882.jpg"
+             alt="Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.</div>
+      </div>
+      <figcaption>A young cutter sits under a tarp canopy, head down, resting during the hottest hours. Nearby, two men fill orange water coolers from tank trucks parked beside the yellow buses. The infrastructure of protection is unglamorous: tarps, hoses, coolers, shade cloth. It costs very little. It changes everything.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="water-on-a-schedule">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_07167S.jpg"
+             alt="Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Sugar cane workers participating in La Isla Network's PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.</div>
+      </div>
+      <figcaption>This is not guesswork. In Nicaragua, at the Ingenio San Antonio sugar mill, these protocols reduced acute kidney injury by more than 94 percent. Productivity rose between 9 and 19 percent, even with the added breaks. The mill reached a 60 percent return on investment by year three. Protecting workers turned out to be the better business decision. The evidence has been clear for years.<br><br>With The Rockefeller Foundation, La Isla Network is expanding this model to thousands of workers and their family members in El Salvador, while a parallel study in Rio de Janeiro will measure heat strain among women working in the informal economy for the first time. La Isla Network's work is scaling because the solutions are proven: assess the risk, address the gaps, assist with implementation until the protections hold.</figcaption>
+    </figure>
+
+    <figure class="support-card" data-chapter="water-on-a-schedule">
+      <div class="support-img-wrap">
+        <img src="IMG/HEA26002_05663.jpg"
+             alt="Views of the port of Acajutla, El Salvador, where much of the country's sugar production is shipped from, on March 5, 2026."
+             loading="lazy" decoding="async">
+        <div class="photo-caption">Views of the port of Acajutla, El Salvador, where much of the country's sugar production is shipped from, on March 5, 2026.</div>
+      </div>
+      <figcaption>At the port of Acajutla, on El Salvador's Pacific coast, cargo ships wait at anchor. The sugar that begins with a machete in a burned field ends here, loaded into holds, bound for international markets. La Isla Network's monitoring data is designed to make the human cost of production visible to the companies, governments, and institutions with the power to act.</figcaption>
+    </figure>
+
+  </template>
+  <!-- ═══════════════════════════════════════════════════════ -->
+
   <div class="action-modal" id="actionModal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="actionModalTitle">
     <button class="action-modal-close" id="actionModalClose" type="button" aria-label="Close">×</button>
     <button class="swiper-expand-btn" id="swiperExpandBtn" type="button" aria-label="Expand image">Expand</button>
     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-      <div class="swiper-wrapper" id="swiperMainWrapper">
-      </div>
+      <div class="swiper-wrapper" id="swiperMainWrapper"></div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
     <div thumbsSlider="" class="swiper mySwiper" id="swiperThumbs">
-      <div class="swiper-wrapper" id="swiperThumbsWrapper">
-      </div>
+      <div class="swiper-wrapper" id="swiperThumbsWrapper"></div>
     </div>
   </div>
 
@@ -1279,7 +1140,7 @@ html {scrollbar-width: none;} /* Firefox */
         </div>
 
         <div class="overlay-footer-note">
-          <p>This chapter is part of a broader visual story on labor, heat exposure, and worker protection in El Salvador’s sugarcane sector. Photographs by Ed Kashi & Tom Laffay were developed in collaboration with La Isla Network and supported by the Rockefeller Foundation to document and advance practical solutions that protect workers and strengthen resilience under rising heat conditions.</p>
+          <p>This chapter is part of a broader visual story on labor, heat exposure, and worker protection in El Salvador's sugarcane sector. Photographs by Ed Kashi & Tom Laffay were developed in collaboration with La Isla Network and supported by the Rockefeller Foundation to document and advance practical solutions that protect workers and strengthen resilience under rising heat conditions.</p>
           <div class="overlay-footer-cta">
             <h4>Help scale worker protection</h4>
             <a class="btn-donate" href="https://laislanetwork.org/donate" target="_blank" rel="noopener">
@@ -1298,62 +1159,47 @@ html {scrollbar-width: none;} /* Firefox */
   <script>
     gsap.registerPlugin(Flip, CustomEase);
     CustomEase.create('overlay-ease', '0.625, 0.05, 0, 1');
-    gsap.defaults({
-      ease: 'overlay-ease',
-      duration: 0.725
-    });
+    gsap.defaults({ ease: 'overlay-ease', duration: 0.725 });
 
+    /* ─────────────────────────────────────────────────────────
+       CHAPTER DATA
+       Only JS-native content lives here: titles, hero image/alt,
+       paragraph copy, postscript copy, and the stats block flag.
+       Supporting images are defined as <figure> HTML in the
+       #chapter-figures <template> above — not here.
+    ───────────────────────────────────────────────────────── */
     const chapterData = {
       'shupa-guatemala': {
         title: 'Shupá, Guatemala',
-        heroAlt: 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
+        heroImage: 'IMG/HEA26002_04363.jpg',
+        heroAlt: 'Views of a sugar cane field burning near Escuintla, Guatemala on March 4, 2026',
         paragraphs: [
           'Gregorio Pérez García is sixty years old.',
-          'He has farmed the land around Shupá for most of his life. The mountains behind him are green. The soil is volcanic. The corridor that runs from southern Mexico through Guatemala, Honduras, and El Salvador is one of the most climate-punished agricultural regions in the Western Hemisphere. Temperatures have climbed steadily for two decades. Rainfall has grown erratic.',
-        
-        ],
-        supports: [
-          { image: 'IMG/HEA26002_00309.jpg', alt: 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.', text: '' },
-          { image: 'IMG/HEA26002_00574.jpg', alt: 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.', text: '' },
-          { image: 'IMG/HEA26002_01383.jpg', alt: 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.', text: '' },
-          { image: 'IMG/HEA26002_01494S.jpg', alt: 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.', text: 'In Camotán, Dimas and Erica Monroy spread coffee beans across drying racks in the sun. In the lowlands outside Escuintla, Nicholas Colo Quino, forty-nine, leads a crew harvesting papaya under open sky. Coffee, papaya, sugarcane: the region\'s economy runs on human bodies doing hard physical work in rising heat.' },
-          { image: 'IMG/HEA26002_04363.jpg', alt: 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026', text: 'Before the cutters enter a sugarcane field, it is burned. Fire strips the leaves and drives out snakes. Smoke fills the lowlands. The work begins.' }
+          'He has farmed the land around Shupá for most of his life. The mountains behind him are green. The soil is volcanic. The corridor that runs from southern Mexico through Guatemala, Honduras, and El Salvador is one of the most climate-punished agricultural regions in the Western Hemisphere. Temperatures have climbed steadily for two decades. Rainfall has grown erratic.'
         ]
       },
       '3000-swings-a-day': {
         title: '3,000 Swings a Day',
+        heroImage: 'IMG/HEA26002_06965.jpg',
         heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
         paragraphs: [
           'Qʼeqchiʼ men from Cobán — internal migrants who travel south each harvest season to cut cane for the Santa Ana Company — move through the burned fields outside Escuintla. A cane cutter swings a machete roughly 3,000 times per shift. By midmorning, air temperature can reach 100.4°F/38°C. But the heat a laboring body generates pushes core temperature higher still. A thermometer in shade reads one number. A sensor pressed against a cutter\'s skin reads another. The gap between the two is where risk lies: preventable heat-driven illness, injury, and death.'
-        ],
-        supports: [
-          { image: 'IMG/HEA26002_06421.jpg', alt: 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.', text: 'In El Salvador, work captain Santos Cano gathers his cutters in the dark and they board yellow buses for the ride to the fields outside Guazapa. Headlamps cut the road. By the time the sun is fully up, they are already working.' },
-          { image: 'IMG/HEA26002_06634S.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'These men know their bodies are being pushed past safe limits. They understand the risks. But without adequate protections in place, even the most experienced worker cannot outwork extreme heat. The question is not whether the danger is real. The question is whether the protections will arrive in time.' }
         ]
       },
       'edvin-julio-and-la-creatina': {
         title: 'Edvin, Julio, and "La Creatina"',
-        heroAlt: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+        heroImage: 'IMG/HEA26002_02596.jpg',
+        heroAlt: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parcelamiento El Cajón in sector Agüero, Guatemala on March 2, 2026.',
         paragraphs: [
-          'In Parcelamiento El Cajón, in sector Agüero, Guatemala, Edvin and his family sit in plastic chairs and recline on motorcycles on a concrete porch.',
-        
-        ],
-        supports: [
-          { image: 'IMG/HEA26002_02596.jpg', alt: 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Edvin Rafael Sarmiento is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since. Down the road, Julio Lopez, another former cutter, sits on his porch, too. The community calls the disease "La Creatina," after the creatinine test that measures kidney function. Julio knows his numbers.' },
-          { image: 'IMG/HEA26002_03025S.jpg', alt: 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Doctors call it CKDnT: chronic kidney disease of non-traditional origin. Unlike typical kidney disease, it strikes young, previously healthy men doing heavy labor in extreme heat. Repeated dehydration and heat stress cause acute kidney injury. Over months and years, those injuries become permanent, scarring the kidneys to the point of total dysfunction. There is no cure for chronic kidney disease, and the only treatments — dialysis and transplant — are rarely available in the communities where cane is cut, not to mention painful and costly.\n\nThe estimated global toll of chronic kidney disease from extreme heat exposure exceeds 26 million people, per the International Labour Organization (ILO). La Isla Network was founded to understand why this was happening and to stop it. Our organization\'s name honors a community in Nicaragua where so many men died of CKDnT that locals called it "La Isla de Viudas": the Island of Widows.' },
-          { image: 'IMG/HEA26002_03364S.jpg', alt: 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.', text: 'Between the sugarcane fields, a house stands abandoned. The concrete walls are bare. Brush closes in, growing where a family used to live. When work destroys a primary earner\'s body, wages wane and families leave.' }
+          'In Parcelamiento El Cajón, in sector Agüero, Guatemala, Edvin and his family sit in plastic chairs and recline on motorcycles on a concrete porch.'
         ]
       },
       'cesar-was-twenty': {
         title: 'Cesar Was Twenty',
-        heroAlt: 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, chronic kidney disease of non-traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+        heroImage: 'IMG/HEA26002_09676.jpg',
+        heroAlt: 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to CKDnT, chronic kidney disease of non-traditional causes, three months ago, photographed at her home in Cantón Colima, El Salvador on March 7, 2026.',
         paragraphs: [
           'Blanca Rosa is thirty-five. Three months before this photograph was taken, her son, Cesar Omar Flores Fuentes, died of CKDnT. He was twenty years old.'
-        ],
-        supports: [
-          { image: 'IMG/HEA26002_09808.jpg', alt: 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.', text: 'She sits on the porch of her home in El Cantón Colima, El Salvador. Her hands are folded in her lap. In the doorway, she stands with her husband, Eugenio Anaya Portillo, seventy-five. They hold each other.' },
-          { image: 'IMG/HEA26002_09886.jpg', alt: 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.', text: 'In Jocote, María Catalina Artiga is seventy-two. Her husband died of CKDnT less than a year ago. She stands in her yard, hands on her hips, looking directly into the camera.' },
-          { image: 'IMG/HEA26002_09957S.jpg', alt: 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.', text: 'In another frame, she holds up a framed portrait of her husband, steady, at arm\'s length, so the camera can see his face.' }
         ],
         postscript: [
           'Nobody should have to risk their life to earn a living. The protocols to prevent these deaths exist. The economics favor them. The science has been settled for years. What remains is the decision to act, by companies, by governments, by the institutions that set the terms under which people work.',
@@ -1362,264 +1208,293 @@ html {scrollbar-width: none;} /* Firefox */
       },
       'water-on-a-schedule': {
         title: 'Water on a Schedule',
-        heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+        heroImage: 'IMG/HEA26002_08382S.jpg',
+        heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
         paragraphs: [
           'In Guazapa, El Salvador, La Isla Network\'s PREP program structures the workday around what the science demands: scheduled rest in shade, enforced hydration, real-time physiological monitoring. Workers hydrate on a schedule, because long before the time a person feels thirsty in extreme heat, kidney stress has already begun.'
         ],
-        supports: [
-          { image: 'IMG/HEA26002_06882.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'A young cutter sits under a tarp canopy, head down, resting during the hottest hours. Nearby, two men fill orange water coolers from tank trucks parked beside the yellow buses. The infrastructure of protection is unglamorous: tarps, hoses, coolers, shade cloth. It costs very little. It changes everything.' },
-          { image: 'IMG/HEA26002_07167S.jpg', alt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.', text: 'This is not guesswork. In Nicaragua, at the Ingenio San Antonio sugar mill, these protocols reduced acute kidney injury by more than 94 percent. Productivity rose between 9 and 19 percent, even with the added breaks. The mill reached a 60 percent return on investment by year three. Protecting workers turned out to be the better business decision. The evidence has been clear for years.<br><br>With The Rockefeller Foundation, La Isla Network is expanding this model to thousands of workers and their family members in El Salvador, while a parallel study in Rio de Janeiro will measure heat strain among women working in the informal economy for the first time. La Isla Network\'s work is scaling because the solutions are proven: assess the risk, address the gaps, assist with implementation until the protections hold.' },
-          { image: 'IMG/HEA26002_05663.jpg', alt: 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.', text: 'At the port of Acajutla, on El Salvador\'s Pacific coast, cargo ships wait at anchor. The sugar that begins with a machete in a burned field ends here, loaded into holds, bound for international markets. La Isla Network\'s monitoring data is designed to make the human cost of production visible to the companies, governments, and institutions with the power to act.' }
-        ]
+        hasStats: true
       }
     };
 
-    const localImageBase = 'IMG';
-    const localImageFiles = [
-      'HEA26002_00309.jpg', 'HEA26002_00525.jpg', 'HEA26002_00574.jpg', 'HEA26002_01383.jpg',
-      'HEA26002_02298.jpg', 'HEA26002_02596.jpg', 'HEA26002_02691.jpg', 'HEA26002_02985.jpg', 'HEA26002_03486.jpg',
-      'HEA26002_03904.jpg', 'HEA26002_04363.jpg', 'HEA26002_04407.jpg', 'HEA26002_04871.jpg', 'HEA26002_04923.jpg',
-      'HEA26002_04930.jpg', 'HEA26002_04953.jpg', 'HEA26002_04954S.jpg', 'HEA26002_05015S.jpg', 'HEA26002_05194.jpg',
-      'HEA26002_05227S.jpg', 'HEA26002_05549.jpg', 'HEA26002_05604.jpg', 'HEA26002_05663.jpg',
-      'HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05837.jpg', 'HEA26002_05887S.jpg', 'HEA26002_05927S.jpg',
-      'HEA26002_06009.jpg', 'HEA26002_06118.jpg', 'HEA26002_06127.jpg', 'HEA26002_06384.jpg', 'HEA26002_06421.jpg',
-      'HEA26002_06447.jpg', 'HEA26002_06669.jpg', 'HEA26002_06718.jpg', 'HEA26002_06882.jpg', 'HEA26002_06935.jpg',
-      'HEA26002_06965.jpg', 'HEA26002_06972.jpg', 'HEA26002_07030.jpg', 'HEA26002_07454.jpg', 'HEA26002_07541.jpg',
-      'HEA26002_07815.jpg', 'HEA26002_07930.jpg', 'HEA26002_07986.jpg', 'HEA26002_08051.jpg', 'HEA26002_08382S.jpg',
-      'HEA26002_08612.jpg', 'HEA26002_08621S.jpg', 'HEA26002_09136.jpg', 'HEA26002_09430.jpg', 'HEA26002_09461.jpg',
-      'HEA26002_09466.jpg', 'HEA26002_09565.jpg', 'HEA26002_09676.jpg', 'HEA26002_09687.jpg', 'HEA26002_09687S.jpg',
-      'HEA26002_09808.jpg', 'HEA26002_09812.jpg', 'HEA26002_09886.jpg', 'HEA26002_09908.jpg', 'HEA26002_09937.jpg',
-      'HEA26002_09942S.jpg', 'HEA26002_09969S.jpg'
+    /* ─────────────────────────────────────────────────────────
+       RAIL — filler images for the decorative carousel.
+       These are images NOT used as chapter heroes.
+       Add/remove filenames freely — no caption dependency.
+    ───────────────────────────────────────────────────────── */
+    const railFillers = [
+      'HEA26002_00525.jpg', 'HEA26002_02298.jpg', 'HEA26002_02691.jpg',
+      'HEA26002_02985.jpg', 'HEA26002_03486.jpg', 'HEA26002_03904.jpg',
+      'HEA26002_04407.jpg', 'HEA26002_04871.jpg', 'HEA26002_04923.jpg',
+      'HEA26002_04930.jpg', 'HEA26002_04953.jpg', 'HEA26002_04954S.jpg',
+      'HEA26002_05015S.jpg', 'HEA26002_05194.jpg', 'HEA26002_05227S.jpg',
+      'HEA26002_05549.jpg', 'HEA26002_05604.jpg', 'HEA26002_05773.jpg',
+      'HEA26002_05827.jpg', 'HEA26002_05837.jpg', 'HEA26002_05887S.jpg',
+      'HEA26002_05927S.jpg', 'HEA26002_06009.jpg', 'HEA26002_06118.jpg',
+      'HEA26002_06127.jpg', 'HEA26002_06384.jpg', 'HEA26002_06447.jpg',
+      'HEA26002_06669.jpg', 'HEA26002_06718.jpg', 'HEA26002_06935.jpg',
+      'HEA26002_06972.jpg', 'HEA26002_07030.jpg', 'HEA26002_07454.jpg',
+      'HEA26002_07541.jpg', 'HEA26002_07815.jpg', 'HEA26002_07930.jpg',
+      'HEA26002_07986.jpg', 'HEA26002_08051.jpg', 'HEA26002_08612.jpg',
+      'HEA26002_08621S.jpg', 'HEA26002_09136.jpg', 'HEA26002_09430.jpg',
+      'HEA26002_09461.jpg', 'HEA26002_09466.jpg', 'HEA26002_09565.jpg',
+      'HEA26002_09687.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09812.jpg',
+      'HEA26002_09908.jpg', 'HEA26002_09937.jpg', 'HEA26002_09942S.jpg',
+      'HEA26002_09969S.jpg'
     ];
-    const chapterHeroFiles = {
-      'shupa-guatemala': 'HEA26002_04363.jpg',
-      '3000-swings-a-day': 'HEA26002_06965.jpg',
-      'edvin-julio-and-la-creatina': 'HEA26002_02596.jpg',
-      'cesar-was-twenty': 'HEA26002_09676.jpg',
-      'water-on-a-schedule': 'HEA26002_08382S.jpg'
-    };
+
+    const IMG = 'IMG';
     const railShapePattern = ['tall', 'medium', 'tall', 'wide', 'tall', 'medium'];
-    const heroFileSet = new Set(Object.values(chapterHeroFiles));
 
-    Object.entries(chapterHeroFiles).forEach(([chapterKey, fileName]) => {
-      chapterData[chapterKey].heroImage = `${localImageBase}/${fileName}`;
-    });
-
-    const overlay = document.getElementById('overlay');
-    const overlayNav = document.getElementById('overlayNav');
-    const overlayBack = document.getElementById('overlayBack');
-    const overlayExplore = document.getElementById('overlayExplore');
+    /* ── DOM refs ── */
+    const overlay          = document.getElementById('overlay');
+    const overlayNav       = document.getElementById('overlayNav');
+    const overlayBack      = document.getElementById('overlayBack');
+    const overlayExplore   = document.getElementById('overlayExplore');
     const overlayTitleSlot = document.getElementById('overlayTitleSlot');
     const overlayImageSlot = document.getElementById('overlayImageSlot');
-    const overlayBody = document.getElementById('overlayBody');
-    const overlayKicker = document.getElementById('overlayKicker');
-    const overlayCopy = document.getElementById('overlayCopy');
-    const overlaySupporting = document.getElementById('overlaySupporting');
-    const railMainTrack = document.getElementById('railMainTrack');
-    const thumbsActionBtn = document.getElementById('thumbsActionBtn');
-    const actionModal = document.getElementById('actionModal');
+    const overlayBody      = document.getElementById('overlayBody');
+    const overlayKicker    = document.getElementById('overlayKicker');
+    const overlayCopy      = document.getElementById('overlayCopy');
+    const overlaySupporting= document.getElementById('overlaySupporting');
+    const railMainTrack    = document.getElementById('railMainTrack');
+    const thumbsActionBtn  = document.getElementById('thumbsActionBtn');
+    const actionModal      = document.getElementById('actionModal');
     const actionModalClose = document.getElementById('actionModalClose');
-    const body = document.body;
-    const triggers = [...document.querySelectorAll('.chapter-trigger')];
-    const thumbs = [...document.querySelectorAll('.thumb-origin-sources .thumb')];
-    const labels = triggers.map((trigger) => trigger.querySelector('.chapter-label'));
-    const chapterOrder = triggers.map((trigger) => trigger.dataset.chapter);
-    const navItems = [...document.querySelectorAll('.overlay-nav-item')];
+    const body             = document.body;
+
+    const triggers     = [...document.querySelectorAll('.chapter-trigger')];
+    const thumbEls     = [...document.querySelectorAll('.thumb-origin-sources .thumb')];
+    const labels       = triggers.map(t => t.querySelector('.chapter-label'));
+    const chapterOrder = triggers.map(t => t.dataset.chapter);
+    const navItems     = [...document.querySelectorAll('.overlay-nav-item')];
     const chapterOrigins = new Map();
-    const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+    const romanNumerals  = ['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+
     const railState = {
-      container: document.querySelector('[data-rail="main"]'),
-      track: railMainTrack,
-      setHeight: 0,
-      setWidth: 0,
+      container:   document.querySelector('[data-rail="main"]'),
+      track:       railMainTrack,
+      setHeight:   0,
+      setWidth:    0,
       startOffset: 0,
-      duration: 250,
-      tween: null
+      duration:    250,
+      tween:       null
     };
 
-    let railCards = [];
-    let activeChapter = null;
-    let activeLabel = null;
-    let activeImage = null;
-    let isTransitioning = false;
+    let railCards           = [];
+    let activeChapter       = null;
+    let activeLabel         = null;
+    let activeImage         = null;
+    let isTransitioning     = false;
     let focusedCarouselChapter = null;
-    let carouselSnapTween = null;
-    let holdCarousel = false;
-    let resizeTimer = null;
+    let carouselSnapTween   = null;
+    let holdCarousel        = false;
+    let resizeTimer         = null;
 
-    function shuffleArray(items) {
-      const copy = [...items];
-      for (let index = copy.length - 1; index > 0; index -= 1) {
-        const swapIndex = Math.floor(Math.random() * (index + 1));
-        [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+    /* ─────────────────────────────────────────────────────────
+       FIGURE STORE — read <template> once, index by chapter
+    ───────────────────────────────────────────────────────── */
+    const figuresByChapter = {};
+    const tmpl = document.getElementById('chapter-figures');
+    const tmplFigures = [...tmpl.content.querySelectorAll('figure.support-card')];
+    tmplFigures.forEach(fig => {
+      const ch = fig.dataset.chapter;
+      if (!figuresByChapter[ch]) figuresByChapter[ch] = [];
+      figuresByChapter[ch].push(fig);
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       SWIPER "VIEW ALL" — build slides from figure elements.
+       Caption = .photo-caption text inside each figure.
+       Filler images (rail only) are also included via railFillers.
+    ───────────────────────────────────────────────────────── */
+    function buildSwiperSlides() {
+      const mainWrapper  = document.getElementById('swiperMainWrapper');
+      const thumbWrapper = document.getElementById('swiperThumbsWrapper');
+
+      // Collect all figures from every chapter in order
+      const allFigures = chapterOrder.flatMap(ch => figuresByChapter[ch] || []);
+
+      // Also add hero images (one per chapter, not in figures)
+      const heroSlides = chapterOrder.map(ch => ({
+        src: chapterData[ch].heroImage,
+        caption: chapterData[ch].heroAlt
+      }));
+
+      // Build: heroes first, then supporting figures
+      const slides = [
+        ...heroSlides,
+        ...allFigures.map(fig => ({
+          src: fig.querySelector('img').src || fig.querySelector('img').getAttribute('src'),
+          // src attr may be relative — resolve from template
+          srcAttr: fig.querySelector('img').getAttribute('src'),
+          caption: fig.querySelector('.photo-caption')?.textContent?.trim() || fig.querySelector('img').alt
+        }))
+      ];
+
+      slides.forEach(slide => {
+        const src = slide.src || slide.srcAttr;
+
+        const mainSlide = document.createElement('div');
+        mainSlide.className = 'swiper-slide';
+        mainSlide.style.position = 'relative';
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = slide.caption || '';
+        mainSlide.appendChild(img);
+
+        if (slide.caption) {
+          const cap = document.createElement('div');
+          cap.className = 'swiper-slide-caption';
+          cap.textContent = slide.caption;
+          mainSlide.appendChild(cap);
+        }
+
+        mainWrapper.appendChild(mainSlide);
+
+        // Thumb
+        const thumbSlide = document.createElement('div');
+        thumbSlide.className = 'swiper-slide';
+        const thumbImg = document.createElement('img');
+        thumbImg.src = src;
+        thumbImg.alt = '';
+        thumbSlide.appendChild(thumbImg);
+        thumbWrapper.appendChild(thumbSlide);
+      });
+    }
+
+    buildSwiperSlides();
+
+    /* ─────────────────────────────────────────────────────────
+       RAIL CAROUSEL (unchanged logic, decorative only)
+    ───────────────────────────────────────────────────────── */
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
       }
       return copy;
     }
 
-    function escapeHtmlAttr(value) {
-      return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-    }
-
-    function buildImagePath(fileName) {
-      return `${localImageBase}/${fileName}`;
+    function escapeAttr(v) {
+      return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     }
 
     function buildRailItems(chapterKeys, fillerFiles) {
       const items = [];
-      const segmentSize = Math.max(4, Math.ceil(fillerFiles.length / (chapterKeys.length + 1)));
+      const seg = Math.max(4, Math.ceil(fillerFiles.length / (chapterKeys.length + 1)));
       let cursor = 0;
 
-      items.push(...fillerFiles.slice(cursor, cursor + segmentSize).map((fileName) => ({ fileName })));
-      cursor += segmentSize;
+      items.push(...fillerFiles.slice(cursor, cursor + seg).map(f => ({ fileName: f })));
+      cursor += seg;
 
-      chapterKeys.forEach((chapterKey) => {
-        items.push({
-          fileName: chapterHeroFiles[chapterKey],
-          chapterKey,
-          alt: chapterData[chapterKey].heroAlt
-        });
-        items.push(...fillerFiles.slice(cursor, cursor + segmentSize).map((fileName) => ({ fileName })));
-        cursor += segmentSize;
+      chapterKeys.forEach(ch => {
+        const heroFile = chapterData[ch].heroImage.replace('IMG/', '');
+        items.push({ fileName: heroFile, chapterKey: ch, alt: chapterData[ch].heroAlt });
+        items.push(...fillerFiles.slice(cursor, cursor + seg).map(f => ({ fileName: f })));
+        cursor += seg;
       });
 
       if (cursor < fillerFiles.length) {
-        items.push(...fillerFiles.slice(cursor).map((fileName) => ({ fileName })));
+        items.push(...fillerFiles.slice(cursor).map(f => ({ fileName: f })));
       }
-
       return items;
     }
 
     function renderRail(track, items) {
-      const duplicatedItems = [...items, ...items];
-      track.innerHTML = duplicatedItems.map((item, index) => {
-        const shape = railShapePattern[index % railShapePattern.length];
-        const imageSrc = buildImagePath(item.fileName);
-        const imageAlt = escapeHtmlAttr(item.alt || item.fileName.replace(/\.[^.]+$/, '').replace(/_/g, ' '));
-        const chapterAttrs = item.chapterKey
-          ? ` data-chapter="${item.chapterKey}" data-hero-for="${item.chapterKey}" role="button" tabindex="0" aria-label="${escapeHtmlAttr(chapterData[item.chapterKey].title)}"`
+      const dup = [...items, ...items];
+      track.innerHTML = dup.map((item, i) => {
+        const shape   = railShapePattern[i % railShapePattern.length];
+        const src     = `${IMG}/${item.fileName}`;
+        const alt     = escapeAttr(item.alt || item.fileName.replace(/\.[^.]+$/,'').replace(/_/g,' '));
+        const chAttrs = item.chapterKey
+          ? ` data-chapter="${item.chapterKey}" data-hero-for="${item.chapterKey}" role="button" tabindex="0" aria-label="${escapeAttr(chapterData[item.chapterKey].title)}"`
           : '';
-
-        return `
-          <article class="rail-card is-${shape}"${chapterAttrs}>
-            <img src="${imageSrc}" alt="${imageAlt}" loading="lazy" decoding="async">
-          </article>
-        `;
+        return `<article class="rail-card is-${shape}"${chAttrs}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"></article>`;
       }).join('');
     }
 
     function normalizeRail(value, size, startOffset) {
       if (!size) return 0;
-      let normalized = value;
-      while (normalized > startOffset) normalized -= size;
-      while (normalized <= startOffset - size) normalized += size;
-      return normalized;
+      let n = value;
+      while (n > startOffset) n -= size;
+      while (n <= startOffset - size) n += size;
+      return n;
     }
 
     function startRailLoop() {
       const isMobile = window.innerWidth <= 680;
       const size = isMobile ? railState.setWidth : railState.setHeight;
       if (!size) return;
-
       railState.tween?.kill();
-
       const axis = isMobile ? 'x' : 'y';
-      const currentVal = normalizeRail(Number(gsap.getProperty(railState.track, axis)) || railState.startOffset, size, railState.startOffset);
-      
-      gsap.set(railState.track, { [axis]: currentVal });
-
+      const cur = normalizeRail(Number(gsap.getProperty(railState.track, axis)) || railState.startOffset, size, railState.startOffset);
+      gsap.set(railState.track, { [axis]: cur });
       railState.tween = gsap.to(railState.track, {
         [axis]: `-=${size}`,
         duration: railState.duration,
         ease: 'none',
         repeat: -1,
-        modifiers: {
-          [axis]: (rawValue) => `${normalizeRail(parseFloat(rawValue), size, railState.startOffset)}px`
-        }
+        modifiers: { [axis]: raw => `${normalizeRail(parseFloat(raw), size, railState.startOffset)}px` }
       });
     }
 
-    function pauseRailLoops() {
-      railState.tween?.pause();
-    }
-
-    function resumeRailLoops() {
-      startRailLoop();
-    }
+    function pauseRailLoops() { railState.tween?.pause(); }
+    function resumeRailLoops() { startRailLoop(); }
 
     function refreshCarouselLayout() {
       const isMobile = window.innerWidth <= 680;
-
       if (isMobile) {
         railState.tween?.kill();
-        // Clear transformations to get raw measurements
         gsap.set(railMainTrack, { clearProps: 'all' });
         gsap.set('.rail-card', { clearProps: 'all' });
-        
-        railState.setWidth = railState.track.scrollWidth / 2;
+        railState.setWidth  = railState.track.scrollWidth / 2;
         railState.setHeight = 0;
         railState.startOffset = 0;
-        
         gsap.set(railState.track, { x: 0, y: 0 });
       } else {
-        // Re-apply transformations for desktop
         gsap.set('.rail-card', {
-          rotationX: 10,
-          rotationY: -13,
-          skewX: -6,
-          skewY: 6,
-          scaleX: 1,
-          scaleY: 1,
-          z: 84,
+          rotationX: 10, rotationY: -13, skewX: -6, skewY: 6,
+          scaleX: 1, scaleY: 1, z: 84,
           transformPerspective: 1200,
           transformOrigin: 'center center',
           force3D: true
         });
-
-        railState.setHeight = railState.track.scrollHeight / 2;
-        railState.setWidth = 0;
+        railState.setHeight   = railState.track.scrollHeight / 2;
+        railState.setWidth    = 0;
         railState.startOffset = Math.min(railState.container.clientHeight * 0.3, railState.setHeight * 0.42);
         gsap.set(railState.track, { x: 0, y: railState.startOffset });
       }
-
       resumeRailLoops();
     }
 
     function getNearestHeroCard(chapterKey) {
       const candidates = [...railState.track.querySelectorAll(`[data-hero-for="${chapterKey}"]`)];
       if (!candidates.length) return null;
-
-      const railRect = railState.container.getBoundingClientRect();
-      const railCenter = railRect.top + (railRect.height / 2);
-      let nearestCard = candidates[0];
-      let nearestDelta = Number.POSITIVE_INFINITY;
-
-      candidates.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const delta = (rect.top + (rect.height / 2)) - railCenter;
-        if (Math.abs(delta) < Math.abs(nearestDelta)) {
-          nearestCard = card;
-          nearestDelta = delta;
-        }
+      const railRect   = railState.container.getBoundingClientRect();
+      const railCenter = railRect.top + railRect.height / 2;
+      let nearest = candidates[0], nearestDelta = Infinity;
+      candidates.forEach(card => {
+        const rect  = card.getBoundingClientRect();
+        const delta = (rect.top + rect.height / 2) - railCenter;
+        if (Math.abs(delta) < Math.abs(nearestDelta)) { nearest = card; nearestDelta = delta; }
       });
-
-      return { nearestCard, nearestDelta };
+      return { nearestCard: nearest, nearestDelta };
     }
 
     function focusCarouselOnChapter(chapterKey, options = {}) {
       if (activeChapter || isTransitioning || window.innerWidth <= 680) return;
-
       const nearest = getNearestHeroCard(chapterKey);
       if (!nearest) return;
-
       const { nearestDelta } = nearest;
       const currentY = Number(gsap.getProperty(railState.track, 'y')) || railState.startOffset;
-      const targetY = currentY - nearestDelta;
-
+      const targetY  = currentY - nearestDelta;
       focusedCarouselChapter = chapterKey;
       holdCarousel = Boolean(options.hold);
       pauseRailLoops();
       carouselSnapTween?.kill();
-
       carouselSnapTween = gsap.to(railState.track, {
         y: targetY,
         duration: options.immediate ? 0.2 : 0.38,
@@ -1627,23 +1502,19 @@ html {scrollbar-width: none;} /* Firefox */
         overwrite: true,
         onComplete: () => {
           gsap.set(railState.track, { y: normalizeRail(targetY, railState.setHeight, railState.startOffset) });
-          if (!holdCarousel) {
-            resumeRailLoops();
-          }
+          if (!holdCarousel) resumeRailLoops();
         }
       });
     }
 
     function setHoverState(chapterKey) {
       if (activeChapter || isTransitioning) return;
-
-      triggers.forEach((element) => {
-        const match = element.dataset.chapter === chapterKey;
-        element.classList.toggle('is-active', match);
-        element.classList.toggle('is-dim', chapterKey && !match);
+      triggers.forEach(el => {
+        const match = el.dataset.chapter === chapterKey;
+        el.classList.toggle('is-active', match);
+        el.classList.toggle('is-dim', chapterKey && !match);
       });
-
-      railCards.forEach((card) => {
+      railCards.forEach(card => {
         const match = card.dataset.chapter === chapterKey;
         card.classList.toggle('is-active', match);
         card.classList.toggle('is-dim', chapterKey && !match);
@@ -1660,109 +1531,90 @@ html {scrollbar-width: none;} /* Firefox */
     }
 
     function resetInteractiveState() {
-      triggers.forEach((element) => element.classList.remove('is-active', 'is-dim'));
-      railCards.forEach((card) => card.classList.remove('is-active', 'is-dim'));
+      triggers.forEach(el => el.classList.remove('is-active','is-dim'));
+      railCards.forEach(card => card.classList.remove('is-active','is-dim'));
     }
 
+    /* ─────────────────────────────────────────────────────────
+       RENDER OVERLAY COPY — reads figures from figuresByChapter
+    ───────────────────────────────────────────────────────── */
     function renderOverlayCopy(chapterKey) {
-      const chapter = chapterData[chapterKey];
+      const chapter       = chapterData[chapterKey];
       const chapterNumber = chapterOrder.indexOf(chapterKey) + 1;
 
       if (chapterNumber > 0) {
         overlayKicker.textContent = `CHAPTER ${romanNumerals[chapterNumber - 1] || chapterNumber}`;
       }
 
-      const statsBlock = chapterKey === 'water-on-a-schedule' ? `
+      const statsBlock = chapter.hasStats ? `
         <div class="lin_results_block">
           <div class="lin_results_heading">Our Results</div>
           <div class="lin_results_sub">Proven results. Real impact.</div>
           <div class="lin_results_stats">
             <div class="lin_results_stat" data-rval="94">
-              <div class="lin_results_num">
-                <span class="lin_results_val">0</span>
-                <span class="lin_results_sfx">%</span>
-              </div>
+              <div class="lin_results_num"><span class="lin_results_val">0</span><span class="lin_results_sfx">%</span></div>
               <div class="lin_results_label">Reduction in heat-related hospitalizations</div>
             </div>
             <div class="lin_results_stat" data-rval="20">
-              <div class="lin_results_num">
-                <span class="lin_results_pfx">+</span>
-                <span class="lin_results_val">0</span>
-                <span class="lin_results_sfx">%</span>
-              </div>
+              <div class="lin_results_num"><span class="lin_results_pfx">+</span><span class="lin_results_val">0</span><span class="lin_results_sfx">%</span></div>
               <div class="lin_results_label">Increase in worker productivity (up to)</div>
             </div>
             <div class="lin_results_stat" data-rval="60">
-              <div class="lin_results_num">
-                <span class="lin_results_val">0</span>
-                <span class="lin_results_sfx">%</span>
-              </div>
+              <div class="lin_results_num"><span class="lin_results_val">0</span><span class="lin_results_sfx">%</span></div>
               <div class="lin_results_label">Positive Return on Investment generated</div>
             </div>
           </div>
         </div>` : '';
 
-      overlayCopy.innerHTML = chapter.paragraphs
-        .map((paragraph, index) => {
-          const isLead = index === 0 && !['3000-swings-a-day', 'edvin-julio-and-la-creatina'].includes(chapterKey);
-          const paragraphMarkup = `<p class="${isLead ? 'lead' : ''}">${paragraph}</p>`;
-          return (chapterKey === 'water-on-a-schedule' && index === 1) ? paragraphMarkup + statsBlock : paragraphMarkup;
-        })
-        .join('');
+      overlayCopy.innerHTML = chapter.paragraphs.map((p, i) => {
+        const isLead = i === 0 && !['3000-swings-a-day','edvin-julio-and-la-creatina'].includes(chapterKey);
+        const markup = `<p class="${isLead ? 'lead' : ''}">${p}</p>`;
+        return (chapter.hasStats && i === chapter.paragraphs.length - 1) ? markup + statsBlock : markup;
+      }).join('');
 
-      overlaySupporting.innerHTML = chapter.supports
-        .map((item) => `
-          <figure class="support-card">
-            <div style="position: relative; display: block; overflow: hidden; border-radius: 12px;">
-              <img src="${item.image}" alt="${item.alt}">
-              <div class="overlay-img-caption">${item.alt}</div>
-            </div>
-            <figcaption>${item.text}</figcaption>
-          </figure>
-        `)
-        .join('');
+      // Clone figures from template store — do not move originals
+      overlaySupporting.innerHTML = '';
+      const figs = figuresByChapter[chapterKey] || [];
+      figs.forEach(fig => {
+        overlaySupporting.appendChild(fig.cloneNode(true));
+      });
 
       if (chapter.postscript?.length) {
-        overlaySupporting.innerHTML += `
-          <div class="chapter-copy chapter-postscript">
-            ${chapter.postscript.map((paragraph) => `<p>${paragraph}</p>`).join('')}
-          </div>
-        `;
+        const post = document.createElement('div');
+        post.className = 'chapter-copy chapter-postscript';
+        post.innerHTML = chapter.postscript.map(p => `<p>${p}</p>`).join('');
+        overlaySupporting.appendChild(post);
       }
     }
 
-    function getOtherLabels() {
-      return labels.filter((label) => label !== activeLabel);
-    }
+    function getOtherLabels() { return labels.filter(l => l !== activeLabel); }
+    function getOtherThumbs(chapterKey) { return thumbEls.filter(t => t.dataset.chapter !== chapterKey); }
 
-    function getOtherThumbs(chapterKey) {
-      return thumbs.filter((thumb) => thumb.dataset.chapter !== chapterKey);
-    }
-
+    /* ─────────────────────────────────────────────────────────
+       OPEN CHAPTER
+    ───────────────────────────────────────────────────────── */
     function openChapter(chapterKey) {
       if (activeChapter || isTransitioning) return;
 
       const chapter = chapterData[chapterKey];
-      const origin = chapterOrigins.get(chapterKey);
-      const label = origin.labelHome.querySelector('.chapter-label');
+      const origin  = chapterOrigins.get(chapterKey);
+      const label   = origin.labelHome.querySelector('.chapter-label');
 
-      const nearest = getNearestHeroCard(chapterKey);
+      const nearest     = getNearestHeroCard(chapterKey);
       const nearestCard = nearest?.nearestCard;
-      const railCardImage = nearestCard?.querySelector('img');
-
-      const image = railCardImage || origin.imageHome.querySelector('img');
+      const railCardImg = nearestCard?.querySelector('img');
+      const image       = railCardImg || origin.imageHome.querySelector('img');
       if (!label || !image) return;
 
       resetInteractiveState();
-
-      activeChapter = chapterKey;
-      activeLabel = label;
-      activeImage = image;
+      activeChapter   = chapterKey;
+      activeLabel     = label;
+      activeImage     = image;
       isTransitioning = true;
 
       renderOverlayCopy(chapterKey);
 
-      const flipState = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
+      const flipState   = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
       const otherLabels = getOtherLabels();
       const otherThumbs = getOtherThumbs(chapterKey);
       const bodyTargets = overlayBody.querySelectorAll('.chapter-copy p, .lin_results_block, .support-card');
@@ -1774,8 +1626,8 @@ html {scrollbar-width: none;} /* Firefox */
       overlay.scrollTop = 0;
       body.classList.add('overlay-open');
 
-      gsap.set(overlayNav, { display: 'flex' });
-      gsap.set(navItems, { yPercent: -110, autoAlpha: 0 });
+      gsap.set(overlayNav,  { display: 'flex' });
+      gsap.set(navItems,    { yPercent: -110, autoAlpha: 0 });
       gsap.set(overlayBody, { autoAlpha: 0 });
       gsap.set(bodyTargets, { autoAlpha: 0, y: 18 });
 
@@ -1789,263 +1641,196 @@ html {scrollbar-width: none;} /* Firefox */
       caption.textContent = chapter.heroAlt;
       overlayImageSlot.appendChild(caption);
 
-      const timeline = gsap.timeline({
-        onComplete: () => {
-          isTransitioning = false;
-        }
-      });
+      const tl = gsap.timeline({ onComplete: () => { isTransitioning = false; } });
+      tl.add(Flip.from(flipState, { absolute: true, nested: true, duration: 0.725 }), 0);
+      tl.to(otherLabels, { yPercent: 100, autoAlpha: 0, duration: 0.45, stagger: 0.05 }, 0.16);
+      tl.to(otherThumbs, { autoAlpha: 0.12, duration: 0.45, stagger: 0.03 }, 0.16);
+      tl.to(navItems,    { yPercent: 0, autoAlpha: 1, stagger: 0.08, duration: 0.5 }, 0.24);
+      tl.to(overlayBody, { autoAlpha: 1, duration: 0.3 }, 0.42);
+      tl.to(bodyTargets, { autoAlpha: 1, y: 0, stagger: 0.05, duration: 0.45 }, 0.5);
 
-      timeline.add(Flip.from(flipState, { absolute: true, nested: true, duration: 0.725 }), 0);
-      timeline.to(otherLabels, { yPercent: 100, autoAlpha: 0, duration: 0.45, stagger: 0.05 }, 0.16);
-      timeline.to(otherThumbs, { autoAlpha: 0.12, duration: 0.45, stagger: 0.03 }, 0.16);
-      timeline.to(navItems, { yPercent: 0, autoAlpha: 1, stagger: 0.08, duration: 0.5 }, 0.24);
-      timeline.to(overlayBody, { autoAlpha: 1, duration: 0.3 }, 0.42);
-      timeline.to(bodyTargets, { autoAlpha: 1, y: 0, stagger: 0.05, duration: 0.45 }, 0.5);
-
-      if (chapterKey === 'water-on-a-schedule') {
-        overlayCopy.querySelectorAll('.lin_results_stat').forEach((stat, index) => {
-          const valueElement = stat.querySelector('.lin_results_val');
-          const targetValue = parseInt(stat.dataset.rval, 10);
+      if (chapter.hasStats) {
+        overlayCopy.querySelectorAll('.lin_results_stat').forEach((stat, i) => {
+          const valEl  = stat.querySelector('.lin_results_val');
+          const target = parseInt(stat.dataset.rval, 10);
           gsap.to({ n: 0 }, {
-            n: targetValue,
-            duration: 1.4,
-            ease: 'power3.out',
-            delay: 0.9 + index * 0.22,
-            onUpdate: function() { valueElement.textContent = Math.round(this.targets()[0].n); }
+            n: target, duration: 1.4, ease: 'power3.out',
+            delay: 0.9 + i * 0.22,
+            onUpdate: function() { valEl.textContent = Math.round(this.targets()[0].n); }
           });
         });
       }
     }
 
+    /* ─────────────────────────────────────────────────────────
+       CLOSE CHAPTER
+    ───────────────────────────────────────────────────────── */
     function closeChapter() {
       if (!activeChapter || !activeLabel || !activeImage || isTransitioning) return;
-
       isTransitioning = true;
 
-      const origin = chapterOrigins.get(activeChapter);
-      const nearest = getNearestHeroCard(activeChapter);
+      const origin      = chapterOrigins.get(activeChapter);
+      const nearest     = getNearestHeroCard(activeChapter);
       const nearestCard = nearest?.nearestCard;
 
-      const state = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
+      const state         = Flip.getState([activeLabel, activeImage], { props: 'fontSize,color' });
       const returningLabels = getOtherLabels();
       const returningThumbs = getOtherThumbs(activeChapter);
-      const bodyTargets = overlayBody.querySelectorAll('.chapter-copy p, .lin_results_block, .support-card');
+      const bodyTargets   = overlayBody.querySelectorAll('.chapter-copy p, .lin_results_block, .support-card');
 
-      const timeline = gsap.timeline({
+      const tl = gsap.timeline({
         onComplete: () => {
           origin.labelHome.appendChild(activeLabel);
-          if (nearestCard) {
-            nearestCard.appendChild(activeImage);
-          } else {
-            origin.imageHome.appendChild(activeImage);
-          }
+          if (nearestCard) nearestCard.appendChild(activeImage);
+          else origin.imageHome.appendChild(activeImage);
 
           gsap.to(overlay, { autoAlpha: 0, duration: 0.28, ease: 'power2.in' });
 
           Flip.from(state, {
-            absolute: true,
-            nested: true,
-            duration: 0.78,
-            ease: 'overlay-ease',
-            onInterrupt: () => {
-              overlay.classList.remove('is-visible');
-              overlay.setAttribute('aria-hidden', 'true');
-              overlay.setAttribute('aria-modal', 'false');
-              overlay.removeAttribute('aria-labelledby');
-              gsap.set(overlay, { clearProps: 'opacity,visibility' });
-              body.classList.remove('overlay-open');
-              gsap.set(overlayNav, { display: 'none' });
-              resetInteractiveState();
-              activeChapter = null;
-              activeLabel = null;
-              activeImage = null;
-              isTransitioning = false;
-            },
-            onComplete: () => {
-              overlay.classList.remove('is-visible');
-              overlay.setAttribute('aria-hidden', 'true');
-              overlay.setAttribute('aria-modal', 'false');
-              overlay.removeAttribute('aria-labelledby');
-              gsap.set(overlay, { clearProps: 'opacity,visibility' });
-              body.classList.remove('overlay-open');
-
-              gsap.set(overlayNav, { display: 'none' });
-              gsap.set(returningLabels, { yPercent: 0, autoAlpha: 1 });
-              gsap.set(returningThumbs, { autoAlpha: 1 });
-              gsap.set([overlayBody, ...navItems, ...bodyTargets], { clearProps: 'all' });
-              resetInteractiveState();
-
-              activeChapter = null;
-              activeLabel = null;
-              activeImage = null;
-              isTransitioning = false;
-              resumeRailLoops();
-            }
+            absolute: true, nested: true, duration: 0.78, ease: 'overlay-ease',
+            onInterrupt: cleanup,
+            onComplete: cleanup
           });
 
-          gsap.to(returningLabels, {
-            yPercent: 0,
-            autoAlpha: 1,
-            duration: 0.42,
-            stagger: 0.05,
-            ease: 'overlay-ease'
-          });
-
-          gsap.to(returningThumbs, {
-            autoAlpha: 1,
-            duration: 0.42,
-            stagger: 0.03,
-            ease: 'overlay-ease'
-          });
+          gsap.to(returningLabels, { yPercent: 0, autoAlpha: 1, duration: 0.42, stagger: 0.05, ease: 'overlay-ease' });
+          gsap.to(returningThumbs, { autoAlpha: 1, duration: 0.42, stagger: 0.03, ease: 'overlay-ease' });
         }
       });
 
-      timeline.to(navItems, { yPercent: -110, autoAlpha: 0, stagger: 0.06, duration: 0.35 }, 0);
-      timeline.to(bodyTargets, { autoAlpha: 0, y: 16, stagger: 0.03, duration: 0.25 }, 0);
-      timeline.to(overlayBody, { autoAlpha: 0, duration: 0.22 }, 0.08);
+      function cleanup() {
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('aria-modal', 'false');
+        overlay.removeAttribute('aria-labelledby');
+        gsap.set(overlay, { clearProps: 'opacity,visibility' });
+        body.classList.remove('overlay-open');
+        gsap.set(overlayNav, { display: 'none' });
+        gsap.set(returningLabels, { yPercent: 0, autoAlpha: 1 });
+        gsap.set(returningThumbs, { autoAlpha: 1 });
+        gsap.set([overlayBody, ...navItems, ...bodyTargets], { clearProps: 'all' });
+        resetInteractiveState();
+        activeChapter = null; activeLabel = null; activeImage = null; isTransitioning = false;
+        resumeRailLoops();
+      }
+
+      tl.to(navItems,    { yPercent: -110, autoAlpha: 0, stagger: 0.06, duration: 0.35 }, 0);
+      tl.to(bodyTargets, { autoAlpha: 0, y: 16, stagger: 0.03, duration: 0.25 }, 0);
+      tl.to(overlayBody, { autoAlpha: 0, duration: 0.22 }, 0.08);
     }
 
-    triggers.forEach((trigger, index) => {
+    /* ─────────────────────────────────────────────────────────
+       INIT
+    ───────────────────────────────────────────────────────── */
+    triggers.forEach((trigger, i) => {
       if (trigger.querySelector('.chapter-kicker')) return;
-
       const kicker = document.createElement('span');
       kicker.className = 'chapter-kicker';
-      kicker.textContent = `Chapter ${romanNumerals[index] || index + 1}`;
+      kicker.textContent = `Chapter ${romanNumerals[i] || i + 1}`;
       trigger.insertBefore(kicker, trigger.firstChild);
     });
 
-    Object.entries(chapterData).forEach(([chapterKey, chapter]) => {
-      const thumbImage = document.querySelector(`.thumb-origin-sources .thumb[data-chapter="${chapterKey}"] img`);
-      if (thumbImage) {
-        thumbImage.src = chapter.heroImage;
-      }
+    // Set thumb images from chapterData
+    chapterOrder.forEach(ch => {
+      const thumbImg = document.querySelector(`.thumb-origin-sources .thumb[data-chapter="${ch}"] img`);
+      if (thumbImg) thumbImg.src = chapterData[ch].heroImage;
     });
 
-    triggers.forEach((trigger) => {
-      const chapterKey = trigger.dataset.chapter;
-      chapterOrigins.set(chapterKey, {
+    // Map origins
+    triggers.forEach(trigger => {
+      const ch = trigger.dataset.chapter;
+      chapterOrigins.set(ch, {
         labelHome: trigger,
-        imageHome: document.querySelector(`.thumb-origin-sources .thumb[data-chapter="${chapterKey}"]`)
+        imageHome: document.querySelector(`.thumb-origin-sources .thumb[data-chapter="${ch}"]`)
       });
     });
 
-    const shuffledFillers = shuffleArray(localImageFiles.filter((fileName) => !heroFileSet.has(fileName)));
+    // Build rail
+    const shuffledFillers = shuffleArray(railFillers);
     const railItems = buildRailItems(chapterOrder, shuffledFillers);
-
     renderRail(railMainTrack, railItems);
-    
-    // Desktop initialization
+
     if (window.innerWidth > 680) {
       gsap.set('.rail-card', {
-        rotationX: 10,
-        rotationY: -13,
-        skewX: -6,
-        skewY: 6,
-        scaleX: 1,
-        scaleY: 1,
-        z: 84,
-        transformPerspective: 1200,
-        transformOrigin: 'center center',
-        force3D: true
+        rotationX: 10, rotationY: -13, skewX: -6, skewY: 6,
+        scaleX: 1, scaleY: 1, z: 84,
+        transformPerspective: 1200, transformOrigin: 'center center', force3D: true
       });
     }
 
     railCards = [...document.querySelectorAll('.rail-card[data-chapter]')];
 
-    const chapterList = document.querySelector('.chapter-list');
+    /* ── Events ── */
+    const chapterList  = document.querySelector('.chapter-list');
     const railContainer = document.querySelector('.thumb-rail');
 
-    chapterList.addEventListener('mouseenter', (e) => {
+    chapterList.addEventListener('mouseenter', e => {
       const trigger = e.target.closest('.chapter-trigger');
       if (!trigger) return;
-      const chapterKey = trigger.dataset.chapter;
-      setHoverState(chapterKey);
-      focusCarouselOnChapter(chapterKey, { hold: true });
+      setHoverState(trigger.dataset.chapter);
+      focusCarouselOnChapter(trigger.dataset.chapter, { hold: true });
     }, true);
 
-    chapterList.addEventListener('focus', (e) => {
+    chapterList.addEventListener('focus', e => {
       const trigger = e.target.closest('.chapter-trigger');
       if (!trigger) return;
-      const chapterKey = trigger.dataset.chapter;
-      setHoverState(chapterKey);
-      focusCarouselOnChapter(chapterKey, { immediate: true, hold: true });
+      setHoverState(trigger.dataset.chapter);
+      focusCarouselOnChapter(trigger.dataset.chapter, { immediate: true, hold: true });
     }, true);
 
     chapterList.addEventListener('mouseleave', clearHoverState, true);
     chapterList.addEventListener('blur', clearHoverState, true);
-
-    chapterList.addEventListener('click', (e) => {
+    chapterList.addEventListener('click', e => {
       const trigger = e.target.closest('.chapter-trigger');
-      if (trigger && trigger.dataset.chapter) {
-        openChapter(trigger.dataset.chapter);
-      }
+      if (trigger?.dataset.chapter) openChapter(trigger.dataset.chapter);
     });
 
-    railContainer.addEventListener('mouseenter', (e) => {
+    railContainer.addEventListener('mouseenter', e => {
       const card = e.target.closest('.rail-card[data-chapter]');
       if (!card) return;
-      const chapterKey = card.dataset.chapter;
-      setHoverState(chapterKey);
-      focusCarouselOnChapter(chapterKey, { hold: true });
+      setHoverState(card.dataset.chapter);
+      focusCarouselOnChapter(card.dataset.chapter, { hold: true });
     }, true);
 
-    railContainer.addEventListener('focus', (e) => {
+    railContainer.addEventListener('focus', e => {
       const card = e.target.closest('.rail-card[data-chapter]');
       if (!card) return;
-      const chapterKey = card.dataset.chapter;
-      setHoverState(chapterKey);
-      focusCarouselOnChapter(chapterKey, { immediate: true, hold: true });
+      setHoverState(card.dataset.chapter);
+      focusCarouselOnChapter(card.dataset.chapter, { immediate: true, hold: true });
     }, true);
 
     railContainer.addEventListener('mouseleave', clearHoverState, true);
     railContainer.addEventListener('blur', clearHoverState, true);
-
-    railContainer.addEventListener('click', (e) => {
+    railContainer.addEventListener('click', e => {
       const card = e.target.closest('.rail-card[data-chapter]');
-      if (card && card.dataset.chapter) {
-        openChapter(card.dataset.chapter);
-      }
+      if (card?.dataset.chapter) openChapter(card.dataset.chapter);
     });
-
-    railContainer.addEventListener('keydown', (e) => {
+    railContainer.addEventListener('keydown', e => {
       const card = e.target.closest('.rail-card[data-chapter]');
       if (!card) return;
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openChapter(card.dataset.chapter);
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChapter(card.dataset.chapter); }
     });
 
     overlayBack.addEventListener('click', closeChapter);
     overlayExplore.addEventListener('click', () => {
       overlayBody.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
-    overlay.addEventListener('click', (event) => {
-      if (!event.target.closest('.overlay-shell')) closeChapter();
-    });
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeChapter();
-    });
+    overlay.addEventListener('click', e => { if (!e.target.closest('.overlay-shell')) closeChapter(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeChapter(); });
 
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         refreshCarouselLayout();
-        if (focusedCarouselChapter) {
-          focusCarouselOnChapter(focusedCarouselChapter, { immediate: true });
-        }
+        if (focusedCarouselChapter) focusCarouselOnChapter(focusedCarouselChapter, { immediate: true });
       }, 120);
     });
 
     window.addEventListener('load', () => {
       refreshCarouselLayout();
-      if (window.innerWidth > 680) {
-        focusCarouselOnChapter(chapterOrder[0], { immediate: true });
-      }
+      if (window.innerWidth > 680) focusCarouselOnChapter(chapterOrder[0], { immediate: true });
     });
 
+    /* ── Action modal (view all) ── */
     thumbsActionBtn.addEventListener('click', () => {
       actionModal.classList.add('is-visible');
       actionModal.setAttribute('aria-hidden', 'false');
@@ -2061,12 +1846,10 @@ html {scrollbar-width: none;} /* Firefox */
       resumeRailLoops();
     });
 
-    actionModal.addEventListener('click', (event) => {
-      const swiperContent = actionModal.querySelector('.mySwiper2');
-      const isClickInsideSwiper = swiperContent && swiperContent.contains(event.target);
-      const isThumbnailClick = event.target.closest('.mySwiper');
-
-      if (event.target === actionModal && !isClickInsideSwiper && !isThumbnailClick) {
+    actionModal.addEventListener('click', e => {
+      const inSwiper = actionModal.querySelector('.mySwiper2')?.contains(e.target);
+      const inThumb  = e.target.closest('.mySwiper');
+      if (e.target === actionModal && !inSwiper && !inThumb) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
         actionModal.setAttribute('aria-modal', 'false');
@@ -2075,8 +1858,8 @@ html {scrollbar-width: none;} /* Firefox */
       }
     });
 
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !actionModal.classList.contains('is-visible') === false) {
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) {
         actionModal.classList.remove('is-visible');
         actionModal.setAttribute('aria-hidden', 'true');
         actionModal.setAttribute('aria-modal', 'false');
@@ -2085,159 +1868,32 @@ html {scrollbar-width: none;} /* Firefox */
       }
     });
 
-    const imageDescriptions = {
-      'HEA26002_00119S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_00309.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_00574.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
-      'HEA26002_01383.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
-      'HEA26002_01494S.jpg': 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.',
-      'HEA26002_02298.jpg': 'A food shop in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02455S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02596.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02691.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02832S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_02985.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_03025S.jpg': 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_03364S.jpg': 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
-      'HEA26002_03486.jpg': 'Irrigation workers for Pantaleón in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.',
-      'HEA26002_03904.jpg': 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.',
-      'HEA26002_04362S.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
-      'HEA26002_04363.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
-      'HEA26002_04407.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
-      'HEA26002_04871.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04923.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04648S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04953.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05015S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05227S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-      'HEA26002_05533S.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05549.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05604.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05663.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
-      'HEA26002_05773.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05827.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05837.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05887S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_05927S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_06009.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
-      'HEA26002_06118.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06127.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06384.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06421.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06421S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06634S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06669.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06882S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06935.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06965.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07030.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07167S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07454.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_07986.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08706S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-      'HEA26002_09430.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09676.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09687.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09687S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
-      'HEA26002_09808.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.',
-      'HEA26002_09812.jpg': 'View of road in San Salvador with McDonalds sign and volcano in the distance on March 7, 2026.',
-      'HEA26002_09870S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09886.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09908.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09937.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09942S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09957S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
-      'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
-    };
-
-    const swiperMainWrapper = document.getElementById('swiperMainWrapper');
-    const swiperThumbsWrapper = document.getElementById('swiperThumbsWrapper');
-
-    localImageFiles.forEach((fileName) => {
-      const mainSlide = document.createElement('div');
-      mainSlide.className = 'swiper-slide';
-      const mainImg = document.createElement('img');
-      mainImg.src = `${localImageBase}/${fileName}`;
-      mainImg.alt = fileName;
-      mainSlide.appendChild(mainImg);
-
-      const caption = document.createElement('div');
-      caption.className = 'overlay-img-caption';
-      caption.textContent = imageDescriptions[fileName] || fileName;
-      mainSlide.appendChild(caption);
-
-      swiperMainWrapper.appendChild(mainSlide);
-
-      const thumbSlide = document.createElement('div');
-      thumbSlide.className = 'swiper-slide';
-      const thumbImg = document.createElement('img');
-      thumbImg.src = `${localImageBase}/${fileName}`;
-      thumbImg.alt = '';
-      thumbSlide.appendChild(thumbImg);
-      swiperThumbsWrapper.appendChild(thumbSlide);
-    });
-
-    var swiperThumbs = new Swiper('.mySwiper', {
+    /* ── Swiper init ── */
+    const swiperThumbs = new Swiper('.mySwiper', {
       spaceBetween: 10,
       freeMode: true,
       watchSlidesProgress: true,
-      breakpoints: {
-        0: {
-          slidesPerView: 3,
-        },
-        768: {
-          slidesPerView: 5,
-        },
-      },
+      breakpoints: { 0: { slidesPerView: 3 }, 768: { slidesPerView: 5 } }
     });
 
-    var swiperMain = new Swiper('.mySwiper2', {
+    const swiperMain = new Swiper('.mySwiper2', {
       spaceBetween: 10,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: false,
-      },
-      thumbs: {
-        swiper: swiperThumbs,
-      },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      keyboard: { enabled: true, onlyInViewport: false },
+      thumbs: { swiper: swiperThumbs }
     });
 
-    const swiperExpandBtn = document.getElementById('swiperExpandBtn');
-    const swiperFullscreen = document.getElementById('swiperFullscreen');
-    const swiperFullscreenImg = document.getElementById('swiperFullscreenImg');
-    const swiperFullscreenClose = document.getElementById('swiperFullscreenClose');
+    /* ── Fullscreen expand ── */
+    const swiperExpandBtn      = document.getElementById('swiperExpandBtn');
+    const swiperFullscreen     = document.getElementById('swiperFullscreen');
+    const swiperFullscreenImg  = document.getElementById('swiperFullscreenImg');
+    const swiperFullscreenClose= document.getElementById('swiperFullscreenClose');
 
     function updateFullscreenImage() {
       const activeSlide = swiperMain.slides[swiperMain.activeIndex];
       if (activeSlide) {
         const img = activeSlide.querySelector('img');
-        if (img) {
-          swiperFullscreenImg.src = img.src;
-          swiperFullscreenImg.alt = img.alt;
-        }
+        if (img) { swiperFullscreenImg.src = img.src; swiperFullscreenImg.alt = img.alt; }
       }
     }
 
@@ -2252,51 +1908,42 @@ html {scrollbar-width: none;} /* Firefox */
       document.body.style.overflow = '';
     });
 
-    swiperFullscreen.addEventListener('click', (e) => {
-      if (e.target === swiperFullscreen) {
-        swiperFullscreen.style.display = 'none';
-        document.body.style.overflow = '';
-      }
+    swiperFullscreen.addEventListener('click', e => {
+      if (e.target === swiperFullscreen) { swiperFullscreen.style.display = 'none'; document.body.style.overflow = ''; }
     });
 
     swiperMain.on('slideChange', () => {
-      if (swiperFullscreen.style.display === 'flex') {
-        updateFullscreenImage();
-      }
+      if (swiperFullscreen.style.display === 'flex') updateFullscreenImage();
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (swiperFullscreen.style.display === 'flex' && e.key === 'Escape') {
         swiperFullscreen.style.display = 'none';
         document.body.style.overflow = '';
       }
     });
   </script>
+
   <script>
     (function () {
-      var pre = document.getElementById('lin-preloader');
+      var pre  = document.getElementById('lin-preloader');
       var body = document.body;
       if (!pre) return;
-
       var MIN_DISPLAY = 1600;
       var start = performance.now();
       var finished = false;
-
       function finish() {
         if (finished) return;
         finished = true;
         pre.classList.add('lin-pre-done');
         body.classList.remove('lin-preloading');
       }
-
       function ready() {
         var wait = Math.max(0, MIN_DISPLAY - (performance.now() - start));
         setTimeout(finish, wait);
       }
-
       if (document.readyState === 'complete') ready();
       else window.addEventListener('load', ready, { once: true });
-
       setTimeout(finish, 6000);
     })();
   </script>
