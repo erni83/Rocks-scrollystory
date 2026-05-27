@@ -649,11 +649,10 @@
       .mobile-bar {
         display: flex;
         position: fixed;
-        bottom: 0; left: 0; right: 0;
+        bottom: env(safe-area-inset-bottom); left: 0; right: 0;
         z-index: 1000;
         background: #1a1d21;
         border-top: 1px solid var(--line);
-        padding-bottom: env(safe-area-inset-bottom);
       }
 
       .thumbs-action-btn {
