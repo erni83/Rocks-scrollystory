@@ -649,13 +649,14 @@
       .mobile-bar {
         display: flex;
         position: fixed;
-        bottom: calc(calc(100% - min(var(--vh, 100%), 100%)) + env(safe-area-inset-bottom));
+        bottom: 0;
         left: 0; right: 0;
         z-index: 1000;
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         background-color: rgba(26, 29, 33, 0.85);
         border-top: 1px solid var(--line);
+        padding-bottom: env(safe-area-inset-bottom);
         will-change: transform;
       }
 
@@ -1441,9 +1442,6 @@ María Catalina's husband did not have to die. César did not have to die. Every
 
     const IMG = 'IMG';
     const railShapePattern = ['tall', 'medium', 'tall', 'wide', 'tall', 'medium'];
-
-    /* ── Layout viewport height for iOS Safari sticky bar positioning ── */
-    document.documentElement.style.setProperty('--vh', `${document.documentElement.clientHeight}%`);
 
     /* ── DOM refs ── */
     const overlay          = document.getElementById('overlay');
