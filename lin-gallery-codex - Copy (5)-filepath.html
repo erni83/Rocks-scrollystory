@@ -2019,6 +2019,14 @@ María Catalina's husband did not have to die. César did not have to die. Every
       body.classList.add('overlay-open');
     });
 
+    /* ── Mobile bar: gallery button delegates to thumbsActionBtn ── */
+    const mobileBarGalleryBtn = document.getElementById('mobileBarGalleryBtn');
+    if (mobileBarGalleryBtn) {
+      mobileBarGalleryBtn.addEventListener('click', () => {
+        thumbsActionBtn.click();
+      });
+    }
+
     actionModalClose.addEventListener('click', () => {
       actionModal.classList.remove('is-visible');
       actionModal.setAttribute('aria-hidden', 'true');
