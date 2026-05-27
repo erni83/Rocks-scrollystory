@@ -1509,75 +1509,6 @@ María Catalina's husband did not have to die. César did not have to die. Every
     });
 
     /* ─────────────────────────────────────────────────────────
-       SWIPER "VIEW ALL" — build slides from figure elements.
-       Caption = .photo-caption text inside each figure.
-       Filler images (rail only) are also included via railFillers.
-    ───────────────────────────────────────────────────────── */
-    function buildSwiperSlides() {
-      const mainWrapper  = document.getElementById('swiperMainWrapper');
-      const thumbWrapper = document.getElementById('swiperThumbsWrapper');
-
-      // Collect all figures from every chapter in order
-      const allFigures = chapterOrder.flatMap(ch => figuresByChapter[ch] || []);
-
-      // Also add hero images (one per chapter, not in figures)
-      const heroSlides = chapterOrder.map(ch => ({
-        src: chapterData[ch].heroImage,
-        caption: chapterData[ch].heroAlt
-      }));
-
-      // Build: heroes first, then supporting figures
-      const slides = [
-        ...heroSlides,
-        ...allFigures.map(fig => ({
-          src: fig.querySelector('img').src || fig.querySelector('img').getAttribute('src'),
-          // src attr may be relative — resolve from template
-          srcAttr: fig.querySelector('img').getAttribute('src'),
-          caption: fig.querySelector('.photo-caption')?.textContent?.trim() || fig.querySelector('img').alt
-        }))
-      ];
-
-      slides.sort((a, b) => {
-        const nameA = (a.src || a.srcAttr || '').split('/').pop();
-        const nameB = (b.src || b.srcAttr || '').split('/').pop();
-        return nameA.localeCompare(nameB);
-      });
-
-      slides.forEach(slide => {
-        const src = slide.src || slide.srcAttr;
-
-        const mainSlide = document.createElement('div');
-        mainSlide.className = 'swiper-slide';
-        mainSlide.style.position = 'relative';
-
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = slide.caption || '';
-        mainSlide.appendChild(img);
-
-        if (slide.caption) {
-          const cap = document.createElement('div');
-          cap.className = 'swiper-slide-caption';
-          cap.textContent = slide.caption;
-          mainSlide.appendChild(cap);
-        }
-
-        mainWrapper.appendChild(mainSlide);
-
-        // Thumb
-        const thumbSlide = document.createElement('div');
-        thumbSlide.className = 'swiper-slide';
-        const thumbImg = document.createElement('img');
-        thumbImg.src = src;
-        thumbImg.alt = '';
-        thumbSlide.appendChild(thumbImg);
-        thumbWrapper.appendChild(thumbSlide);
-      });
-    }
-
-    buildSwiperSlides();
-
-    /* ─────────────────────────────────────────────────────────
        RAIL CAROUSEL (unchanged logic, decorative only)
     ───────────────────────────────────────────────────────── */
     function shuffleArray(arr) {
@@ -2041,23 +1972,27 @@ María Catalina's husband did not have to die. César did not have to die. Every
       if (window.innerWidth > 680) focusCarouselOnChapter(chapterOrder[0], { immediate: true });
     });
 
-    /* ── Action modal (view all) ── */
-    thumbsActionBtn.addEventListener('click', () => {
+    /* ── Action modal open / close helpers ── */
+    function openActionModal() {
       actionModal.classList.add('is-visible');
       actionModal.setAttribute('aria-hidden', 'false');
       actionModal.setAttribute('aria-modal', 'true');
       body.classList.add('overlay-open');
-    });
+    }
 
-    /* ── Mobile bar: gallery button opens action modal directly ── */
+    function closeActionModal() {
+      actionModal.classList.remove('is-visible');
+      actionModal.setAttribute('aria-hidden', 'true');
+      actionModal.setAttribute('aria-modal', 'false');
+      body.classList.remove('overlay-open');
+      resumeRailLoops();
+    }
+
+    thumbsActionBtn.addEventListener('click', openActionModal);
+
     const mobileBarGalleryBtn = document.getElementById('mobileBarGalleryBtn');
     if (mobileBarGalleryBtn) {
-      mobileBarGalleryBtn.addEventListener('click', () => {
-        actionModal.classList.add('is-visible');
-        actionModal.setAttribute('aria-hidden', 'false');
-        actionModal.setAttribute('aria-modal', 'true');
-        body.classList.add('overlay-open');
-      });
+      mobileBarGalleryBtn.addEventListener('click', openActionModal);
     }
 
     /* Re-assert GPU layer on mobile bar after scroll so Safari doesn't drop it */
@@ -2068,39 +2003,19 @@ María Catalina's husband did not have to die. César did not have to die. Every
       }, { passive: true });
     }
 
-    actionModalClose.addEventListener('click', () => {
-      actionModal.classList.remove('is-visible');
-      actionModal.setAttribute('aria-hidden', 'true');
-      actionModal.setAttribute('aria-modal', 'false');
-      body.classList.remove('overlay-open');
-      resumeRailLoops();
-    });
+    actionModalClose.addEventListener('click', closeActionModal);
 
     actionModal.addEventListener('click', e => {
       const inSwiper = actionModal.querySelector('.mySwiper2')?.contains(e.target);
       const inThumb  = e.target.closest('.mySwiper');
-      if (e.target === actionModal && !inSwiper && !inThumb) {
-        actionModal.classList.remove('is-visible');
-        actionModal.setAttribute('aria-hidden', 'true');
-        actionModal.setAttribute('aria-modal', 'false');
-        body.classList.remove('overlay-open');
-        resumeRailLoops();
-      }
+      if (e.target === actionModal && !inSwiper && !inThumb) closeActionModal();
     });
 
     /* Prevent iOS Safari pull-to-refresh / back-swipe triggering inside the modal */
-    actionModal.addEventListener('touchmove', e => {
-      e.stopPropagation();
-    }, { passive: true });
+    actionModal.addEventListener('touchmove', e => { e.stopPropagation(); }, { passive: true });
 
     window.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) {
-        actionModal.classList.remove('is-visible');
-        actionModal.setAttribute('aria-hidden', 'true');
-        actionModal.setAttribute('aria-modal', 'false');
-        body.classList.remove('overlay-open');
-        resumeRailLoops();
-      }
+      if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) closeActionModal();
     });
 
     const imageDescriptions = {
@@ -2208,7 +2123,7 @@ María Catalina's husband did not have to die. César did not have to die. Every
       mainSlide.appendChild(mainImg);
 
       const caption = document.createElement('div');
-      caption.className = 'overlay-img-caption';
+      caption.className = 'swiper-slide-caption';
       caption.textContent = imageDescriptions[fileName] || fileName;
       mainSlide.appendChild(caption);
 
@@ -2223,7 +2138,7 @@ María Catalina's husband did not have to die. César did not have to die. Every
       swiperThumbsWrapper.appendChild(thumbSlide);
     });
 
-    var swiperThumbs = new Swiper('.mySwiper', {
+    const swiperThumbs = new Swiper('.mySwiper', {
       spaceBetween: 10,
       freeMode: true,
       watchSlidesProgress: true,
@@ -2251,30 +2166,27 @@ María Catalina's husband did not have to die. César did not have to die. Every
       }
     }
 
-    swiperExpandBtn.addEventListener('click', () => {
+    function openFullscreen() {
       updateFullscreenImage();
       swiperFullscreen.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    });
+      body.classList.add('overlay-open');
+    }
 
-    swiperFullscreenClose.addEventListener('click', () => {
+    function closeFullscreen() {
       swiperFullscreen.style.display = 'none';
-      document.body.style.overflow = '';
-    });
+      body.classList.remove('overlay-open');
+    }
 
-    swiperFullscreen.addEventListener('click', e => {
-      if (e.target === swiperFullscreen) { swiperFullscreen.style.display = 'none'; document.body.style.overflow = ''; }
-    });
+    swiperExpandBtn.addEventListener('click', openFullscreen);
+    swiperFullscreenClose.addEventListener('click', closeFullscreen);
+    swiperFullscreen.addEventListener('click', e => { if (e.target === swiperFullscreen) closeFullscreen(); });
 
     swiperMain.on('slideChange', () => {
       if (swiperFullscreen.style.display === 'flex') updateFullscreenImage();
     });
 
     document.addEventListener('keydown', e => {
-      if (swiperFullscreen.style.display === 'flex' && e.key === 'Escape') {
-        swiperFullscreen.style.display = 'none';
-        document.body.style.overflow = '';
-      }
+      if (swiperFullscreen.style.display === 'flex' && e.key === 'Escape') closeFullscreen();
     });
   </script>
 
