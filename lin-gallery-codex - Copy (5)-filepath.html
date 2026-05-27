@@ -756,9 +756,9 @@
       position: fixed;
       top: 20px; right: 20px;
       z-index: 10000;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.8);
       border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
+      color: #272626;
       width: 44px; height: 44px;
       border-radius: 6px;
       font-size: 28px;
@@ -867,6 +867,9 @@
           <button class="thumb" type="button" data-chapter="shupa-guatemala" tabindex="-1">
             <img src="" alt="Wide sugarcane fields and mountains in El Salvador" loading="lazy" decoding="async" />
           </button>
+          <button class="thumb" type="button" data-chapter="coffee-highlands-cane-coast" tabindex="-1">
+            <img src="" alt="Coffee and cane workers in the highlands and coast" loading="lazy" decoding="async" />
+          </button>
           <button class="thumb" type="button" data-chapter="3000-swings-a-day" tabindex="-1">
             <img src="" alt="Worker cutting sugarcane in the field" loading="lazy" decoding="async" />
           </button>
@@ -894,7 +897,7 @@
           </div>
           <!-- <div class="eyebrow">Central America Photo Story</div> -->
           <h1 class="hero-title">Heat, Work, & Worker Protection in Central America</h1>
-          <p class="hero-subtitle">A visual story from the Dry Corridor of Central America. La Isla Network and The Rockefeller Foundation.</p>
+          <p class="hero-subtitle">Extreme heat is a growing problem in agriculture in Central America, driving migration and hurting outdoor workers. La Isla Network storytellers went to Guatemala and El Salvador to investigate the problem and learn about the solution that LIN is advancing.</p>
           <p class="hero-credit">Photographs by <a href="https://www.edkashi.com/heat-watch/0dn1rhxmy8zdzj7f3kh643smpxehi1" target="_blank" rel="noopener noreferrer"><u>Ed Kashi / VII / Redux.</a></u> Film by <a href="https://www.tomlaffay.com/" target="_blank" rel="noopener noreferrer"><u>Tom Laffay.</a></u></p>
         </header>
 
@@ -1333,6 +1336,12 @@ The estimated global toll of chronic kidney disease from extreme heat exposure e
         }))
       ];
 
+      slides.sort((a, b) => {
+        const nameA = (a.src || a.srcAttr || '').split('/').pop();
+        const nameB = (b.src || b.srcAttr || '').split('/').pop();
+        return nameA.localeCompare(nameB);
+      });
+
       slides.forEach(slide => {
         const src = slide.src || slide.srcAttr;
 
@@ -1413,7 +1422,7 @@ The estimated global toll of chronic kidney disease from extreme heat exposure e
         const chAttrs = item.chapterKey
           ? ` data-chapter="${item.chapterKey}" data-hero-for="${item.chapterKey}" role="button" tabindex="0" aria-label="${escapeAttr(chapterData[item.chapterKey].title)}"`
           : '';
-        return `<article class="rail-card is-${shape}"${chAttrs}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"></article>`;
+        return `<article class="rail-card is-${shape}"${chAttrs}><img src="${src}" alt="${alt}" loading="eager" decoding="async"></article>`;
       }).join('');
     }
 
