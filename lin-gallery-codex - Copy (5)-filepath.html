@@ -412,10 +412,12 @@
       padding: 15px;
       color: var(--soft);
       background: rgba(47, 47, 47, 0.2);
+      background: rgba(47, 47, 47, 0.2);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       font-size: 0.95rem;
       font-style: italic;
+      line-height: 1.3;
       line-height: 1.3;
       animation: captionFadeIn 0.5s ease-out 0.5s forwards;
       opacity: 0;
@@ -2075,8 +2077,124 @@ María Catalina's husband did not have to die. César did not have to die. Every
       }
     });
 
-    /* ── Swiper init ── */
-    const swiperThumbs = new Swiper('.mySwiper', {
+    const imageDescriptions = {
+      'HEA26002_00119S.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
+      'HEA26002_00309.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
+      'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
+      'HEA26002_00574.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
+      'HEA26002_01383.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor. Working with Nicholas Gutierrez.',
+      'HEA26002_01494S.jpg': 'Dimas and Erica Monroy, small coffee producers, working in Comatan, Guatemala on February 28, 2026.',
+      'HEA26002_02298.jpg': 'A food shop in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02455S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02596.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02691.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02832S.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_02985.jpg': 'Edvin Rafael Sarmiento, 32, a former sugar cane worker who contracted kidney disease 6 years ago, and has been unable to work, at his home with family in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_03025S.jpg': 'Julio Lopez, a former sugar cane worker who contracted chronic kidney disease, "La Creatina", in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_03364S.jpg': 'An abandoned home amongst the sugar cane fields in Parselamiento El Cajon in sector Aguero, Guatemala on March 2, 2026.',
+      'HEA26002_03486.jpg': 'Irrigation workers for Pantaleón in Parselamiento El Cajon in sector El Betania, Guatemala on March 2, 2026.',
+      'HEA26002_03904.jpg': 'Nicholas Colo Quino, 49, and his workers harvest papaya in the hot lowlands outside of Isquintla, Guatemala on March 3, 2026.',
+      'HEA26002_04362S.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
+      'HEA26002_04363.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
+      'HEA26002_04407.jpg': 'Views of a sugar cane field burning near Isquintla, Guatemala on March 4, 2026',
+      'HEA26002_04871.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04923.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04648S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04953.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_05015S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_05227S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
+      'HEA26002_05533S.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
+      'HEA26002_05549.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
+      'HEA26002_05604.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
+      'HEA26002_05663.jpg': 'Views of the port of Acajutla, El Salvador, where much of the country\'s sugar production is shipped from, on March 5, 2026.',
+      'HEA26002_05773.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_05827.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_05837.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_05887S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_05927S.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_06009.jpg': 'Domestic scene at a sugar cane worker\'s home in Los Sitios, El Salvador on March6, 2026.',
+      'HEA26002_06118.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06127.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06384.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06421.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06421S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06634S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06669.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06882S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06935.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06965.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07030.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07167S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07454.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_07986.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08706S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
+      'HEA26002_09430.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09676.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09687.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09687S.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
+      'HEA26002_09808.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026. With her husband Eugenio Anaya Portillo, 75.',
+      'HEA26002_09812.jpg': 'View of road in San Salvador with McDonalds sign and volcano in the distance on March 7, 2026.',
+      'HEA26002_09870S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09886.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09908.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09937.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09942S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09957S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.',
+      'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
+    };
+
+    const swiperMainWrapper = document.getElementById('swiperMainWrapper');
+    const swiperThumbsWrapper = document.getElementById('swiperThumbsWrapper');
+
+    const hiddenImages = ['HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05887S.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09942S.jpg'];
+
+    localImageFiles.forEach((fileName) => {
+      if (hiddenImages.includes(fileName)) {
+        return;
+      }
+
+      const mainSlide = document.createElement('div');
+      mainSlide.className = 'swiper-slide';
+      const mainImg = document.createElement('img');
+      mainImg.src = `${localImageBase}/${fileName}`;
+      mainImg.alt = fileName;
+      mainSlide.appendChild(mainImg);
+
+      const caption = document.createElement('div');
+      caption.className = 'overlay-img-caption';
+      caption.textContent = imageDescriptions[fileName] || fileName;
+      mainSlide.appendChild(caption);
+
+      swiperMainWrapper.appendChild(mainSlide);
+
+      const thumbSlide = document.createElement('div');
+      thumbSlide.className = 'swiper-slide';
+      const thumbImg = document.createElement('img');
+      thumbImg.src = `${localImageBase}/${fileName}`;
+      thumbImg.alt = '';
+      thumbSlide.appendChild(thumbImg);
+      swiperThumbsWrapper.appendChild(thumbSlide);
+    });
+
+    var swiperThumbs = new Swiper('.mySwiper', {
       spaceBetween: 10,
       freeMode: true,
       watchSlidesProgress: true,
