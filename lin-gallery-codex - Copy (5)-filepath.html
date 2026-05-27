@@ -752,7 +752,7 @@
       width: 100%;
       max-width: 100%;
       overflow: hidden;
-      touch-action: manipulation;
+      touch-action: pan-y;
       -webkit-user-select: none;
       user-select: none;
       flex-shrink: 0;
@@ -852,7 +852,7 @@
       width: 100%;
       height: auto;
       max-height: 200px;
-      touch-action: manipulation;
+      touch-action: pan-y;
       -webkit-user-select: none;
       user-select: none;
       flex-shrink: 0;
@@ -2142,6 +2142,7 @@ María Catalina's husband did not have to die. César did not have to die. Every
       spaceBetween: 10,
       freeMode: true,
       watchSlidesProgress: true,
+      touchStartPreventDefault: false,
       breakpoints: { 0: { slidesPerView: 3 }, 768: { slidesPerView: 5 } }
     });
 
@@ -2149,7 +2150,8 @@ María Catalina's husband did not have to die. César did not have to die. Every
       spaceBetween: 10,
       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
       keyboard: { enabled: true, onlyInViewport: false },
-      thumbs: { swiper: swiperThumbs }
+      thumbs: { swiper: swiperThumbs },
+      touchStartPreventDefault: false,
     });
 
     /* ── Fullscreen expand ── */
