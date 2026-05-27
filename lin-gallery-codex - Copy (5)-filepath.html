@@ -711,6 +711,7 @@
       padding: 60px 20px 20px 20px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
     }
 
     .action-modal.is-visible { opacity: 1; visibility: visible; }
@@ -2065,6 +2066,11 @@ María Catalina's husband did not have to die. César did not have to die. Every
         resumeRailLoops();
       }
     });
+
+    /* Prevent iOS Safari pull-to-refresh / back-swipe triggering inside the modal */
+    actionModal.addEventListener('touchmove', e => {
+      e.stopPropagation();
+    }, { passive: true });
 
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) {
