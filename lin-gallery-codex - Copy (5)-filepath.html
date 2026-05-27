@@ -649,7 +649,7 @@
       .mobile-bar {
         display: flex;
         position: fixed;
-        bottom: 0;
+        bottom: var(--bar-bottom, 0px);
         left: 0; right: 0;
         z-index: 1000;
         backdrop-filter: blur(5px);
@@ -705,7 +705,8 @@
 
     .action-modal {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0;
+      height: var(--modal-height, 100vh);
       background: #000;
       z-index: 1000;
       opacity: 0;
@@ -715,7 +716,6 @@
       flex-direction: column;
       padding: 60px 20px 20px 20px;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
     }
 
@@ -2033,8 +2033,22 @@ María Catalina's husband did not have to die. César did not have to die. Every
       if (window.innerWidth > 680) focusCarouselOnChapter(chapterOrder[0], { immediate: true });
     });
 
+    /* ── iOS 26 Safari: outerHeight covers full screen past inner viewport clip ── */
+    function setIosViewportVars() {
+      const outerH = window.outerHeight || window.innerHeight;
+      const diff   = Math.max(0, outerH - window.innerHeight);
+      document.documentElement.style.setProperty('--modal-height', outerH + 'px');
+      document.documentElement.style.setProperty('--bar-bottom',   diff   + 'px');
+    }
+    setIosViewportVars();
+    window.addEventListener('resize', setIosViewportVars);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setIosViewportVars);
+    }
+
     /* ── Action modal (view all) ── */
     thumbsActionBtn.addEventListener('click', () => {
+      setIosViewportVars();
       actionModal.classList.add('is-visible');
       actionModal.setAttribute('aria-hidden', 'false');
       actionModal.setAttribute('aria-modal', 'true');
@@ -2045,6 +2059,7 @@ María Catalina's husband did not have to die. César did not have to die. Every
     const mobileBarGalleryBtn = document.getElementById('mobileBarGalleryBtn');
     if (mobileBarGalleryBtn) {
       mobileBarGalleryBtn.addEventListener('click', () => {
+        setIosViewportVars();
         actionModal.classList.add('is-visible');
         actionModal.setAttribute('aria-hidden', 'false');
         actionModal.setAttribute('aria-modal', 'true');
