@@ -226,7 +226,8 @@ function buildSwiperSlides() {
   });
 }
 
-buildSwiperSlides();
+// Legacy modal Swiper builder retained for rollback.
+// buildSwiperSlides();
 
 /* ─────────────────────────────────────────────────────────
    RAIL CAROUSEL (unchanged logic, decorative only)
@@ -735,10 +736,10 @@ window.addEventListener('load', () => {
 function refreshModalSwiper() {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      swiperThumbs?.update();
-      swiperMain?.update();
-      swiperMain?.updateSize();
-      swiperMain?.updateSlides();
+      linGalleryThumbs?.update();
+      linGalleryMain?.update();
+      linGalleryMain?.updateSize();
+      linGalleryMain?.updateSlides();
     });
   });
 }
@@ -788,17 +789,18 @@ if (mobileBar) {
 actionModalClose.addEventListener('click', closeActionModal);
 
 actionModal.addEventListener('click', e => {
-  const inSwiper = actionModal.querySelector('.mySwiper2')?.contains(e.target);
-  const inThumb  = e.target.closest('.mySwiper');
+  const inSwiper = actionModal.querySelector('.lin-modal-gallery-main')?.contains(e.target);
+  const inThumb  = e.target.closest('.lin-modal-gallery-thumbs');
   if (e.target === actionModal && !inSwiper && !inThumb) {
     closeActionModal();
   }
 });
 
-/* Prevent iOS Safari pull-to-refresh / back-swipe triggering inside the modal */
+/* Legacy iOS Safari guard retained for rollback. It can steal Swiper touches.
 actionModal.addEventListener('touchmove', e => {
   e.stopPropagation();
 }, { passive: true });
+*/
 
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) {
@@ -890,6 +892,7 @@ const imageDescriptions = {
   'HEA26002_09969S.jpg': 'Maria Catalina Artiga, 72, widowed by CKDnT less than a year ago, at her home in Jocote, El Salvador on March 8, 2026.'
 };
 
+/* Legacy Swiper slide generation and initialization retained for rollback.
 const swiperMainWrapper = document.getElementById('swiperMainWrapper');
 const swiperThumbsWrapper = document.getElementById('swiperThumbsWrapper');
 
@@ -951,6 +954,64 @@ const swiperMain = new Swiper('.mySwiper2', {
   nested: true,
   thumbs: { swiper: swiperThumbs }
 });
+*/
+
+const localImageBase = 'IMG';
+const localImageFiles = Object.keys(imageDescriptions);
+const hiddenImages = ['HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05887S.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09942S.jpg'];
+
+const linGalleryMainWrapper = document.getElementById('linGalleryMainWrapper');
+const linGalleryThumbsWrapper = document.getElementById('linGalleryThumbsWrapper');
+
+function buildModalGallerySlides() {
+  console.log('[buildModalGallerySlides] entry');
+  if (!linGalleryMainWrapper || !linGalleryThumbsWrapper) return;
+
+  localImageFiles.forEach((fileName) => {
+    if (hiddenImages.includes(fileName)) {
+      return;
+    }
+
+    const src = `${localImageBase}/${fileName}`;
+    const description = imageDescriptions[fileName] || fileName;
+
+    const mainSlide = document.createElement('div');
+    mainSlide.className = 'swiper-slide';
+    const mainImg = document.createElement('img');
+    mainImg.src = src;
+    mainImg.alt = description;
+    mainSlide.appendChild(mainImg);
+    linGalleryMainWrapper.appendChild(mainSlide);
+
+    const thumbSlide = document.createElement('div');
+    thumbSlide.className = 'swiper-slide';
+    const thumbImg = document.createElement('img');
+    thumbImg.src = src;
+    thumbImg.alt = '';
+    thumbSlide.appendChild(thumbImg);
+    linGalleryThumbsWrapper.appendChild(thumbSlide);
+  });
+}
+
+buildModalGallerySlides();
+
+var linGalleryThumbs = new Swiper('.lin-modal-gallery-thumbs', {
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true
+});
+
+const linGalleryMain = new Swiper('.lin-modal-gallery-main', {
+  spaceBetween: 10,
+  navigation: {
+    nextEl: '.lin-gallery-next',
+    prevEl: '.lin-gallery-prev'
+  },
+  thumbs: {
+    swiper: linGalleryThumbs
+  }
+});
 
 /* ── Fullscreen expand ── */
 const swiperExpandBtn      = document.getElementById('swiperExpandBtn');
@@ -960,7 +1021,7 @@ const swiperFullscreenClose= document.getElementById('swiperFullscreenClose');
 
 function updateFullscreenImage() {
   console.log('[updateFullscreenImage] entry');
-  const activeSlide = swiperMain.slides[swiperMain.activeIndex];
+  const activeSlide = linGalleryMain.slides[linGalleryMain.activeIndex];
   if (activeSlide) {
     const img = activeSlide.querySelector('img');
     if (img) { swiperFullscreenImg.src = img.src; swiperFullscreenImg.alt = img.alt; }
@@ -987,7 +1048,7 @@ swiperFullscreen.addEventListener('click', e => {
   if (e.target === swiperFullscreen) { swiperFullscreen.style.display = 'none'; document.body.style.overflow = ''; }
 });
 
-swiperMain.on('slideChange', () => {
+linGalleryMain.on('slideChange', () => {
   console.log('[DOM] style assignment: if (swiperFullscreen.style.display === \'flex\') updateFullscr');
   if (swiperFullscreen.style.display === 'flex') updateFullscreenImage();
 });

@@ -777,8 +777,7 @@ body.overlay-open .mobile-bar {
   display: flex;
   flex-direction: column;
   padding: 60px 20px 20px 20px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   overscroll-behavior: contain;
 }
 
@@ -804,6 +803,75 @@ body.overlay-open .mobile-bar {
   border-radius: 4px;
 }
 .action-modal-close:hover { opacity: 1; }
+
+.lin-modal-gallery {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lin-modal-gallery-main,
+.lin-modal-gallery-thumbs {
+  width: 100%;
+  min-height: 0;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.lin-modal-gallery-main {
+  height: 80%;
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+}
+
+.lin-modal-gallery-thumbs {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0 0;
+}
+
+.lin-modal-gallery .swiper-slide {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lin-modal-gallery-main .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.lin-modal-gallery-thumbs .swiper-slide {
+  height: 100%;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.lin-modal-gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.lin-modal-gallery-thumbs .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
 
 /* extracted from: <style> block */
 .action-modal .mySwiper2 {
@@ -925,11 +993,17 @@ body.overlay-open .mobile-bar {
 
 /* extracted from: <style> block */
 @media (max-height: 600px) {
+  .lin-modal-gallery { height: calc(100vh - 80px); height: calc(100dvh - 80px); }
+  .lin-modal-gallery-main { height: 78%; }
+  .lin-modal-gallery-thumbs { height: 22%; }
   .action-modal .mySwiper2 { max-height: 50vh; }
   .action-modal .mySwiper { max-height: 80px; }
 }
 @media (max-height: 400px) {
   .action-modal { padding: 10px; }
+  .lin-modal-gallery { height: calc(100vh - 20px); height: calc(100dvh - 20px); }
+  .lin-modal-gallery-main { height: 76%; }
+  .lin-modal-gallery-thumbs { height: 24%; padding-top: 6px; }
   .action-modal .mySwiper2 { max-height: 40vh; }
   .action-modal .mySwiper { max-height: 60px; }
 }
