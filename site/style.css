@@ -810,7 +810,7 @@ body.overlay-open .mobile-bar {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  touch-action: manipulation;
+  touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
   flex-shrink: 0;
@@ -915,7 +915,7 @@ body.overlay-open .mobile-bar {
   width: 100%;
   height: auto;
   max-height: 200px;
-  touch-action: manipulation;
+  touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
   flex-shrink: 0;

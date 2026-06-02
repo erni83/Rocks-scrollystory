@@ -732,8 +732,18 @@ window.addEventListener('load', () => {
   if (window.innerWidth > 680) focusCarouselOnChapter(chapterOrder[0], { immediate: true });
 });
 
-/* ── Action modal (view all) ── */
-thumbsActionBtn.addEventListener('click', () => {
+function refreshModalSwiper() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      swiperThumbs?.update();
+      swiperMain?.update();
+      swiperMain?.updateSize();
+      swiperMain?.updateSlides();
+    });
+  });
+}
+
+function openActionModal() {
   console.log('[DOM] classList change: actionModal.classList.add(\'is-visible\');');
   actionModal.classList.add('is-visible');
   console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'false\');');
@@ -742,21 +752,28 @@ thumbsActionBtn.addEventListener('click', () => {
   actionModal.setAttribute('aria-modal', 'true');
   console.log('[DOM] classList change: body.classList.add(\'overlay-open\');');
   body.classList.add('overlay-open');
-});
+  refreshModalSwiper();
+}
+
+function closeActionModal() {
+  console.log('[DOM] classList change: actionModal.classList.remove(\'is-visible\');');
+  actionModal.classList.remove('is-visible');
+  console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'true\');');
+  actionModal.setAttribute('aria-hidden', 'true');
+  console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-modal\', \'false\');');
+  actionModal.setAttribute('aria-modal', 'false');
+  console.log('[DOM] classList change: body.classList.remove(\'overlay-open\');');
+  body.classList.remove('overlay-open');
+  resumeRailLoops();
+}
+
+/* ── Action modal (view all) ── */
+thumbsActionBtn.addEventListener('click', openActionModal);
 
 /* ── Mobile bar: gallery button opens action modal directly ── */
 const mobileBarGalleryBtn = document.getElementById('mobileBarGalleryBtn');
 if (mobileBarGalleryBtn) {
-  mobileBarGalleryBtn.addEventListener('click', () => {
-    console.log('[DOM] classList change: actionModal.classList.add(\'is-visible\');');
-    actionModal.classList.add('is-visible');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'false\');');
-    actionModal.setAttribute('aria-hidden', 'false');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-modal\', \'true\');');
-    actionModal.setAttribute('aria-modal', 'true');
-    console.log('[DOM] classList change: body.classList.add(\'overlay-open\');');
-    body.classList.add('overlay-open');
-  });
+  mobileBarGalleryBtn.addEventListener('click', openActionModal);
 }
 
 /* Re-assert GPU layer on mobile bar after scroll so Safari doesn't drop it */
@@ -768,31 +785,13 @@ if (mobileBar) {
   }, { passive: true });
 }
 
-actionModalClose.addEventListener('click', () => {
-  console.log('[DOM] classList change: actionModal.classList.remove(\'is-visible\');');
-  actionModal.classList.remove('is-visible');
-  console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'true\');');
-  actionModal.setAttribute('aria-hidden', 'true');
-  console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-modal\', \'false\');');
-  actionModal.setAttribute('aria-modal', 'false');
-  console.log('[DOM] classList change: body.classList.remove(\'overlay-open\');');
-  body.classList.remove('overlay-open');
-  resumeRailLoops();
-});
+actionModalClose.addEventListener('click', closeActionModal);
 
 actionModal.addEventListener('click', e => {
   const inSwiper = actionModal.querySelector('.mySwiper2')?.contains(e.target);
   const inThumb  = e.target.closest('.mySwiper');
   if (e.target === actionModal && !inSwiper && !inThumb) {
-    console.log('[DOM] classList change: actionModal.classList.remove(\'is-visible\');');
-    actionModal.classList.remove('is-visible');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'true\');');
-    actionModal.setAttribute('aria-hidden', 'true');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-modal\', \'false\');');
-    actionModal.setAttribute('aria-modal', 'false');
-    console.log('[DOM] classList change: body.classList.remove(\'overlay-open\');');
-    body.classList.remove('overlay-open');
-    resumeRailLoops();
+    closeActionModal();
   }
 });
 
@@ -803,15 +802,7 @@ actionModal.addEventListener('touchmove', e => {
 
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape' && actionModal.classList.contains('is-visible')) {
-    console.log('[DOM] classList change: actionModal.classList.remove(\'is-visible\');');
-    actionModal.classList.remove('is-visible');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-hidden\', \'true\');');
-    actionModal.setAttribute('aria-hidden', 'true');
-    console.log('[DOM] setAttribute: actionModal.setAttribute(\'aria-modal\', \'false\');');
-    actionModal.setAttribute('aria-modal', 'false');
-    console.log('[DOM] classList change: body.classList.remove(\'overlay-open\');');
-    body.classList.remove('overlay-open');
-    resumeRailLoops();
+    closeActionModal();
   }
 });
 
@@ -941,6 +932,10 @@ var swiperThumbs = new Swiper('.mySwiper', {
   watchSlidesProgress: true,
   preventClicks: false,
   preventClicksPropagation: false,
+  observer: true,
+  observeParents: true,
+  resizeObserver: true,
+  nested: true,
   breakpoints: { 0: { slidesPerView: 3 }, 768: { slidesPerView: 5 } }
 });
 
@@ -950,6 +945,10 @@ const swiperMain = new Swiper('.mySwiper2', {
   keyboard: { enabled: true, onlyInViewport: false },
   preventClicks: false,
   preventClicksPropagation: false,
+  observer: true,
+  observeParents: true,
+  resizeObserver: true,
+  nested: true,
   thumbs: { swiper: swiperThumbs }
 });
 
