@@ -34,8 +34,8 @@ const chapterData = {
   },
   '3000-swings-a-day': {
     title: '3,000 Swings a Day',
-    heroImage: 'IMG/HEA26002_06965.jpg',
-    heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
+    heroImage: 'IMG/HEA26002_04953.jpg',
+    heroAlt: 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
     paragraphs: [
       'Escuintla, Guatemala — and Los Sitios, El Salvador — The Qʼeqchiʼ cane cutters working the fields outside Escuintla are internal migrants. They come from Cobán, in Guatemala\'s highlands, where subsistence farming has grown harder season by season as the climate has shifted. They travel south each harvest to cut cane for the Santa Ana Company — and they get hit on both sides. The land at home is failing. The fields at the harvest are dangerous.'
       ]
@@ -50,7 +50,7 @@ const chapterData = {
   },
   'water-on-a-schedule': {
     title: 'Water on a Schedule',
-    heroImage: 'IMG/HEA26002_08382S.jpg',
+    heroImage: 'IMG/HEA26002_07986.jpg',
     heroAlt: 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine, in Guazapa, El Salvador on March 7, 2026.',
     paragraphs: [
       'Los Sitios and Ingenio El Ángel, El Salvador — Before sunrise in Los Sitios, work captain Santos Cano gathers his cutters in the dark. They board yellow buses for the ride to the fields. Headlamps cut the road. By the time the sun is fully up, they are already working.'
@@ -80,7 +80,7 @@ const railFillers = [
   'HEA26002_00525.jpg', 'HEA26002_02298.jpg', 'HEA26002_02691.jpg',
   'HEA26002_02985.jpg', 'HEA26002_03486.jpg', 'HEA26002_03904.jpg',
   'HEA26002_04407.jpg', 'HEA26002_04871.jpg', 'HEA26002_04923.jpg',
-  'HEA26002_04930.jpg', 'HEA26002_04953.jpg', 'HEA26002_04954S.jpg',
+  'HEA26002_04930.jpg', 'HEA26002_06965.jpg', 'HEA26002_04954S.jpg',
   'HEA26002_05015S.jpg', 'HEA26002_05194.jpg', 'HEA26002_05227S.jpg',
   'HEA26002_05549.jpg', 'HEA26002_05604.jpg', 'HEA26002_05773.jpg',
   'HEA26002_05827.jpg', 'HEA26002_05837.jpg', 'HEA26002_05887S.jpg',
@@ -89,7 +89,7 @@ const railFillers = [
   'HEA26002_06669.jpg', 'HEA26002_06718.jpg', 'HEA26002_06935.jpg',
   'HEA26002_06972.jpg', 'HEA26002_07030.jpg', 'HEA26002_07454.jpg',
   'HEA26002_07541.jpg', 'HEA26002_07815.jpg', 'HEA26002_07930.jpg',
-  'HEA26002_07986.jpg', 'HEA26002_08051.jpg', 'HEA26002_08612.jpg',
+  'HEA26002_08382S.jpg', 'HEA26002_08051.jpg', 'HEA26002_08612.jpg',
   'HEA26002_08621S.jpg', 'HEA26002_09136.jpg', 'HEA26002_09430.jpg',
   'HEA26002_09461.jpg', 'HEA26002_09466.jpg', 'HEA26002_09565.jpg',
   'HEA26002_09687.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09812.jpg',
@@ -960,6 +960,18 @@ const localImageBase = 'IMG';
 const localImageFiles = Object.keys(imageDescriptions);
 const hiddenImages = ['HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05887S.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09942S.jpg'];
 
+// Keep the action-modal gallery aligned with the chapter journey: each
+// chapter's hero and supporting images appear in navigation order. Any
+// remaining archive images follow afterwards without being removed.
+const modalStoryImageFiles = chapterOrder.flatMap(chapterKey => [
+  chapterData[chapterKey].heroImage.replace('IMG/', ''),
+  ...(figuresByChapter[chapterKey] || []).map(figure => figure.querySelector('img')?.getAttribute('src')?.replace('IMG/', '')).filter(Boolean)
+]);
+const modalGalleryImageFiles = [...new Set([
+  ...modalStoryImageFiles,
+  ...localImageFiles.filter(fileName => !modalStoryImageFiles.includes(fileName))
+])];
+
 const linGalleryMainWrapper = document.getElementById('linGalleryMainWrapper');
 const linGalleryThumbsWrapper = document.getElementById('linGalleryThumbsWrapper');
 
@@ -967,7 +979,7 @@ function buildModalGallerySlides() {
   console.log('[buildModalGallerySlides] entry');
   if (!linGalleryMainWrapper || !linGalleryThumbsWrapper) return;
 
-  localImageFiles.forEach((fileName) => {
+  modalGalleryImageFiles.forEach((fileName) => {
     if (hiddenImages.includes(fileName)) {
       return;
     }
