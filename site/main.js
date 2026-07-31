@@ -960,7 +960,14 @@ const swiperMain = new Swiper('.mySwiper2', {
 
 const localImageBase = 'IMG';
 const localImageFiles = Object.keys(imageDescriptions);
-const hiddenImages = ['HEA26002_05773.jpg', 'HEA26002_05827.jpg', 'HEA26002_05887S.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09942S.jpg'];
+const hiddenImages = [
+  'HEA26002_00525.jpg', 'HEA26002_03025S.jpg', 'HEA26002_03364S.jpg',
+  'HEA26002_04362S.jpg', 'HEA26002_04407.jpg',
+  'HEA26002_04648S.jpg', 'HEA26002_04930.jpg', 'HEA26002_04954S.jpg',
+  'HEA26002_05015S.jpg', 'HEA26002_05194.jpg', 'HEA26002_05227S.jpg',
+  'HEA26002_05533S.jpg', 'HEA26002_05773.jpg', 'HEA26002_05827.jpg',
+  'HEA26002_05887S.jpg', 'HEA26002_09687S.jpg', 'HEA26002_09942S.jpg'
+];
 
 // Keep the action-modal gallery aligned with the chapter journey: each
 // chapter's hero and supporting images appear in navigation order. Any
@@ -973,6 +980,19 @@ const modalGalleryImageFiles = [...new Set([
   ...modalStoryImageFiles,
   ...localImageFiles.filter(fileName => !modalStoryImageFiles.includes(fileName))
 ])];
+const modalGalleryPriorityFiles = ['HEA26002_02455S.jpg', 'HEA26002_02832S.jpg'];
+const modalGalleryLastFile = 'HEA26002_05663.jpg';
+const modalGalleryPreCutoffImageFiles = modalGalleryImageFiles
+  .slice(0, modalGalleryImageFiles.indexOf('HEA26002_05837.jpg'))
+  .filter(fileName => !hiddenImages.includes(fileName));
+const modalGalleryOtherImageFiles = modalGalleryPreCutoffImageFiles.filter(fileName => !modalGalleryPriorityFiles.includes(fileName) && fileName !== modalGalleryLastFile);
+const modalGalleryOrderedImageFiles = [
+  ...modalGalleryOtherImageFiles.slice(0, 16),
+  ...modalGalleryPriorityFiles,
+  ...modalGalleryOtherImageFiles.slice(16),
+  modalGalleryLastFile
+];
+const modalGalleryVisibleImageFiles = modalGalleryOrderedImageFiles;
 
 const linGalleryMainWrapper = document.getElementById('linGalleryMainWrapper');
 const linGalleryThumbsWrapper = document.getElementById('linGalleryThumbsWrapper');
@@ -981,7 +1001,7 @@ function buildModalGallerySlides() {
   console.log('[buildModalGallerySlides] entry');
   if (!linGalleryMainWrapper || !linGalleryThumbsWrapper) return;
 
-  modalGalleryImageFiles.forEach((fileName) => {
+  modalGalleryVisibleImageFiles.forEach((fileName) => {
     if (hiddenImages.includes(fileName)) {
       return;
     }
