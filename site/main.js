@@ -37,7 +37,7 @@ const chapterData = {
     heroImage: 'IMG/HEA26002_04953.jpg',
     heroAlt: 'The labor is explosive and unrelenting. A typical day starts around three in the morning when workers wake up to travel in groups to the sugarcane fields. By eight in the morning, temperatures are already in the nineties. By mid-afternoon, workers will have cut between four to eight tons of sugarcane.',
     paragraphs: [
-      'Escuintla, Guatemala — and Los Sitios, El Salvador — The Qʼeqchiʼ cane cutters working the fields outside Escuintla are internal migrants. They come from Cobán, in Guatemala\'s highlands, where subsistence farming has grown harder season by season as the climate has shifted. They travel south each harvest to cut cane for the Santa Ana Company — and they get hit on both sides. The land at home is failing. The fields at the harvest are dangerous.'
+      'Escuintla, Guatemala — and Los Sitios, El Salvador — The Qʼeqchiʼ cane cutters working the fields outside Escuintla are internal migrants. They come from Cobán, in Guatemala\'s highlands, where subsistence farming has grown harder season by season. They travel south each harvest to cut cane in the coastal mills, and they get hit on both sides. The land at home is failing. The fields at the harvest are dangerous.'
       ]
   },
   'edvin-julio-and-la-creatinina': {
@@ -51,7 +51,7 @@ const chapterData = {
   'water-on-a-schedule': {
     title: 'Water on a Schedule',
     heroImage: 'IMG/HEA26002_07986.jpg',
-    heroAlt: 'Workers drink on a schedule, because by the time a person feels thirsty in extreme heat, kidney stress has already begun. In Nicaragua, where La Isla Network strictly tested and verified the efficacy of these protocols, cut acute kidney injury by more than 94 percent.',
+    heroAlt: 'Rest comes on a schedule, not when a worker feels like stopping. The point is core body temperature: scheduled breaks in shade let it come back down before the damage starts, and water is what makes that rest work. In Nicaragua, where La Isla Network tested and verified these protocols, hospital-treated acute kidney injury fell by 94 percent over three harvests.',
     paragraphs: [
       'Los Sitios and Ingenio El Ángel, El Salvador — Before sunrise in Los Sitios, work captain Santos Cano gathers his cutters in the dark. They board yellow buses for the ride to the fields. Headlamps cut the road. By the time the sun is fully up, they are already working.'
     ],
@@ -62,7 +62,7 @@ const chapterData = {
     heroImage: 'IMG/HEA26002_09676.jpg',
     heroAlt: 'César Omar Flores Fuentes is pictured in a frame held by his mom, Blanca Rosa. Behind her, a memorial banner and family photographs hang on the wall. Cesar was twenty when CKDnT took him. The evidence shows that his death was preventable.',
     paragraphs: [
-      'Cantón Colima and Jocote, El Salvador — Blanca Rosa is thirty-five. Three months before this photograph was taken, her son, César Omar Flores Fuentes, died of CKDnT. He was twenty years old.'
+      'Cantón Colima and Jocote, El Salvador. Three months before this photograph was taken, Blanca Rosa\'s son, César Omar Flores Fuentes, died of CKDnT. He was twenty years old.'
     ],
     // postscript: [
     //   'Nobody should have to risk their life to earn a living. The protocols to prevent these deaths exist. The economics favor them. The science has been settled for years. What remains is the decision to act, by companies, by governments, by the institutions that set the terms under which people work.',
@@ -856,12 +856,12 @@ const imageDescriptions = {
   'HEA26002_06421S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06634S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-  'HEA26002_06669.jpg': 'The work is punishing, consisting of hours of swinging a machete in the heat. To protect workers, La Isla Network expertly engineers cooling breaks to keep the body within safe conditions.',
+  'HEA26002_06669.jpg': 'The work is punishing: hours of swinging a machete in the heat. What changes under protection is the day around the work, with scheduled rest built in before the body passes safe limits.',
   'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06882S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06935.jpg': 'With The Rockefeller Foundation, La Isla Network is extending this model to thousands of sugarcane workers and their family members in El Salvador.',
-  'HEA26002_06965.jpg': 'Thousands of swings a shift. These men understand the risks of this brutal work — many take pride in the labor, too. However, without protections in place, even the most experienced worker cannot outwork extreme heat. The protections change not the effort but the recovery through expertly-engineered cooling breaks and hydration.',
+  'HEA26002_06965.jpg': 'Thousands of swings a shift. These men understand the risks of this brutal work, and many take pride in the labor, too. But without protections in place, even the most experienced worker cannot escape extreme heat. The protections do not change the effort. They keep workers from getting too hot as the day goes on: mandatory, scheduled rest breaks in shade let heart rates come down, and body temperatures follow. The breaks also give workers time to hydrate and to sharpen their machetes.',
   'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07030.jpg': 'Older than most of his crew and still, in the photographer\'s words, "a beast," he embodies why this work is more than a paycheck for so many. The aim of the project is simple: that pride should never cost a worker his life.',
   'HEA26002_07167S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
@@ -869,14 +869,14 @@ const imageDescriptions = {
   'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-  'HEA26002_07986.jpg': 'Workers drink on a schedule, because by the time a person feels thirsty in extreme heat, kidney stress has already begun. In Nicaragua, where La Isla Network strictly tested and verified the efficacy of these protocols, cut acute kidney injury by more than 94 percent.',
+  'HEA26002_07986.jpg': 'Rest comes on a schedule, not when a worker feels like stopping. The point is core body temperature: scheduled breaks in shade let it come back down before the damage starts, and water is what makes that rest work. In Nicaragua, where La Isla Network tested and verified these protocols, hospital-treated acute kidney injury fell by 94 percent over three harvests.',
   'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08706S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08621S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_09136.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-  'HEA26002_09430.jpg': 'Three months before this photograph, Blanca\'s son Cesar had died of CKDnT. He was twenty. She began to cry before the first question was even asked.',
+  'HEA26002_09430.jpg': 'She began to cry before the first question was asked. Speaking about a loss like this risks reopening it, but naming the person, keeping him from being forgotten, can also be a kind of release.',
   'HEA26002_09461.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
   'HEA26002_09466.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
   'HEA26002_09565.jpg': 'Blanca Rosa, 35, lost her son, Cesar Omar Flores Fuentes, 20, to  CKDnT, chronic kidney disease of non- traditional causes, three months ago, photographed at her home in Canton Colima, El Salvador on March 7, 2026.',
