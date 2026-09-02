@@ -808,7 +808,7 @@ const imageDescriptions = {
   'HEA26002_00309.jpg': 'A farmer, community leader, and local reporter, Gregorio Pérez García, 60, has worked the earth most of his life. Here, he lets the river run through his hands like a blessing. The ritual is a reminder of how much depends on water in a region where the rain has grown unreliable and many of his neighbors are not so fortunate to have fertile, verdant crop land.',
   'HEA26002_00525.jpg': 'Photos of the landscapes and of Gregorio Perez Garcia, 60, a community leader, farmer and reporter, in Shupa, Guatemala on February 28, 2026. This area is the heart of the dry corridor.',
   'HEA26002_00574.jpg': 'Because his plot lies next to the river, Gregorio can still grow healthy corn. This kind of abundance is becoming rarer across the corridor, where drier fields nearby tell a different story.',
-  'HEA26002_00613S.jpg': 'At sixty, Gregorio still walks out to his fields each morning and works the land himself',
+  'HEA26002_00613S.jpg': 'At sixty, Gregorio still walks out to his fields each morning and works the land himself.',
   'HEA26002_01383.jpg': 'Gregorio lends a hand to neighbors whose ground has gone dry. The difference between a field with water and one without is written plainly across this landscape.',
   'HEA26002_01494S.jpg': 'Dimás and Erica Monroy, small coffee producers, working in Comatán, Guatemala on February 28, 2026.',
   'HEA26002_02298.jpg': 'In the middle of a punishing shift, the quickest thing to buy is sugar, not hydration. La Isla Network\'s research has documented how sugary drinks — and, in some fields, painkillers sold to workers — can worsen the very kidney damage the heat is already causing.',
