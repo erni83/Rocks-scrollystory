@@ -35,9 +35,9 @@ const chapterData = {
   '3000-swings-a-day': {
     title: '3,000 Swings a Day',
     heroImage: 'IMG/HEA26002_04953.jpg',
-    heroAlt: 'The labor is explosive and unrelenting. A typical day starts around three in the morning when workers wake up to travel in groups to the sugarcane fields. By eight in the morning, temperatures are already in the nineties. By mid-afternoon, workers will have cut between four to eight tons of sugarcane.',
+    heroAlt: 'Escuintla, Guatemala, and Los Sitios, El Salvador. The labor is explosive and unrelenting. A typical day starts around three in the morning when workers wake up to travel in groups to the sugarcane fields. By eight in the morning, temperatures are already in the nineties. By mid-afternoon, workers will have cut between four to eight tons of sugarcane.',
     paragraphs: [
-      'Escuintla, Guatemala, and Los Sitios, El Salvador. The Qʼeqchiʼ cane cutters working the fields outside Escuintla are internal migrants. They come from Cobán, in Guatemala\'s highlands, where subsistence farming has grown harder season by season. They travel south each harvest to cut cane in the coastal mills, and they get hit on both sides. The land at home is failing. The work in the sugarcane fields is dangerous.'
+      'The Qʼeqchiʼ cane cutters working the fields outside Escuintla are internal migrants. They come from Cobán, in Guatemala\'s highlands, where subsistence farming has grown harder season by season for the reasons Gregorio described in Shupá: rain that arrives late or not at all, dry spells that outlast the crop, and harvests that no longer cover a year. They travel south each harvest to cut cane in the coastal mills, and they get hit on both sides. The land at home is failing. The work in the sugarcane fields is dangerous.'
       ]
   },
   'edvin-julio-and-la-creatinina': {
@@ -45,15 +45,17 @@ const chapterData = {
     heroImage: 'IMG/HEA26002_02596.jpg',
     heroAlt: 'Edvin lives beside the fields where he got sick.',
     paragraphs: [
-      'Parcelamiento El Cajón, sector Agüero, Guatemala. There are no work-rest protocols here. No shade on a schedule, no water on the row, nothing in the working day built to keep a body\'s core temperature down.',
+      'Parcelamiento El Cajón, sector Agüero, Guatemala. There are no work-rest protocols here. No shade on a schedule, no water readily available, nothing in the work day built to keep a body\'s core temperature down.',
       'On a concrete porch off a road between cane fields, Edvin Rafael Sarmiento sits in a plastic chair with his family. He is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since.',
-      'Cantón Colima and Jocote, El Salvador. Three months before this photograph was taken, Blanca Rosa\'s son, César Omar Flores Fuentes, died of CKDnT. He was twenty years old.'
+      'CKDnT strikes young, previously healthy men doing heavy labor in extreme heat. Without dialysis or transplantation, the disease is fatal, and access to treatment is extremely limited in these communities.',
+      'Doctors call it CKDnT: chronic kidney disease of non-traditional origin. The damage is not simple dehydration. It comes from working hot, day after day, with no real recovery between shifts. Core temperature climbs, the kidneys take the strain, and each shift adds injury until the injuries become permanent.',
+      'The community calls it La Creatinina, after creatinine, the waste product doctors measure in blood to see how well the kidneys are working. Former cutters here know their numbers the way other men know their wages.'
     ]
   },
   'water-on-a-schedule': {
     title: 'Rest on a Schedule',
     heroImage: 'IMG/HEA26002_07986.jpg',
-    heroAlt: 'Rest comes on a schedule, not when a worker feels like stopping. The point is core body temperature: scheduled breaks in shade let it come back down before the damage starts, and water is what makes that rest work.',
+    heroAlt: 'Rest is on a schedule, not when a worker feels like stopping. Scheduled breaks in shade let bodies cool down before damage starts, and they give workers the chance to hydrate, which is essential to staying healthy in this heat.',
     paragraphs: [
       'Los Sitios and Ingenio El Ángel, El Salvador. This is the same harvest, the same heat, and the same work. What is different is the day built around it.'
     ],
@@ -829,7 +831,7 @@ const imageDescriptions = {
   'HEA26002_04923.jpg': 'A cane cutter swings a machete roughly 3,000 times a shift.',
   'HEA26002_04648S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
   'HEA26002_04930.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
-  'HEA26002_04953.jpg': 'The labor is explosive and unrelenting. A typical day starts around three in the morning when workers wake up to travel in groups to the sugarcane fields. By eight in the morning, temperatures are already in the nineties. By mid-afternoon, workers will have cut between four to eight tons of sugarcane.',
+  'HEA26002_04953.jpg': 'Escuintla, Guatemala, and Los Sitios, El Salvador. The labor is explosive and unrelenting. A typical day starts around three in the morning when workers wake up to travel in groups to the sugarcane fields. By eight in the morning, temperatures are already in the nineties. By mid-afternoon, workers will have cut between four to eight tons of sugarcane.',
   'HEA26002_04954S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
   'HEA26002_05015S.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
   'HEA26002_05194.jpg': 'Kekchi men, internal migrant workers from Coban, cutting sugar cane in Santa Ana Company sugar cane fields near Isquintla, Guatemala on March 5, 2026.',
@@ -851,12 +853,12 @@ const imageDescriptions = {
   'HEA26002_06421S.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06447.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06634S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-  'HEA26002_06669.jpg': 'The work is punishing: hours of swinging a machete in the heat, with the sun climbing the whole time.',
+  'HEA26002_06669.jpg': 'The work is punishing: hours of swinging a machete in the heat, under a tropical sun with little or no natural shade.',
   'HEA26002_06718.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06882.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06882S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_06935.jpg': 'With The Rockefeller Foundation, La Isla Network is extending this model to thousands of sugarcane workers and their family members in El Salvador.',
-  'HEA26002_06965.jpg': 'Thousands of swings a shift. These men understand the risks of this brutal work, and many take pride in the labor, too. But even the most experienced worker cannot escape extreme heat. Skill does not cool a body down.',
+  'HEA26002_06965.jpg': 'Thousands of swings a shift. These men understand the risks of this brutal work, and many take pride in the labor, too. But even the most experienced worker cannot escape extreme heat. Skill alone does not cool a body down.',
   'HEA26002_06972.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07030.jpg': 'Older than most of his crew and still, in the photographer\'s words, "a beast," he embodies why this work is more than a paycheck for so many. The aim of the project is simple: that pride should never cost a worker his life.',
   'HEA26002_07167S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
@@ -864,7 +866,7 @@ const imageDescriptions = {
   'HEA26002_07541.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07815.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_07930.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
-  'HEA26002_07986.jpg': 'Rest comes on a schedule, not when a worker feels like stopping. The point is core body temperature: scheduled breaks in shade let it come back down before the damage starts, and water is what makes that rest work.',
+  'HEA26002_07986.jpg': 'Rest is on a schedule, not when a worker feels like stopping. Scheduled breaks in shade let bodies cool down before damage starts, and they give workers the chance to hydrate, which is essential to staying healthy in this heat.',
   'HEA26002_08051.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08382S.jpg': 'Sugar cane workers participating in La Isla Network\'s PREP program, which incorporates rest, water and shade into their work routine,  in Guazapa, El Salvador on March 7, 2026.',
   'HEA26002_08612.jpg': 'Santos Cano, sugar cane work captain, with his cane cutters on a bus to work in Guazapa, El Salvador on March 7, 2026.',
