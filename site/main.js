@@ -47,8 +47,7 @@ const chapterData = {
     paragraphs: [
       'Parcelamiento El Cajón, sector Agüero, Guatemala. There are no work-rest protocols here. No shade on a schedule, no water readily available, nothing in the work day built to keep a body\'s core temperature down.',
       'On a concrete porch off a road between cane fields, Edvin Rafael Sarmiento sits in a plastic chair with his family. He is thirty-two. He cut cane until his kidneys failed six years ago. He has not worked since.',
-      'CKDnT strikes young, previously healthy men doing heavy labor in extreme heat. Without dialysis or transplantation, the disease is fatal, and access to treatment is extremely limited in these communities.',
-      'Doctors call it CKDnT: chronic kidney disease of non-traditional origin. The damage is not simple dehydration. It comes from working hot, day after day, with no real recovery between shifts. Core temperature climbs, the kidneys take the strain, and each shift adds injury until the injuries become permanent.',
+      'Edvin has what doctors call chronic kidney disease of non-traditional origin (CKDnT) because it shows up in people who have the traditional risk factors of hypertension, diabetes, or elderly age. In Central America, CKDnT strikes young, previously healthy men doing heavy labor in extreme heat. Without dialysis or transplantation, the disease is fatal, and access to treatment is extremely limited in these communities. The damage doesn\'t come from dehydration alone. It comes from working hot, day after day, with no real recovery between shifts. Core temperature climbs, the kidneys take the strain, and each shift adds injury until the injuries become permanent.',
       'The community calls it La Creatinina, after creatinine, the waste product doctors measure in blood to see how well the kidneys are working. Former cutters here know their numbers the way other men know their wages.'
     ]
   },
